@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { siteConfig } from '../config/site';
+import { navigation } from '../config/navigation';
+---
+
+<BaseLayout title="Beranda">
+	<main class="max-w-5xl mx-auto px-4 py-12">
+		<header class="flex justify-between items-center mb-16">
+			<div class="text-2xl font-bold text-blue-700">{siteConfig.name}</div>
+			<nav class="hidden md:flex space-x-6 items-center">
+				{navigation.header.map((item) => (
+					<a href={item.href} class="text-gray-600 hover:text-blue-600 transition">
+						{item.label}
+					</a>
+				))}
+				<a 
+					href={navigation.cta.href} 
+					class="bg-green-600 text-white px-5 py-2 rounded-full font-medium hover:bg-green-700 transition"
+				>
+					{navigation.cta.label}
+				</a>
+			</nav>
+		</header>
+
+		<section class="text-center mb-20">
+			<h1 class="text-4xl md:text-6xl font-extrabold mb-6 text-gray-900 leading-tight">
+				Pendamping Pengurusan <span class="text-blue-600">SLO & NIDI</span> Terpercaya di Jawa
+			</h1>
+			<p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
+				Bantu urus Sertifikat Laik Operasi (SLO) dan Nomor Identitas Instalasi (NIDI) dengan proses transparan, jelas tahapannya, dan terhubung dengan mitra berwenang.
+			</p>
+			<div class="flex flex-wrap justify-center gap-4">
+				<a href="#layanan" class="bg-blue-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-700 transition shadow-lg">
+					Lihat Layanan
+				</a>
+				<a href="/alur-dan-persyaratan" class="bg-white text-blue-600 border-2 border-blue-600 px-8 py-3 rounded-lg font-bold hover:bg-blue-50 transition">
+					Pelajari Alur
+				</a>
+			</div>
+		</section>
+
+		<section id="layanan" class="mb-20">
+			<h2 class="text-3xl font-bold text-center mb-12">Layanan Kami</h2>
+			<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+				{siteConfig.services.map((service) => (
+					<div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition">
+						<div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-4">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+							</svg>
+						</div>
+						<h3 class="font-bold text-lg mb-2">{service.name}</h3>
+						<p class="text-gray-500 text-sm mb-4">Layanan pendampingan pengurusan {service.name} untuk wilayah Jawa.</p>
+						<a href={`/layanan/${service.id}`} class="text-blue-600 font-medium text-sm hover:underline">Selengkapnya &rarr;</a>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<footer class="border-t border-gray-100 pt-12 pb-8">
+			<div class="grid md:grid-cols-2 gap-12 mb-12">
+				<div>
+					<div class="text-xl font-bold text-blue-700 mb-4">{siteConfig.name}</div>
+					<p class="text-gray-500 text-sm mb-6 max-w-sm">
+						{siteConfig.disclaimer}
+					</p>
+				</div>
+				<div class="grid grid-cols-2 gap-8">
+					<div>
+						<h4 class="font-bold mb-4">Navigasi</h4>
+						<ul class="space-y-2 text-sm text-gray-500">
+							{navigation.header.map((item) => (
+								<li><a href={item.href} class="hover:text-blue-600">{item.label}</a></li>
+							))}
+						</ul>
+					</div>
+					<div>
+						<h4 class="font-bold mb-4">Legal</h4>
+						<ul class="space-y-2 text-sm text-gray-500">
+							{navigation.footer.links.map((item) => (
+								<li><a href={item.href} class="hover:text-blue-600">{item.label}</a></li>
+							))}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="text-center text-gray-400 text-xs border-t border-gray-50 pt-8">
+				&copy; {new Date().getFullYear()} {siteConfig.name}. Seluruh hak cipta dilindungi.
+			</div>
+		</footer>
+	</main>
+</BaseLayout>
