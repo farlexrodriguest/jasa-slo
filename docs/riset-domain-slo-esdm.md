@@ -20,7 +20,9 @@ Sertifikat Laik Operasi (SLO) merupakan bukti pemenuhan persyaratan kelayakan op
 | **SLO** | Sertifikat Laik Operasi; dokumen sertifikasi kelayakan instalasi tenaga listrik setelah pemeriksaan dan pengujian yang berlaku. | Jangan mengklaim website atau agensi sebagai penerbit jika bukan lembaga berwenang. |
 | **NIDI** | Nomor Identitas Instalasi Tenaga Listrik; identitas instalasi yang didaftarkan dalam sistem ketenagalistrikan. | NIDI dan SLO berbeda; NIDI digunakan sebagai masukan dalam alur SLO. |
 | **IUJPTL** | Izin Usaha Jasa Penunjang Tenaga Listrik, istilah untuk perizinan usaha jasa penunjang. | Pastikan status perizinan dan cakupan kegiatan badan usaha; bukan sinonim SLO. |
-| **IUPLS** | **Akronim belum tervalidasi** dalam sumber primer yang diperiksa. Istilah resmi yang ditemukan adalah **IUPTLS** (Izin Usaha Penyediaan Tenaga Listrik untuk Kepentingan Sendiri) dan **IUPTLU** (untuk Kepentingan Umum). | Klarifikasi apakah klien bermaksud IUPTLS, IUPTLU, atau istilah lain. Jangan memublikasikan definisi IUPLS yang direka. |
+|| **IUPTLS** | Izin Usaha Penyediaan Tenaga Listrik untuk Kepentingan Sendiri. | Istilah resmi; verifikasi kebutuhan klien benar-benar IUPTLS, bukan IUPLS. |
+|| **IUPTLU** | Izin Usaha Penyediaan Tenaga Listrik untuk Kepentingan Umum. | Istilah resmi; bedakan dari IUPTLS. |
+|| ~~IUPLS~~ | **Akronim salah ketik — tidak digunakan.** Dalam riset awal ditulis "IUPLS", tetapi sumber primer ESDM/DJK hanya mengenal **IUPTLS** dan **IUPTLU**. | Jangan pernah memublikasikan "IUPLS". Jika klien menyebut "IUPLS", tanyakan: "Apakah yang Anda maksud, IUPTLS atau IUPTLU?" |
 | **SBU** | Sertifikat Badan Usaha untuk klasifikasi/kualifikasi usaha jasa penunjang tenaga listrik. | Bedakan SBU badan usaha dengan SKTTK perorangan. |
 | **PUIL** | Persyaratan Umum Instalasi Listrik; acuan teknis keselamatan instalasi yang perlu dibaca menurut edisi dan bagian standar yang berlaku. | Hindari menyebut semua instalasi cukup memenuhi satu versi PUIL. |
 | **SNI** | Standar Nasional Indonesia; standar terkait peralatan dan instalasi, sebagian dapat diwajibkan melalui ketentuan khusus. | Jangan menyatakan seluruh SNI otomatis wajib. |
@@ -198,6 +200,15 @@ Astro cocok **sebagai hipotesis teknologi** untuk situs konten/SEO dengan halama
 - [ ] Audit legalitas serta kewenangan mitra klien.
 - [ ] Wawancara klien dan minimal 3 calon pengguna, jika memungkinkan.
 - [ ] Susun PRD dan keputusan final stack setelah discovery.
+
+## 13. Review dan rekomendasi (17 Okt 2026)
+
+**Klarifikasi istilah (sudah diperbaiki di §2):** "IUPLS" adalah salah ketik. Istilah resmi yang benar adalah **IUPTLS** (Izin Usaha Penyediaan Tenaga Listrik untuk Kepentingan Sendiri) dan **IUPTLU** (untuk Kepentingan Umum). Kedua istilah tersebut sudah dipisahkan dalam tabel §2, dan entri "IUPLS" ditandai sebagai akronim yang tidak digunakan. Jika klien menyebut "IUPLS" dalam komunikasi, tanyakan dulu: "Apakah yang Anda maksud, IUPTLS atau IUPTLU?"
+
+**Komentar review:**
+- Dokumen ini sudah memiliki dasar yang kuat: peta kelembagaan, regulasi primer, alur pelanggan, benchmark kompetitor, dan 10 risiko kritis. Keputusan **HOLD** (G1 belum lulus) adalah keputusan yang benar — jangan mulai coding sebelum business discovery selesai.
+- Satu hal yang bisa ditingkatkan: backlog riset lanjutan (§11) sudah mencakup "wawancara klien dan minimal 3 calon pengguna", dan 12 pertanyaan di §9 sudah siap untuk itu. Jadi langkah berikutnya adalah *eksekusi*, bukan penulisan dokumen lagi.
+- Permintaan penyusunan struktur file Astro dan menu website telah disiapkan. Setelah dokumen tersebut dibuat, akan dilakukan review kembali.
 
 ## 12. Metodologi dan batasan
 
