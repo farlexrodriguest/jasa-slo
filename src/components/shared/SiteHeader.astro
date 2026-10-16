@@ -1,0 +1,35 @@
+---
+import { ui } from '../../config/ui.ts';
+
+export interface Props {
+  variant?: 'default' | 'home';
+  ariaLabel?: string;
+}
+
+const { variant = 'default', ariaLabel = ui.nav.mainAriaLabel } = Astro.props;
+const navItems = variant === 'home' ? ui.nav.items.home : ui.nav.items.primary;
+const cta = variant === 'home' ? ui.nav.cta.default : ui.nav.cta.contact;
+---
+<header class="border-b border-slate-200 bg-white">
+  <nav class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-4" aria-label={ariaLabel}>
+    <a href="/" class="flex items-center gap-3 no-underline">
+      <img
+        src="/images/logo-konsultan-slf-pbg.svg"
+        alt={ui.brand.logoAlt}
+        class="h-10 w-auto max-w-[230px] sm:h-12"
+        width="760"
+        height="150"
+        loading="eager"
+        decoding="async"
+      />
+    </a>
+    <div class="order-3 flex w-full flex-wrap items-center gap-x-5 gap-y-3 border-t border-slate-100 pt-3 text-sm font-semibold text-slate-600 md:order-none md:w-auto md:flex-nowrap md:gap-7 md:border-0 md:pt-0">
+      {navItems.map((item) => (
+        <a class="no-underline transition hover:text-blue-800" href={item.href}>{item.label}</a>
+      ))}
+    </div>
+    <a href={cta.href} class="rounded-lg bg-blue-900 px-4 py-2.5 text-sm font-bold text-white no-underline transition hover:bg-blue-800">
+      {cta.label}
+    </a>
+  </nav>
+</header>

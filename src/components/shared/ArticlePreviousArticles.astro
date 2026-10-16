@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+const { article, articles = [], limit = 5 } = Astro.props as {
+  article: CollectionEntry<'articles'>;
+  articles: CollectionEntry<'articles'>[];
+  limit?: number;
+};
+
+const previousArticles = articles
+  .filter((item) => !item.data.draft && item.data.id < article.data.id)
+  .sort((a, b) => b.data.id - a.data.id)
+  .slice(0, limit);
+---
+{previousArticles.length > 0 && (
+  <section class="mt-8 border-t border-slate-200 pt-5" aria-labelledby="previous-articles-heading">
+    <h2 id="previous-articles-heading" class="mb-3 text-xs font-bold uppercase tracking-wider text-slate-500">
+      Artikel sebelumnya
+    </h2>
+    <ol class="space-y-3">
+      {previousArticles.map((item) => (
+        <li class="border-l-2 border-slate-200 pl-3 transition-colors hover:border-blue-600">
+          <a
+            href={`/articles/${item.data.slug}/`}
+            class="text-sm font-semibold leading-5 text-slate-700 no-underline hover:text-blue-700"
+          >
+            {item.data.title}
+          </a>
+          {item.data.category && (
+            <p class="mt-1 text-xs text-slate-500">{item.data.category}</p>
+          )}
+        </li>
+      ))}
+    </ol>
+  </section>
+)}

@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+import { ui } from '../../config/ui.ts';
+import { site } from '../../config/site.ts';
+
+export interface Props {
+  ariaLabel?: string;
+  group?: 'slf' | 'pbg';
+  serviceTitle?: string;
+}
+
+const { ariaLabel = ui.nav.footerAriaLabel, group, serviceTitle } = Astro.props;
+const year = new Date().getFullYear();
+
+let footerTagline = ui.footer.tagline;
+if (serviceTitle) {
+  footerTagline = `${site.name} menyediakan jasa ${serviceTitle}.`;
+} else {
+  const filter = group ? (s: any) => !s.data.draft && s.data.status === 'active' && s.data.serviceGroup === group : (s: any) => !s.data.draft && s.data.status === 'active';
+  const allServices = await getCollection('services', filter);
+  const activeServices = allServices.sort((a, b) => a.data.order - b.data.order);
+  const serviceLabels = activeServices.map((s) => {
+    const t = s.data.title;
+    const m = t.match(/\(([^)]+)\)$/);
+    return m ? `${t.replace(/\s*\([^)]+\)$/, '').trim()} (${m[1]})` : t.replace(/^Pendampingan\s+/i, '').trim();
+  });
+  if (serviceLabels.length > 0) {
+    footerTagline = `${site.name} menyediakan jasa${serviceLabels.length === 1 ? ' ' + serviceLabels[0] : ' ' + serviceLabels.slice(0, -1).join(', ') + ' dan ' + serviceLabels.at(-1)}.`;
+  }
+}
+---
+<footer class="border-t border-slate-200 bg-slate-950 text-slate-300">
+  <div class="mx-auto grid max-w-7xl gap-10 px-5 py-16 md:grid-cols-2">
+    <div>
+      <a href="/" class="flex items-center gap-3 no-underline">
+        <img
+          src="/images/logo-konsultan-slf-pbg.svg"
+          alt={ui.brand.logoAlt}
+          class="h-10 w-auto max-w-[230px] sm:h-12"
+          width="760"
+          height="150"
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+      <p class="mt-5 max-w-md text-sm leading-7 text-slate-400">{footerTagline}</p>
+      {site.address && <p class="mt-6 text-sm leading-7 text-slate-400">{site.address.full || `${site.address.street}, ${site.address.city}`}</p>}
+      <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-slate-400">
+        {site.whatsapp && (
+          <a class="no-underline transition hover:text-white" href={`https://wa.me/${site.whatsapp}`}>{ui.contact.whatsappLabel}</a>
+        )}
+        {site.phone && (
+          <a class="no-underline transition hover:text-white" href={`tel:${site.phone}`}>{ui.contact.phoneLabel}</a>
+        )}
+      </div>
+    </div>
+    <div>
+      <nav aria-label={ariaLabel}>
+        <ul class="grid grid-cols-2 gap-x-6 gap-y-3 text-sm font-semibold text-slate-300 sm:grid-cols-4">
+          {ui.nav.items.footer.map((item) => (
+            <li>
+              <a class="no-underline transition hover:text-white" href={item.href}>{item.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <p class="mt-10 text-xs text-slate-500">© {year} {site.name}. Hak cipta dilindungi undang-undang.</p>
+    </div>
+  </div>
+</footer>
