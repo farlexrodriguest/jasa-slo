@@ -1,12 +1,12 @@
 # Rencana Arsitektur Astro — Jasa SLO
 
-Status: **usulan untuk ditinjau sebelum implementasi**  
+Status: **Disetujui; Siap Implementasi**  
 Referensi: https://github.com/skyforgged/konsultan-slf  
 Target: repository `farlexrodriguest/jasa-slo`
 
 ## Tujuan dan prinsip
 
-Menggunakan pola arsitektur Astro dari `konsultan-slf` sebagai **referensi, bukan salinan mentah**. Struktur website (halaman dan navigasi) tetap merupakan keputusan produk tersendiri; arsitektur Astro mendukung struktur website yang telah disepakati. Utamakan situs statis, performa, SEO, konten yang mudah dirawat, serta validasi otomatis. Jangan membuat kode implementasi sebelum rencana disetujui.
+Menggunakan pola arsitektur Astro dari `konsultan-slf`. Struktur website (halaman dan navigasi) mengikuti `docs/struktur-website-slo.md`. Utamakan situs statis, performa, SEO, konten yang mudah dirawat, serta validasi otomatis.
 
 ## Dasar yang dipertahankan dari referensi
 

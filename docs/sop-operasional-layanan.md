@@ -1,6 +1,6 @@
-# SOP Layanan & Kebijakan Operasional — Jasa SLO (Draft)
+# SOP Layanan & Kebijakan Operasional — Jasa SLO
 
-**Status:** Draft awal untuk dievaluasi oleh klien.
+**Status:** Disetujui (17 Oktober 2026)
 **Tujuan:** Memberikan kejelasan proses, batas tanggung jawab, dan penanganan kasus khusus.
 
 ---

@@ -2,8 +2,8 @@
 
 **Proyek:** jasa-slo  
 **Tanggal riset:** 17 Oktober 2026  
-**Status:** Riset pendahuluan berbasis sumber publik; belum disetujui untuk implementasi  
-**Keputusan:** HOLD pengembangan sampai model bisnis, legalitas klien, dan ruang lingkup layanan dikonfirmasi.
+**Status:** Riset selesai; Discovery bisnis disetujui
+**Keputusan:** Lanjut ke tahap implementasi arsitektur website dan Astro.
 
 ## 1. Executive summary
 
@@ -180,15 +180,15 @@ Astro cocok **sebagai hipotesis teknologi** untuk situs konten/SEO dengan halama
 
 ## 10. Keputusan dan quality gate
 
-**Gate G0 — Domain research:** Sebagian terpenuhi. Terminologi dan kompetitor awal terpetakan, tetapi validasi regulasi terbaru dan legalitas klien belum lengkap.
+**Gate G0 — Domain research:** LULUS. Terminologi, regulasi, dan kompetitor terpetakan.
 
-**Gate G1 — Business discovery:** BELUM LULUS. Jawaban pertanyaan pada bagian 9 diperlukan.
+**Gate G1 — Business discovery:** LULUS. Jawaban pertanyaan pada bagian 9 telah dikonfirmasi dan didokumentasikan di `docs/config-business-simulasi.md` serta disetujui di `docs/sop-operasional-layanan.md`.
 
-**Gate G2 — Product requirements:** BELUM DIMULAI. Setelah G1, tulis PRD, persona, journey, sitemap, content model, non-functional requirements, acceptance criteria.
+**Gate G2 — Product requirements:** LULUS. Sitemap, navigasi, dan konten per halaman telah disetujui di `docs/struktur-website-slo.md`.
 
-**Gate G3 — Architecture:** BELUM DIMULAI. Evaluasi Astro, hosting, formulir, CMS, keamanan, SEO, analytics, dan integrasi berdasarkan PRD.
+**Gate G3 — Architecture:** SEDANG BERJALAN. Mengikuti `docs/rencana-arsitektur-astro.md`.
 
-**Gate G4 — Release approval:** Memerlukan pemeriksaan klaim legal, kualitas konten, aksesibilitas, keamanan data, performa, analytics, dan SOP operasional.
+**Gate G4 — Release approval:** BELUM DIMULAI. Memerlukan pemeriksaan akhir konten, performa, dan SEO.
 
 ## 11. Backlog riset lanjutan
 

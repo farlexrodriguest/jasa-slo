@@ -1,52 +1,42 @@
-# Struktur Website Jasa SLO — Draft untuk Review
+# Struktur Website Jasa SLO
 
 **Proyek:** jasa-slo  
 **Tanggal:** 17 Oktober 2026  
-**Status:** Draft arsitektur informasi; belum disetujui untuk implementasi  
-**Rujukan:** `docs/riset-domain-slo-esdm.md` dan `docs/brief-struktur-astro.md`
+**Status:** Arsitektur informasi disetujui; siap untuk pemetaan Astro  
+**Rujukan:** `docs/riset-domain-slo-esdm.md`, `docs/brief-struktur-astro.md`, `docs/config-business-simulasi.md`, dan `docs/sop-operasional-layanan.md`
 
-> **Batas dokumen:** hanya struktur website, navigasi, hierarki informasi, sitemap, dan tujuan halaman. **Tidak mencakup struktur folder Astro, komponen teknis, framework styling, maupun kode.** Struktur Astro akan mengikuti petunjuk terpisah dari pemilik proyek.
+> **Batas dokumen:** Struktur website, navigasi, hierarki informasi, sitemap, dan tujuan halaman. Implementasi teknis mengikuti `docs/rencana-arsitektur-astro.md`.
 
 ## 1. Tujuan website
 
-Website membantu calon pelanggan memahami SLO, NIDI, tahapan, persyaratan, dan cakupan jasa yang **benar-benar tersedia**, lalu menghubungi penyedia layanan melalui kanal resmi. Website tidak boleh menyiratkan bahwa penyedia jasa adalah PLN, Kementerian ESDM, atau penerbit SLO bila kewenangannya tidak demikian.
+Website membantu calon pelanggan memahami SLO (TR/TM), NIDI, dan IUPTLS, serta tahapan, persyaratan, dan cakupan jasa yang tersedia di wilayah Jawa, lalu menghubungi penyedia layanan melalui WhatsApp/Email.
 
 ### Kebutuhan pengunjung
-- **Saya belum paham:** apa beda SLO dan NIDI?
-- **Saya mau mengurus:** apa persyaratan dan tahapannya?
-- **Saya ingin memastikan:** siapa penyedia jasa, apa legalitasnya, dan siapa pihak penerbit?
-- **Saya ingin bertanya:** bagaimana menghubungi petugas dan memperoleh estimasi?
-
-### Sasaran bisnis (hipotesis)
-- Prospek konsultasi yang relevan, bukan sekadar klik WhatsApp.
-- Mengurangi pertanyaan berulang dengan edukasi yang benar.
-- Membangun kepercayaan lewat transparansi peran dan proses.
+- **Apa itu SLO, NIDI, IUPTLS?** Perbedaan dan kegunaannya.
+- **Bagaimana cara mengurusnya?** Persyaratan dan alur di wilayah Jawa.
+- **Siapa penyedia jasanya?** Konsultan pendamping (bukan penerbit langsung).
+- **Berapa biayanya?** Estimasi berdasarkan konsultasi.
 
 ## 2. Struktur navigasi utama
 
-| Urutan | Menu | Tujuan | Status |
-|---|---|---|---|
-| 1 | Beranda | Ringkasan nilai, proses, layanan, dan kontak | Disarankan |
-| 2 | Layanan | Pintu masuk ke layanan yang terverifikasi | Bersyarat |
-| 3 | Alur & Persyaratan | Tahapan pengurusan dan dokumen | Disarankan |
-| 4 | Edukasi & FAQ | Artikel, istilah, dasar hukum, biaya | Disarankan |
-| 5 | Tentang & Legalitas | Identitas usaha, peran, dan batas kewenangan | Wajib |
-| 6 | Konsultasi | CTA ke kanal komunikasi terverifikasi | Bersyarat |
+| Urutan | Menu | Tujuan |
+|---|---|---|
+| 1 | Beranda | Ringkasan nilai, proses, layanan, dan kontak |
+| 2 | Layanan | Dropdown: SLO TR, SLO TM, NIDI, IUPTLS |
+| 3 | Alur & Persyaratan | Tahapan pengurusan dan checklist dokumen |
+| 4 | Edukasi & FAQ | Artikel, dasar hukum, standar keselamatan |
+| 5 | Tentang & Legalitas | Identitas usaha sebagai Konsultan, peran, dan batas kewenangan |
+| 6 | Konsultasi | CTA ke WhatsApp / Email |
 
-**Dropdown Layanan (usulan):**
-- Pengurusan/Pendampingan SLO Tegangan Rendah — hanya bila sesuai legalitas dan ruang lingkup mitra.
-- Pendampingan NIDI — hanya bila proses dan penanggung jawabnya jelas.
-- Pasang Baru / Tambah Daya — **jangan ditampilkan sebagai layanan aktif** sebelum klien membuktikan cakupan operasionalnya; informasi umum dapat dimuat sebagai artikel edukasi.
-
-**Perilaku navigasi:** desktop dan mobile harus memiliki urutan informasi konsisten, menu mudah dioperasikan dengan keyboard, label jelas, dan CTA tidak mengganggu akses konten.
-
-## 3. Sitemap konseptual
+## 3. Sitemap Konseptual
 
 ```text
 Beranda /
 ├── Layanan /layanan/
 │   ├── SLO Tegangan Rendah /layanan/slo-tr/
-│   └── Pendampingan NIDI /layanan/nidi/
+│   ├── SLO Tegangan Menengah /layanan/slo-tm/
+│   ├── Pendampingan NIDI /layanan/nidi/
+│   └── Layanan IUPTLS /layanan/iuptls/
 ├── Alur & Persyaratan /alur-dan-persyaratan/
 ├── Edukasi & FAQ /edukasi/
 │   └── Detail Artikel /edukasi/[slug]/
@@ -95,16 +85,29 @@ Sitemap di atas merupakan rancangan informasi, **bukan** instruksi membuat file 
 - Tahapan pendampingan, batas layanan, dan kemungkinan koreksi data.
 - CTA konsultasi.
 
-### 4.5 Alur & Persyaratan (`/alur-dan-persyaratan/`)
+### 4.5 SLO Tegangan Menengah (`/layanan/slo-tm/`)
+- Pengertian dan kegunaan SLO TM untuk industri/komersial.
+- Persyaratan teknis dan dokumen khusus tegangan menengah.
+- Alur inspeksi dan koordinasi dengan pihak berwenang.
+- CTA konsultasi.
+
+### 4.6 Layanan IUPTLS (`/layanan/iuptls/`)
+- Pengertian IUPTLS (Izin Usaha Penyediaan Tenaga Listrik untuk Kepentingan Sendiri).
+- Siapa yang wajib memiliki IUPTLS.
+- Persyaratan dan tahapan pengurusan izin.
+- Hubungan IUPTLS dengan SLO.
+- CTA konsultasi.
+
+### 4.7 Alur & Persyaratan (`/alur-dan-persyaratan/`)
 - Pemilihan skenario: instalasi baru, sudah terpasang tetapi belum memiliki dokumen, atau kebutuhan lain.
 - Langkah konseptual: instalasi → identitas instalasi/NIDI → permohonan SLO → pemeriksaan/pengujian → tindak lanjut → proses sertifikasi sesuai kewenangan.
 - Checklist dokumen berdasarkan skenario, dengan penanda bahwa syarat final ditentukan oleh pihak berwenang.
 - Penjelasan apa yang terjadi jika dokumen kurang atau instalasi perlu perbaikan.
 - Tautan ke kanal resmi terkait dan bantuan konsultasi.
 
-### 4.6 Edukasi & FAQ (`/edukasi/`)
+### 4.8 Edukasi & FAQ (`/edukasi/`)
 **Kelompok topik:**
-- Dasar: SLO, NIDI, LIT, DJK, PLN.
+- Dasar: SLO (TR/TM), NIDI, IUPTLS, LIT, DJK, PLN.
 - Proses: persyaratan, inspeksi, pasang baru, tambah daya.
 - Biaya: komponen biaya dan perbedaan biaya sertifikasi, jasa pendampingan, serta biaya PLN.
 - Regulasi: ringkasan dengan tautan sumber resmi dan tanggal tinjauan.
@@ -112,22 +115,21 @@ Sitemap di atas merupakan rancangan informasi, **bukan** instruksi membuat file 
 
 **Artikel detail:** judul jelas, ringkasan, tanggal pembaruan, sumber primer, tautan layanan terkait, dan FAQ bila relevan. Hindari artikel SEO duplikatif berdasarkan kota tanpa cakupan layanan nyata.
 
-### 4.7 Tentang & Legalitas (`/tentang-kami/`)
-- Nama dan identitas badan usaha (setelah diverifikasi).
-- Model bisnis yang sebenarnya: pendamping, kontraktor, LIT, atau kombinasi yang dibuktikan.
-- Dokumen legal dan cakupan kewenangan yang boleh dipublikasikan.
-- Identitas/ruang lingkup mitra bila ada persetujuan.
-- Wilayah layanan aktual.
+### 4.9 Tentang & Legalitas (`/tentang-kami/`)
+- Nama dan identitas badan usaha (Konsultan).
+- Model bisnis: Pendamping administrasi dan teknis.
+- Dokumen legal dan cakupan kewenangan (menyusul).
+- Wilayah layanan aktual: Jawa.
 - Pernyataan tidak berafiliasi dengan PLN/ESDM kecuali ada bukti resmi.
 
-### 4.8 Kontak (`/kontak/`)
-- Kanal WhatsApp/telepon/email resmi yang sudah dikonfirmasi.
-- Jam respons, wilayah layanan, dan ekspektasi tindak lanjut.
+### 4.10 Kontak (`/kontak/`)
+- Kanal WhatsApp/email resmi.
+- Jam respons (KPI < 15 menit), wilayah layanan (Jawa), dan ekspektasi tindak lanjut.
 - Panduan tidak mengirim KTP/NIK atau dokumen sensitif melalui formulir publik sebelum kebijakan data disiapkan.
 
-### 4.9 Kebijakan Privasi dan Syarat & Ketentuan
-- **Privasi:** tujuan dan dasar pemrosesan, data yang dikumpulkan, pihak penerima, retensi, keamanan, serta cara menghubungi pengelola data.
-- **Ketentuan:** cakupan layanan, batas tanggung jawab, proses pemeriksaan, pemisahan biaya jasa dan biaya pihak lain, komplain, pembatalan, dan refund bila relevan.
+### 4.11 Kebijakan Privasi dan Syarat & Ketentuan
+- **Privasi:** tujuan dan dasar pemrosesan, data yang dikumpulkan, pihak penerima, retensi (15 tahun), keamanan, serta cara menghubungi pengelola data.
+- **Ketentuan:** cakupan layanan, batas tanggung jawab, proses pemeriksaan, pemisahan biaya jasa dan biaya pihak lain, komplain, pembatalan, dan refund sesuai SOP.
 - Kedua halaman wajib ditinjau berdasarkan operasi aktual dan ketentuan hukum yang berlaku sebelum pengumpulan data pribadi.
 
 ## 5. Struktur footer
@@ -149,21 +151,18 @@ Sitemap di atas merupakan rancangan informasi, **bukan** instruksi membuat file 
 7. **Minimasi data:** tahap kontak awal cukup informasi non-sensitif yang diperlukan; proses dokumen membutuhkan kontrol keamanan tersendiri.
 8. **Tidak membuat halaman layanan kosong** atau halaman kota yang tidak benar-benar terlayani.
 
-## 7. Pertanyaan yang harus diputuskan sebelum final
+## 7. Status Keputusan
 
-- Apakah badan usaha klien merupakan LIT, instalatir/kontraktor, atau pendamping administrasi?
-- Layanan mana yang dapat dibuktikan dan dioperasikan sekarang?
-- Apakah fokus pelanggan hanya rumah tangga/TR atau termasuk bisnis dan industri?
-- Wilayah layanan aktual?
-- Apakah harga dipublikasikan, hanya estimasi, atau berdasarkan konsultasi?
-- Siapa pemilik nomor WhatsApp dan siapa petugas penanggung jawab?
-- Apakah dibutuhkan formulir online, atau cukup tautan konsultasi?
-- Dokumen legal dan mitra mana yang diizinkan tampil publik?
+- **Badan usaha:** Konsultan pendamping (bukan LIT/Kontraktor).
+- **Layanan aktif:** SLO TR, SLO TM, NIDI, IUPTLS.
+- **Wilayah layanan:** Jawa.
+- **Harga:** Berdasarkan konsultasi (tidak dipublikasikan statis).
+- **Kontak:** WhatsApp dan Email.
+- **SOP & KPI:** Disetujui (17 Okt 2026).
 
-## 8. Keputusan tahap ini
+## 8. Langkah Berikutnya
 
-**Disusun:** arsitektur informasi website, navigasi, sitemap, tujuan halaman, dan aturan publikasi.
-
-**Belum diputuskan:** struktur folder Astro, komponen, CMS, backend, styling, integrasi, implementasi, dan deployment.
-
-**Gate:** review pemilik proyek → klarifikasi bisnis/legalitas → persetujuan struktur website → baru menerima petunjuk struktur Astro. Tidak ada kode yang dibuat berdasarkan dokumen ini.
+1. **Pemetaan ke Astro:** Sesuai `docs/rencana-arsitektur-astro.md`.
+2. **Implementasi content collections:** Skema untuk layanan, artikel, dan halaman.
+3. **Pembuatan komponen UI:** Header, Footer, Hero, ServiceCard, FAQ, dll.
+4. **Setup CI/CD & Validasi.**
