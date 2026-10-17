@@ -1,6 +1,5 @@
 ---
 import { getCollection } from 'astro:content';
-import { ui } from '../../config/ui.ts';
 import { site } from '../../config/site.ts';
 
 export interface Props {
@@ -9,10 +8,10 @@ export interface Props {
   serviceTitle?: string;
 }
 
-const { ariaLabel = ui.nav.footerAriaLabel, group, serviceTitle } = Astro.props;
+const { ariaLabel = "Footer navigasi", group, serviceTitle } = Astro.props;
 const year = new Date().getFullYear();
 
-let footerTagline = ui.footer.tagline;
+let footerTagline = "Jasa Konsultan SLO";
 if (serviceTitle) {
   footerTagline = `${site.name} menyediakan jasa ${serviceTitle}.`;
 } else {
@@ -34,8 +33,8 @@ if (serviceTitle) {
     <div>
       <a href="/" class="flex items-center gap-3 no-underline">
         <img
-          src="/images/logo-konsultan-slf-pbg.svg"
-          alt={ui.brand.logoAlt}
+          src="/images/logo-jasa-slo.svg"
+          alt="Logo Jasa SLO"
           class="h-10 w-auto max-w-[230px] sm:h-12"
           width="760"
           height="150"
@@ -44,24 +43,27 @@ if (serviceTitle) {
         />
       </a>
       <p class="mt-5 max-w-md text-sm leading-7 text-slate-400">{footerTagline}</p>
-      {site.address && <p class="mt-6 text-sm leading-7 text-slate-400">{site.address.full || `${site.address.street}, ${site.address.city}`}</p>}
+      {site.address && <p class="mt-6 text-sm leading-7 text-slate-400">{site.address}</p>}
       <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-slate-400">
         {site.whatsapp && (
-          <a class="no-underline transition hover:text-white" href={`https://wa.me/${site.whatsapp}`}>{ui.contact.whatsappLabel}</a>
+          <a class="no-underline transition hover:text-white" href={`https://wa.me/${site.whatsapp}`}>WhatsApp</a>
         )}
         {site.phone && (
-          <a class="no-underline transition hover:text-white" href={`tel:${site.phone}`}>{ui.contact.phoneLabel}</a>
+          <a class="no-underline transition hover:text-white" href={`tel:${site.phone}`}>Telepon</a>
         )}
       </div>
     </div>
     <div>
       <nav aria-label={ariaLabel}>
         <ul class="grid grid-cols-2 gap-x-6 gap-y-3 text-sm font-semibold text-slate-300 sm:grid-cols-4">
-          {ui.nav.items.footer.map((item) => (
-            <li>
-              <a class="no-underline transition hover:text-white" href={item.href}>{item.label}</a>
-            </li>
-          ))}
+          <li><a class="no-underline transition hover:text-white" href="/">Beranda</a></li>
+          <li><a class="no-underline transition hover:text-white" href="/layanan">Layanan</a></li>
+          <li><a class="no-underline transition hover:text-white" href="/alur-dan-persyaratan">Alur & Persyaratan</a></li>
+          <li><a class="no-underline transition hover:text-white" href="/edukasi">Edukasi & FAQ</a></li>
+          <li><a class="no-underline transition hover:text-white" href="/tentang-kami">Tentang & Legalitas</a></li>
+          <li><a class="no-underline transition hover:text-white" href="/kontak">Konsultasi</a></li>
+          <li><a class="no-underline transition hover:text-white" href="/kebijakan-privasi">Kebijakan Privasi</a></li>
+          <li><a class="no-underline transition hover:text-white" href="/syarat-ketentuan">Syarat & Ketentuan</a></li>
         </ul>
       </nav>
       <p class="mt-10 text-xs text-slate-500">© {year} {site.name}. Hak cipta dilindungi undang-undang.</p>

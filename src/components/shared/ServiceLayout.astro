@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from './SiteHeader.astro';
+import SiteFooter from './SiteFooter.astro';
+import PageHeaderBlock from './PageHeaderBlock.astro';
+import ContentCard from './ContentCard.astro';
+import CtaBlock from './CtaBlock.astro';
+---
+
+<BaseLayout title={`${Astro.props.service.title} | Jasa SLO`}>
+	<SiteHeader />
+	<main class="max-w-4xl mx-auto px-4 py-12">
+		<PageHeaderBlock title={Astro.props.service.title} description={Astro.props.service.description} />
+		<div class="space-y-8">
+			<ContentCard class="prose">
+				<slot />
+			</ContentCard>
+			<CtaBlock 
+				title="Siap mengurus SLO Anda?"
+				description="Hubungi kami melalui WhatsApp untuk konsultasi gratis dan penawaran yang transparan."
+				ctaText="Konsultasi Sekarang"
+				ctaLink="https://wa.me/6281234567890"
+			/>
+		</div>
+	</main>
+	<SiteFooter />
+</BaseLayout>

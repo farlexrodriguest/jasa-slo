@@ -1,4 +1,4 @@
-export const siteConfig = {
+export const site = {
   name: "Jasa SLO", // Placeholder, client to determine
   model: "Konsultan",
   domain: "jasa-slo.com", // Placeholder
