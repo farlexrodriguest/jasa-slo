@@ -4,8 +4,8 @@ const slugify = (value: string) => value.normalize('NFD').replace(/[\u0300-\u036
 const headingId = block.id ?? slugify(block.heading);
 ---
 <section id={headingId} class="mt-8 scroll-mt-24">
-  <h2 class="mb-4 text-2xl font-extrabold tracking-tight text-slate-950">{block.heading}</h2>
-  <div class="space-y-4 text-base leading-8 text-slate-700">
+  <h2 class="mb-4 text-2xl font-extrabold tracking-tight text-[#2a1a0e]">{block.heading}</h2>
+  <div class="space-y-4 text-base leading-8 text-[#594332]">
     {block.content.map((item: any) => item.type === 'p' ? (
       <p>{item.text}</p>
     ) : item.ordered ? (

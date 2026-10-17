@@ -15,25 +15,25 @@
 import { ui } from '../../config/ui.ts';
 const { id, title, description, items, note } = Astro.props;
 ---
-<section id={id} class="my-10 rounded-2xl border border-blue-200 bg-white p-5 shadow-sm sm:p-7" aria-labelledby={`${id}-title`}>
+<section id={id} class="my-10 border border-[#dfcdb8] bg-[#fffaf2] p-6 sm:p-9" aria-labelledby={`${id}-title`}>
   <div class="mb-5 flex items-start gap-3">
-    <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-lg text-blue-800" aria-hidden="true">✓</span>
+    <span class="flex h-10 w-10 shrink-0 items-center justify-center bg-[#f4ae52] text-lg text-[#2a1a0e]" aria-hidden="true">✓</span>
     <div>
-      <h2 id={`${id}-title`} class="text-xl font-extrabold text-slate-950 sm:text-2xl">{title}</h2>
-      {description && <p class="mt-2 leading-7 text-slate-600">{description}</p>}
+      <h2 id={`${id}-title`} class="text-xl font-extrabold text-[#2a1a0e] sm:text-2xl">{title}</h2>
+      {description && <p class="mt-2 leading-7 text-[#624b39]">{description}</p>}
     </div>
   </div>
-  <ul class="divide-y divide-slate-100">
+  <ul class="divide-y divide-[#dfcdb8]">
     {items.map((item: {label: string; detail?: string; required?: boolean}) => (
       <li class="flex gap-3 py-4">
-        <span class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded border border-blue-300 text-xs text-blue-700" aria-hidden="true">✓</span>
+        <span class="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded border border-[#d4621a] text-xs text-[#a34a17]" aria-hidden="true">✓</span>
         <div class="flex-1">
-          <p class="font-semibold text-slate-800">{item.label}</p>
-          {item.detail && <p class="mt-1 text-sm leading-6 text-slate-600">{item.detail}</p>}
+          <p class="font-semibold text-[#2a1a0e]">{item.label}</p>
+          {item.detail && <p class="mt-1 text-sm leading-6 text-[#624b39]">{item.detail}</p>}
         </div>
-        {item.required && <span class="shrink-0 text-xs font-semibold text-blue-800">{ui.blocks.checklistRequiredLabel}</span>}
+        {item.required && <span class="shrink-0 text-xs font-semibold text-[#a34a17]">{ui.blocks.checklistRequiredLabel}</span>}
       </li>
     ))}
   </ul>
-  {note && <p class="mt-4 rounded-lg bg-slate-50 p-4 text-sm leading-6 text-slate-600">{note}</p>}
+  {note && <p class="mt-4 bg-[#fef3e2] p-4 text-sm leading-6 text-[#624b39]">{note}</p>}
 </section>

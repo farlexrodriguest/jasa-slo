@@ -2,14 +2,14 @@
 import { ui } from '../../config/ui.ts';
 const { id, variant = 'info', title, text, class: css } = Astro.props;
 const variants: Record<string, string> = {
-  info: 'border-blue-200 bg-blue-50 text-blue-900',
-  success: 'border-emerald-200 bg-emerald-50 text-emerald-900',
-  warning: 'border-amber-200 bg-amber-50 text-amber-900',
-  danger: 'border-red-200 bg-red-50 text-red-900',
+  info: 'border-[#dfcdb8] bg-[#fef3e2] text-[#2a1a0e]',
+  success: 'border-[#dfcdb8] bg-[#fef3e2] text-[#2a1a0e]',
+  warning: 'border-[#d4621a] bg-[#f4ae52] text-[#2a1a0e]',
+  danger: 'border-[#d4621a] bg-[#fef3e2] text-[#2a1a0e]',
 };
 const variantClass = variants[variant];
 ---
-<section id={id} class={`rounded-xl border px-5 py-4 ${variantClass} ${css?.section ?? ''}`}>
+<section id={id} class={`border-l-4 px-6 py-5 ${variantClass} ${css?.section ?? ''}`}>
   {(title || text) && <h4 class={`font-semibold ${css?.title ?? ''}`}>{title ?? ui.blocks.noteDefaultTitles[variant] ?? variant}</h4>}
   {text && <p class={`mt-1 text-sm leading-relaxed ${css?.text ?? ''}`}>{text}</p>}
 </section>
