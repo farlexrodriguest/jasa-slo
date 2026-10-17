@@ -44,6 +44,7 @@ export const ui = {
   contact: {
     channelsHeading: 'Hubungi kami',
     whatsappLabel: 'WhatsApp',
+    whatsappCta: 'Konsultasi via WhatsApp',
     phoneLabel: 'Telepon',
     addressHeading: 'Alamat',
     whatsappMessage: {
