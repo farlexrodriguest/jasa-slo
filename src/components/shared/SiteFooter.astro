@@ -1,17 +1,18 @@
 ---
 import { navigation } from '../../config/navigation';
+import { site, legalDisplayName } from '../../config/site.ts';
 const year = new Date().getFullYear();
 ---
 <footer class="bg-[#2a1a0e] text-[#fef3e2]">
   <div class="mx-auto max-w-[1440px] px-6 py-16 lg:px-12">
     <div class="grid gap-12 border-b border-[#6b4a34] pb-16 md:grid-cols-[1.4fr_1fr]">
-      <div><a href="/" aria-label="Jasa SLO — Beranda" class="inline-block"><img src="/images/logo-jasa-slo-light.svg" alt="Jasa SLO" width="621" height="110" class="h-10 w-auto" loading="lazy" /></a><p class="eyebrow mt-8 text-[#f4ae52]">Informasi & pendampingan kelistrikan</p><p class="mt-6 max-w-xl font-[Manrope] text-4xl font-extrabold leading-tight md:text-5xl">Langkah yang jelas dimulai dari informasi yang tepat.</p></div>
+      <div><a href="/" aria-label={`${site.name} — Beranda`} class="inline-block"><img src="/images/logo-jasa-slo-light.svg" alt={site.name} width="621" height="110" class="h-10 w-auto" loading="lazy" /></a><p class="eyebrow mt-8 text-[#f4ae52]">Informasi & pendampingan kelistrikan</p><p class="mt-6 max-w-xl font-[Manrope] text-4xl font-extrabold leading-tight md:text-5xl">Langkah yang jelas dimulai dari informasi yang tepat.</p></div>
       <nav aria-label="Navigasi footer" class="grid grid-cols-2 content-start gap-4 text-sm">
         {navigation.header.map((item) => <a href={item.href} class="hover:text-[#f4ae52]">{item.label}</a>)}
         <a href="/kontak/" class="hover:text-[#f4ae52]">Kontak</a>
         {navigation.footer.links.map((item) => <a href={item.href} class="hover:text-[#f4ae52]">{item.label}</a>)}
       </nav>
     </div>
-    <div class="flex flex-wrap justify-between gap-5 pt-7 text-xs text-[#d5bca4]"><span>© {year} Jasa SLO</span><span>Informasi pada situs ini bukan layanan resmi PLN atau Kementerian ESDM.</span></div>
+    <div class="flex flex-wrap justify-between gap-5 pt-7 text-xs text-[#d5bca4]"><span>© {year} {legalDisplayName}</span><span>Informasi pada situs ini bukan layanan resmi PLN atau Kementerian ESDM.</span></div>
   </div>
 </footer>

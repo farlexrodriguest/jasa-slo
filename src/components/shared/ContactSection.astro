@@ -18,7 +18,7 @@
  * - formTitle?: string — judul formulir
  * - serviceOptions?: string[] — pilihan layanan pada formulir
  */
-import { site } from '../../config/site.ts';
+import { site, legalDisplayName } from '../../config/site.ts';
 import { ui } from '../../config/ui.ts';
 const {
   id = 'kontak',
@@ -65,7 +65,7 @@ const labelClass = 'mb-1 block text-sm font-bold text-[#2a1a0e]';
     </a>
     <div class="border border-[#dfcdb8] bg-[#fef3e2] p-5 sm:col-span-2">
       <span class="eyebrow text-[#a34a17]">{ui.contact.addressHeading}</span>
-      <p class="mt-2 font-semibold text-[#2a1a0e]">{site.name}</p>
+      <p class="mt-2 font-semibold text-[#2a1a0e]">{legalDisplayName}</p>
       <p class="text-[#624b39]">{address}</p>
     </div>
     {hours.length > 0 && (
