@@ -1,6 +1,13 @@
 ---
+id: 6
+ulid: "01K7R000000000000000000006"
+type: "page"
+slug: "syarat-ketentuan"
 title: "Syarat & Ketentuan"
+pubDate: "2026-10-17T00:00:00Z"
+updatedDate: "2026-10-17T00:00:00Z"
 description: "Ketentuan penggunaan situs serta batasan peran layanan pendampingan yang disediakan."
+draft: false
 eyebrow: "Ketentuan / Penggunaan"
 order: 5
 blocks:

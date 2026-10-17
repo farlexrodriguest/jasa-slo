@@ -1,6 +1,13 @@
 ---
+id: 4
+ulid: "01K7R000000000000000000004"
+type: "page"
+slug: "kontak"
 title: "Kontak"
+pubDate: "2026-10-17T00:00:00Z"
+updatedDate: "2026-10-17T00:00:00Z"
 description: "Hubungi kami untuk konsultasi awal mengenai kebutuhan SLO, NIDI, atau pendampingan kelistrikan."
+draft: false
 eyebrow: "Hubungi / Konsultasi"
 order: 3
 showCta: false

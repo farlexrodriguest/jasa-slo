@@ -1,59 +1,71 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
+const utcDate = z.coerce.date();
+
+/** Identitas bersama untuk seluruh konten (ikuti pola konsultan-slf). */
+const sharedIdentity = {
+  id: z.number().int().positive(),
+  ulid: z.string().length(26),
+  title: z.string().min(1),
+  description: z.string().min(1),
+  draft: z.boolean().default(false),
+  image: z.string().optional(),
+  socialImage: z.string().optional(),
+};
+
+const contentBlocks = z
+  .array(z.object({ component: z.string() }).passthrough())
+  .default([]);
+
 const articles = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/articles" }),
   schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    publishDate: z.date().optional(),
-    updatedDate: z.date().optional(),
-    tags: z.array(z.string()).optional(),
-  }),
-});
-
-const services = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/services" }),
-  schema: z.object({
-    id: z.number().int().positive(),
-    ulid: z.string().length(26),
-    type: z.literal('service'),
+    ...sharedIdentity,
+    type: z.literal('article'),
     slug: z.string().min(1),
-    title: z.string(),
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date(),
-    description: z.string(),
-    serviceGroup: z.string(),
-    order: z.number().int().default(0),
-    draft: z.boolean().default(false),
-    status: z.enum(['active', 'inactive']).default('active'),
-    eyebrow: z.string().optional(),
-    image: z.string(),
-    imageAlt: z.string(),
-    socialImage: z.string().optional(),
-    blocks: z.array(z.object({ component: z.string() }).passthrough()).default([]),
+    pubDate: utcDate,
+    updatedDate: utcDate,
+    author: z.string().optional(),
+    category: z.string().optional(),
+    tags: z.array(z.string()).default([]),
+    blocks: contentBlocks,
   }),
 });
 
 const pages = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/pages" }),
   schema: z.object({
-    title: z.string(),
-    description: z.string(),
+    ...sharedIdentity,
+    type: z.literal('page'),
+    slug: z.string().min(1),
+    pubDate: utcDate,
+    updatedDate: utcDate,
     eyebrow: z.string().optional(),
     order: z.number().int().default(0),
     showCta: z.boolean().default(true),
-    blocks: z.array(z.object({ component: z.string() }).passthrough()).default([]),
+    canonical: z.string().optional(),
+    noindex: z.boolean().default(false),
+    blocks: contentBlocks,
   }),
 });
 
-const home = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/home" }),
+const services = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/services" }),
   schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    blocks: z.array(z.object({ component: z.string() }).passthrough()).default([]),
+    ...sharedIdentity,
+    type: z.literal('service'),
+    slug: z.string().min(1),
+    pubDate: utcDate,
+    updatedDate: utcDate,
+    serviceGroup: z.string(),
+    order: z.number().int().default(0),
+    status: z.enum(['active', 'inactive']).default('active'),
+    eyebrow: z.string().optional(),
+    image: z.string(),
+    imageAlt: z.string(),
+    blocks: contentBlocks,
   }),
 });
 
-export const collections = { articles, services, pages, home };
+export const collections = { articles, services, pages };

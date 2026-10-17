@@ -1,7 +1,14 @@
 ---
-title: Apa itu SLO?
-description: Penjelasan singkat tentang Sertifikat Laik Operasi (SLO) dan fungsinya.
-publishDate: 2026-10-17
+id: 1
+ulid: "01K7R000000000000000000011"
+type: "article"
+slug: "apa-itu-slo"
+title: "Apa itu SLO?"
+pubDate: "2026-10-17T00:00:00Z"
+updatedDate: "2026-10-17T00:00:00Z"
+description: "Penjelasan singkat tentang Sertifikat Laik Operasi (SLO) dan fungsinya."
+draft: false
+category: "SLO"
 tags: ['slo', 'dasar']
 ---
 SLO merupakan singkatan dari Sertifikat Laik Operasi. Ini adalah dokumen yang membuktikan bahwa suatu instalasi tenaga listrik telah memenuhi persyaratan kelayakan operasi sesuai dengan standar yang ditetapkan oleh pihak berwenang.

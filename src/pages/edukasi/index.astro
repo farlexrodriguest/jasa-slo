@@ -3,10 +3,10 @@ import {getCollection} from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/shared/SiteHeader.astro';
 import SiteFooter from '../../components/shared/SiteFooter.astro';
-const articles=(await getCollection('articles')).sort((a,b)=>(b.data.publishDate?.getTime()??0)-(a.data.publishDate?.getTime()??0));
+const articles=(await getCollection('articles')).filter((a)=>!a.data.draft).sort((a,b)=>b.data.pubDate.getTime()-a.data.pubDate.getTime());
 ---
 <BaseLayout title="Edukasi & Panduan" description="Artikel dan panduan memahami SLO, NIDI, dan instalasi listrik.">
 <SiteHeader/><main id="main-content" class="mx-auto max-w-[1200px] px-6 py-20 lg:py-28">
 <p class="eyebrow text-[#a34a17]">Pustaka / Pengetahuan</p><h1 class="mt-5 text-5xl font-extrabold md:text-7xl">Baca sebelum melangkah.</h1><p class="mt-7 max-w-2xl text-lg leading-8 text-[#624b39]">Catatan, penjelasan, dan panduan untuk membantu memahami proses kelistrikan.</p>
-<div class="mt-16 grid gap-12 border-t border-[#2a1a0e] pt-10 md:grid-cols-[1fr_2fr]"><div><p class="eyebrow text-[#a34a17]">Daftar bacaan / {articles.length}</p></div><div class="divide-y divide-[#dfcdb8]">{articles.map((article,i)=><a href={`/edukasi/${article.id}/`} class="group block py-8 first:pt-0"><span class="eyebrow text-[#a34a17]">Artikel / {String(i+1).padStart(2,'0')}</span><h2 class="mt-4 text-3xl font-bold group-hover:text-[#d4621a]">{article.data.title} ↗</h2><p class="mt-3 leading-7 text-[#624b39]">{article.data.description}</p></a>)}</div></div>
+<div class="mt-16 grid gap-12 border-t border-[#2a1a0e] pt-10 md:grid-cols-[1fr_2fr]"><div><p class="eyebrow text-[#a34a17]">Daftar bacaan / {articles.length}</p></div><div class="divide-y divide-[#dfcdb8]">{articles.map((article,i)=><a href={`/edukasi/${article.data.slug}/`} class="group block py-8 first:pt-0"><span class="eyebrow text-[#a34a17]">Artikel / {String(i+1).padStart(2,'0')}</span><h2 class="mt-4 text-3xl font-bold group-hover:text-[#d4621a]">{article.data.title} ↗</h2><p class="mt-3 leading-7 text-[#624b39]">{article.data.description}</p></a>)}</div></div>
 </main><SiteFooter/></BaseLayout>

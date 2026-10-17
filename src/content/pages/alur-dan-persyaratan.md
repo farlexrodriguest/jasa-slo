@@ -1,6 +1,13 @@
 ---
+id: 2
+ulid: "01K7R000000000000000000002"
+type: "page"
+slug: "alur-dan-persyaratan"
 title: "Alur & Persyaratan"
+pubDate: "2026-10-17T00:00:00Z"
+updatedDate: "2026-10-17T00:00:00Z"
 description: "Gambaran tahapan umum dan dokumen yang perlu disiapkan sebelum pengajuan Sertifikat Laik Operasi atau pendampingan NIDI."
+draft: false
 eyebrow: "Panduan / Proses"
 order: 1
 blocks:

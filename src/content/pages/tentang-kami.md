@@ -1,6 +1,13 @@
 ---
+id: 3
+ulid: "01K7R000000000000000000003"
+type: "page"
+slug: "tentang-kami"
 title: "Tentang Kami"
+pubDate: "2026-10-17T00:00:00Z"
+updatedDate: "2026-10-17T00:00:00Z"
 description: "Peran, pendekatan, dan batasan layanan konsultan pendamping untuk kebutuhan SLO, NIDI, dan kelistrikan."
+draft: false
 eyebrow: "Profil / Konsultan pendamping"
 order: 2
 blocks:

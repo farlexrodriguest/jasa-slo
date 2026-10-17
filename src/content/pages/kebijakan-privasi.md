@@ -1,6 +1,13 @@
 ---
+id: 5
+ulid: "01K7R000000000000000000005"
+type: "page"
+slug: "kebijakan-privasi"
 title: "Kebijakan Privasi"
+pubDate: "2026-10-17T00:00:00Z"
+updatedDate: "2026-10-17T00:00:00Z"
 description: "Bagaimana kami mengumpulkan, menggunakan, dan melindungi informasi yang Anda berikan melalui situs ini."
+draft: false
 eyebrow: "Ketentuan / Privasi"
 order: 4
 blocks:

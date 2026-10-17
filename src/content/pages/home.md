@@ -1,6 +1,15 @@
 ---
+id: 1
+ulid: "01K7R000000000000000000001"
+type: "page"
+slug: "home"
 title: "Beranda"
+pubDate: "2026-10-17T00:00:00Z"
+updatedDate: "2026-10-17T00:00:00Z"
 description: "Panduan dan informasi pendampingan SLO serta NIDI untuk kebutuhan instalasi listrik."
+draft: false
+canonical: "/"
+order: 0
 blocks:
   - component: "home-hero"
     eyebrow: "Instalasi listrik / sertifikasi / informasi"

@@ -4,10 +4,10 @@ import PageLayout from '../components/shared/PageLayout.astro';
 import BlockRenderer from '../components/blocks/BlockRenderer.astro';
 
 export async function getStaticPaths() {
-  const pages = (await getCollection('pages')).sort(
-    (a, b) => (a.data.order ?? 0) - (b.data.order ?? 0),
-  );
-  return pages.map((page) => ({ params: { slug: page.id }, props: { page } }));
+  const pages = (await getCollection('pages'))
+    .filter((page) => !page.data.draft && page.data.slug !== 'home')
+    .sort((a, b) => a.data.order - b.data.order);
+  return pages.map((page) => ({ params: { slug: page.data.slug }, props: { page } }));
 }
 
 const { page } = Astro.props;

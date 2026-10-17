@@ -1,7 +1,14 @@
 ---
-title: Apa itu NIDI?
-description: Penjelasan tentang Nomor Identitas Instalasi Tenaga Listrik dan perbedaannya dengan SLO.
-publishDate: 2026-10-17
+id: 2
+ulid: "01K7R000000000000000000012"
+type: "article"
+slug: "apa-itu-nidi"
+title: "Apa itu NIDI?"
+pubDate: "2026-10-17T00:00:00Z"
+updatedDate: "2026-10-17T00:00:00Z"
+description: "Penjelasan tentang Nomor Identitas Instalasi Tenaga Listrik dan perbedaannya dengan SLO."
+draft: false
+category: "NIDI"
 tags: ['nidi', 'dasar']
 ---
 NIDI merupakan singkatan dari Nomor Identitas Instalasi Tenaga Listrik. Ini adalah nomor unik yang diberikan kepada setiap instalasi tenaga listrik yang terdaftar secara resmi di sistem ketenagalistrikan.
