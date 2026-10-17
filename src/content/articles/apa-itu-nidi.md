@@ -12,11 +12,26 @@ category: "NIDI"
 tags: ['nidi', 'dasar']
 relatedType: "service"
 relatedId: 103
+relatedArticles: [1]
+blocks:
+  - component: "section"
+    id: "ikhtisar"
+    heading: "Pengertian NIDI"
+    content:
+      - type: "p"
+        text: "NIDI merupakan singkatan dari Nomor Identitas Instalasi Tenaga Listrik. Ini adalah nomor unik yang diberikan kepada setiap instalasi tenaga listrik yang terdaftar secara resmi di sistem ketenagalistrikan."
+  - component: "section"
+    id: "perbedaan"
+    heading: "Perbedaan NIDI dan SLO"
+    content:
+      - type: "list"
+        items:
+          - "NIDI adalah identitas instalasi (seperti nomor plat kendaraan)"
+          - "SLO adalah sertifikat kelayakan operasi instalasi (seperti surat jalan yang menyatakan kendaraan layak jalan)"
+  - component: "section"
+    id: "kaitan"
+    heading: "Urutan Pengurusan"
+    content:
+      - type: "p"
+        text: "Sebelum mengajukan SLO, instalasi harus terlebih dahulu memiliki NIDI. NIDI digunakan sebagai satu syarat administratif dalam proses pengurusan SLO."
 ---
-NIDI merupakan singkatan dari Nomor Identitas Instalasi Tenaga Listrik. Ini adalah nomor unik yang diberikan kepada setiap instalasi tenaga listrik yang terdaftar secara resmi di sistem ketenagalistrikan.
-
-Perbedaan NIDI dan SLO:
-- NIDI adalah identitas instalasi (seperti nomor plat kendaraan)
-- SLO adalah sertifikat kelayakan operasi instalasi (seperti surat jalan yang menyatakan kendaraan layak jalan)
-
-Sebelum mengajukan SLO, instalasi harus terlebih dahulu memiliki NIDI. NIDI digunakan sebagai satu syarat administratif dalam proses pengurusan SLO.

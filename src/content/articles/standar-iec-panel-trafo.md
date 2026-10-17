@@ -13,15 +13,26 @@ tags: ['iec', 'panel', 'trafo', 'standar']
 relatedType: "service"
 relatedId: 105
 relatedArticles: [3]
+blocks:
+  - component: "section"
+    id: "pengantar"
+    heading: "Rujukan Standar Pengujian"
+    content:
+      - type: "p"
+        text: "Pengujian peralatan listrik tidak dilakukan secara acak. Setiap jenis peralatan memiliki standar rujukan yang menentukan metode, parameter, dan ambang batas hasil pengujian. Berikut tiga kelompok standar yang paling sering dijumpai."
+      - type: "p"
+        text: "IEC 61439 mengatur perakitan panel tegangan rendah (switchgear dan controlgear assemblies). Standar ini memuat ketentuan desain, verifikasi Type Test, serta pengujian rutin untuk memastikan perakitan panel aman dan andal beroperasi."
+      - type: "p"
+        text: "IEC 62271-200 mengatur peralatan pemutus beban tegangan menengah, termasuk panel hubung bagi (cubicle) pada sistem distribusi tegangan menengah seperti 20 kV. Ini adalah rujukan yang tepat untuk cubicle tegangan menengah, mengingat IEC 61439 sendiri cakupannya tegangan rendah."
+      - type: "p"
+        text: "IEC 60076 mengatur transformator tenaga, mencakup pengujian pabrik (FAT), pengujian sambungan (SFAT), dan pengujian diagnostik. Metode pengukuran tahanan isolasi, rasio belitan, dan partial discharge merujuk standar ini."
+  - component: "section"
+    id: "nasional"
+    heading: "Penerapan di Indonesia"
+    content:
+      - type: "p"
+        text: "Di Indonesia, standar internasional tersebut lazim dirujuk bersama ketentuan SPLN untuk sistem distribusi serta PUIL untuk instalasi tegangan rendah. Kombinasi keduanya menjadi dasar pemeriksaan teknis di lapangan."
+      - type: "p"
+        text: "Mengetahui rujukan standar bukan sekadar pengetahuan teknis. Ini membantu Anda memahami isi laporan hasil pengujian dan menilai apakah cakupan pengujian yang dilakukan sudah lengkap."
 ---
-Pengujian peralatan listrik tidak dilakukan secara acak. Setiap jenis peralatan memiliki standar rujukan yang menentukan metode, parameter, dan ambang batas hasil pengujian. Berikut tiga kelompok standar yang paling sering dijumpai.
 
-**IEC 61439** mengatur perakitan panel tegangan rendah (switchgear dan controlgear assemblies). Standar ini memuat ketentuan desain, verifikasi Type Test, serta pengujian rutin untuk memastikan perakitan panel aman dan andal beroperasi.
-
-**IEC 62271-200** mengatur peralatan pemutus beban tegangan menengah, termasuk panel hubung bagi (cubicle) pada sistem distribusi tegangan menengah seperti 20 kV. Ini adalah rujukan yang tepat untuk cubicle tegangan menengah, mengingat IEC 61439 sendiri cakupannya tegangan rendah.
-
-**IEC 60076** mengatur transformator tenaga, mencakup pengujian pabrik (FAT), pengujian sambungan (SFAT), dan pengujian diagnostik. Metode pengukuran tahanan isolasi, rasio belitan, dan partial discharge merujuk standar ini.
-
-Di Indonesia, standar internasional tersebut lazim dirujuk bersama ketentuan SPLN untuk sistem distribusi serta PUIL untuk instalasi tegangan rendah. Kombinasi keduanya menjadi dasar pemeriksaan teknis di lapangan.
-
-Mengetahui rujukan standar bukan sekadar pengetahuan teknis. Ini membantu Anda memahami isi laporan hasil pengujian dan menilai apakah cakupan pengujian yang dilakukan sudah lengkap.

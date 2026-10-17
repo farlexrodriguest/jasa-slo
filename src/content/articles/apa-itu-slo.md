@@ -12,12 +12,21 @@ category: "SLO"
 tags: ['slo', 'dasar']
 relatedType: "service"
 relatedId: 101
+relatedArticles: []
+blocks:
+  - component: "section"
+    id: "ikhtisar"
+    heading: "Pengertian SLO"
+    content:
+      - type: "p"
+        text: "SLO merupakan singkatan dari Sertifikat Laik Operasi. Ini adalah dokumen yang membuktikan bahwa suatu instalasi tenaga listrik telah memenuhi persyaratan kelayakan operasi sesuai dengan standar yang ditetapkan oleh pihak berwenang."
+      - type: "p"
+        text: "SLO diperlukan untuk:"
+      - type: "list"
+        items:
+          - "Memastikan keselamatan instalasi listrik"
+          - "Memenuhi persyaratan administrasi untuk penggunaan listrik"
+          - "Membuktikan bahwa instalasi sesuai standar teknis dan keselamatan"
+      - type: "p"
+        text: "Proses pengurusan SLO meliputi tahapan administrasi, inspeksi teknis, dan pengujian oleh lembaga yang berwenang."
 ---
-SLO merupakan singkatan dari Sertifikat Laik Operasi. Ini adalah dokumen yang membuktikan bahwa suatu instalasi tenaga listrik telah memenuhi persyaratan kelayakan operasi sesuai dengan standar yang ditetapkan oleh pihak berwenang.
-
-SLO diperlukan untuk:
-- Memastikan keselamatan instalasi listrik
-- Memenuhi persyaratan administrasi untuk penggunaan listrik
-- Membuktikan bahwa instalasi sesuai standar teknis dan keselamatan
-
-Proses pengurusan SLO meliputi tahapan administrasi, inspeksi teknis, dan pengujian oleh lembaga yang berwenang.
