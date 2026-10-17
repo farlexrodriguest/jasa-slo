@@ -1,50 +1,22 @@
 ---
-import { getCollection } from 'astro:content';
+import {getCollection} from 'astro:content';
 import ServiceLayout from '../../components/shared/ServiceLayout.astro';
-
-export const getStaticPaths = async () => {
-	// Temporary static paths for testing
-	return [
-		{ params: { slug: 'slo-tr' }, props: { service: { title: 'SLO Tegangan Rendah', description: 'Layanan pendampingan pengurusan Sertifikat Laik Operasi untuk instalasi tegangan rendah.' } } },
-		{ params: { slug: 'slo-tm' }, props: { service: { title: 'SLO Tegangan Menengah', description: 'Layanan pendampingan pengurusan Sertifikat Laik Operasi untuk instalasi tegangan menengah.' } } },
-		{ params: { slug: 'nidi' }, props: { service: { title: 'Pendampingan NIDI', description: 'Layanan pendampingan untuk pencatatan Nomor Identitas Instalasi Tenaga Listrik.' } } },
-		{ params: { slug: 'iuptls' }, props: { service: { title: 'Layanan IUPTLS', description: 'Bantuan administrasi untuk Izin Usaha Penyediaan Tenaga Listrik untuk Kepentingan Sendiri.' } } }
-	];
-};
-
-const { service } = Astro.props;
+export async function getStaticPaths(){
+ const services=await getCollection('services');
+ return services.map(s=>({params:{slug:s.id},props:{service:{title:s.data.title,description:s.data.description}}}));
+}
+const {service}=Astro.props;
 ---
 <ServiceLayout service={service}>
-	<h2 class="text-2xl font-semibold mb-4">Layanan yang Kami Tawarkan</h2>
-	<p class="text-gray-600 mb-6">
-		Sebagai konsultan berpengalaman di bidang SLO dan NIDI, kami siap membantu Anda melalui setiap tahapan proses administrasi dan teknis. Layanan kami mencakup:
-	</p>
-	<ul class="list-disc list-inside space-y-2 text-gray-700 mb-6">
-		<li>Konsultasi awal gratis untuk menentukan kebutuhan spesifik instalasi Anda.</li>
-		<li>Bantuan lengkap dalam pengumpulan dan verifikasi dokumen persyaratan.</li>
-		<li>Koordinasi dengan lembaga inspeksi teknis (LIT) yang berwenang sesuai klasifikasi instalasi.</li>
-		<li>Pelacakan status permohonan hingga penerbitan sertifikat.</li>
-		<li>Asesorisasi pasca-sertifikasi termasuk perpanjangan dan pembaruan data.</li>
-	</ul>
-	
-	<h2 class="text-2xl font-semibold mb-4">Mengapa Memilih Kami?</h2>
-	<div class="grid md:grid-cols-2 gap-6 mb-8">
-		<div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
-			<h3 class="font-bold text-lg mb-2">Transparansi Total</h3>
-			<p class="text-gray-500">
-				Kami menjelaskan setiap biaya dan tahapan secara jelas dari awal tanpa biaya tersembunyi.
-			</p>
-		</div>
-		<div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm">
-			<h3 class="font-bold text-lg mb-2">Jaminan Kepuasan</h3>
-			<p class="text-gray-500">
-				Jika layanan kami tidak memenuhi standar yang telah disepakati, kami akan melakukan perbaikan tanpa biaya tambahan.
-			</p>
-		</div>
-	</div>
-	
-	<h2 class="text-2xl font-semibold mb-4">Siap Memulai?</h2>
-	<p class="text-gray-600 mb-6">
-		Tim kami siap membantu Anda memulai proses SLO atau NIDI dengan konsultasi awal gratis.
-	</p>
+<h2>Apa yang perlu dipahami?</h2>
+<p>Setiap instalasi listrik memiliki karakteristik, persyaratan dokumen, dan jalur pemeriksaan yang dapat berbeda. Langkah pertama adalah mengidentifikasi jenis instalasi dan kebutuhan administrasinya.</p>
+<h2>Tahapan umum</h2>
+<ul>
+<li>Identifikasi jenis dan kondisi instalasi.</li>
+<li>Periksa dokumen teknis serta administrasi yang tersedia.</li>
+<li>Konfirmasi persyaratan dan kewenangan lembaga terkait.</li>
+<li>Ikuti proses pemeriksaan atau pengajuan sesuai ketentuan yang berlaku.</li>
+</ul>
+<h2>Catatan kewenangan</h2>
+<p>SLO diterbitkan melalui proses dan lembaga yang berwenang sesuai klasifikasi instalasi. Halaman ini bersifat informatif dan tidak menjanjikan kelulusan pemeriksaan maupun penerbitan sertifikat.</p>
 </ServiceLayout>
