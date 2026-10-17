@@ -18,10 +18,16 @@ jasa-slo/
 │   ├── /layanan/uji-panel-cubicle/ Pengujian Panel Cubicle
 │   └── /layanan/uji-trafo/        Pengujian Trafo Listrik
 │
-├── /alur-dan-persyaratan/         Tahapan & Checklist
+├── /panduan/                      Panduan & Checklist
+│   └── /panduan/alur-dan-persyaratan/ Tahapan & Persyaratan SLO
 │
-├── /edukasi/                      Edukasi & FAQ
-│   └── /edukasi/[slug]/           Artikel Detail
+├── /artikel/                      Artikel & Edukasi
+│   ├── /artikel/apa-itu-slo/         Apa itu SLO?
+│   ├── /artikel/apa-itu-nidi/        Apa itu NIDI?
+│   ├── /artikel/apa-itu-lit/         Apa itu LIT?
+│   ├── /artikel/apa-itu-puil/        Apa itu PUIL?
+│   ├── /artikel/perbedaan-slo-nidi-iuptls/ Perbedaan SLO, NIDI, IUPTLS
+│   └── /artikel/standar-iec-panel-trafo/ Standar IEC untuk Panel & Trafo
 │
 ├── /tentang-kami/                 Profil & Legalitas
 │
@@ -35,9 +41,9 @@ jasa-slo/
 | Menu | Isi / Tujuan |
 | --- | --- |
 | Beranda | Ringkasan layanan, alur, edukasi, CTA |
-| Layanan | Dropdown: SLO TR, SLO TM, NIDI, IUPTLS |
-| Alur & Persyaratan | Proses dan checklist dokumen |
-| Edukasi & FAQ | Artikel dan panduan regulasi |
+| Layanan | Dropdown: SLO TR, SLO TM, NIDI, IUPTLS, Pengujian Panel, Pengujian Trafo |
+| Panduan | Alur, persyaratan, dan checklist dokumen |
+| Artikel | Artikel dan edukasi regulasi, standar teknis |
 | Tentang Kami | Profil konsultan dan wilayah Jawa |
 | Konsultasi | CTA WhatsApp / Email |
 

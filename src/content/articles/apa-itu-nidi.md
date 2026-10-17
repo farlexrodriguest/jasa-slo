@@ -10,6 +10,8 @@ description: "Penjelasan tentang Nomor Identitas Instalasi Tenaga Listrik dan pe
 draft: false
 category: "NIDI"
 tags: ['nidi', 'dasar']
+relatedType: "service"
+relatedId: 103
 ---
 NIDI merupakan singkatan dari Nomor Identitas Instalasi Tenaga Listrik. Ini adalah nomor unik yang diberikan kepada setiap instalasi tenaga listrik yang terdaftar secara resmi di sistem ketenagalistrikan.
 

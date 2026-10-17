@@ -10,6 +10,8 @@ description: "Penjelasan singkat tentang Sertifikat Laik Operasi (SLO) dan fungs
 draft: false
 category: "SLO"
 tags: ['slo', 'dasar']
+relatedType: "service"
+relatedId: 101
 ---
 SLO merupakan singkatan dari Sertifikat Laik Operasi. Ini adalah dokumen yang membuktikan bahwa suatu instalasi tenaga listrik telah memenuhi persyaratan kelayakan operasi sesuai dengan standar yang ditetapkan oleh pihak berwenang.
 
