@@ -2,8 +2,10 @@
 // Pemeriksaan lintas berkas; validasi tipe frontmatter tetap dilakukan oleh Astro/Zod saat build.
 import { readFile, readdir } from 'node:fs/promises';
 import { join, relative } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const root = new URL('../src/content/', import.meta.url);
+// `join()`/`relative()` hanya menerima string, jadi URL harus diubah dulu.
+const root = fileURLToPath(new URL('../src/content/', import.meta.url));
 const collections = ['articles', 'pages', 'services'];
 const errors = [];
 const records = new Map();
@@ -27,7 +29,7 @@ function scalar(frontmatter, key) {
 }
 
 for (const collection of collections) {
-  const dir = new URL(collection + '/', root);
+  const dir = join(root, collection);
   const items = [];
   const seenId = new Map();
   const seenSlug = new Map();
