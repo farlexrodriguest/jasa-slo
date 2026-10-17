@@ -15,12 +15,23 @@ const articles = defineCollection({
 const services = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/services" }),
   schema: z.object({
+    id: z.number().int().positive(),
+    ulid: z.string().length(26),
+    type: z.literal('service'),
+    slug: z.string().min(1),
     title: z.string(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date(),
     description: z.string(),
-    icon: z.string().optional(),
-    image: z.string().optional(),
-    imageAlt: z.string().optional(),
-    order: z.number().default(0),
+    serviceGroup: z.string(),
+    order: z.number().int().default(0),
+    draft: z.boolean().default(false),
+    status: z.enum(['active', 'inactive']).default('active'),
+    eyebrow: z.string().optional(),
+    image: z.string(),
+    imageAlt: z.string(),
+    socialImage: z.string().optional(),
+    blocks: z.array(z.object({ component: z.string() }).passthrough()).default([]),
   }),
 });
 

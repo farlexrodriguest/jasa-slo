@@ -1,22 +1,17 @@
 ---
-import {getCollection} from 'astro:content';
+import { getCollection } from 'astro:content';
 import ServiceLayout from '../../components/shared/ServiceLayout.astro';
-export async function getStaticPaths(){
- const services=await getCollection('services');
- return services.map(s=>({params:{slug:s.id},props:{service:{title:s.data.title,description:s.data.description,image:s.data.image,imageAlt:s.data.imageAlt}}}));
+import BlockRenderer from '../../components/blocks/BlockRenderer.astro';
+
+export async function getStaticPaths() {
+  const services = (await getCollection('services')).filter((service) => !service.data.draft && service.data.status === 'active');
+  return services.map((service) => ({
+    params: { slug: service.data.slug },
+    props: { service: service.data },
+  }));
 }
-const {service}=Astro.props;
+const { service } = Astro.props;
 ---
 <ServiceLayout service={service}>
-<h2>Apa yang perlu dipahami?</h2>
-<p>Setiap instalasi listrik memiliki karakteristik, persyaratan dokumen, dan jalur pemeriksaan yang dapat berbeda. Langkah pertama adalah mengidentifikasi jenis instalasi dan kebutuhan administrasinya.</p>
-<h2>Tahapan umum</h2>
-<ul>
-<li>Identifikasi jenis dan kondisi instalasi.</li>
-<li>Periksa dokumen teknis serta administrasi yang tersedia.</li>
-<li>Konfirmasi persyaratan dan kewenangan lembaga terkait.</li>
-<li>Ikuti proses pemeriksaan atau pengajuan sesuai ketentuan yang berlaku.</li>
-</ul>
-<h2>Catatan kewenangan</h2>
-<p>SLO diterbitkan melalui proses dan lembaga yang berwenang sesuai klasifikasi instalasi. Halaman ini bersifat informatif dan tidak menjanjikan kelulusan pemeriksaan maupun penerbitan sertifikat.</p>
+  {service.blocks.map((block) => <BlockRenderer block={block} />)}
 </ServiceLayout>
