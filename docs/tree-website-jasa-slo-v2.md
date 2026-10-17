@@ -14,7 +14,9 @@ jasa-slo/
 │   ├── /layanan/slo-tr/           SLO Tegangan Rendah
 │   ├── /layanan/slo-tm/           SLO Tegangan Menengah
 │   ├── /layanan/nidi/             Pendampingan NIDI
-│   └── /layanan/iuptls/           Layanan IUPTLS
+│   ├── /layanan/iuptls/           Layanan IUPTLS
+│   ├── /layanan/uji-panel-cubicle/ Pengujian Panel Cubicle
+│   └── /layanan/uji-trafo/        Pengujian Trafo Listrik
 │
 ├── /alur-dan-persyaratan/         Tahapan & Checklist
 │

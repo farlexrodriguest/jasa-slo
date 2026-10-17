@@ -36,7 +36,9 @@ Beranda /
 │   ├── SLO Tegangan Rendah /layanan/slo-tr/
 │   ├── SLO Tegangan Menengah /layanan/slo-tm/
 │   ├── Pendampingan NIDI /layanan/nidi/
-│   └── Layanan IUPTLS /layanan/iuptls/
+│   ├── Layanan IUPTLS /layanan/iuptls/
+│   ├── Pengujian Panel Cubicle /layanan/uji-panel-cubicle/
+│   └── Pengujian Trafo Listrik /layanan/uji-trafo/
 ├── Alur & Persyaratan /alur-dan-persyaratan/
 ├── Edukasi & FAQ /edukasi/
 │   └── Detail Artikel /edukasi/[slug]/
