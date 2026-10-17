@@ -1,1 +1,9 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{--ink:#2a1a0e;--rust:#d4621a;--amber:#f4ae52;--paper:#fef3e2;--line:#dfcdb8}
+html{scroll-behavior:smooth}body{font-family:"DM Sans",sans-serif;background:var(--paper);color:var(--ink)}
+h1,h2,h3,h4{font-family:Manrope,sans-serif;letter-spacing:-.045em}
+.eyebrow{font-family:"DM Mono",monospace;font-size:.73rem;letter-spacing:.12em;text-transform:uppercase}
+.editorial-rule{border-color:var(--line)}
+::selection{background:var(--amber);color:var(--ink)}
+a:focus-visible{outline:3px solid var(--rust);outline-offset:4px}
