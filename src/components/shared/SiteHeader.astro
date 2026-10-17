@@ -1,36 +1,12 @@
 ---
-import { site } from '../../config/site.ts';
-import { navigation } from '../../config/navigation.ts';
-
-export interface Props {
-  variant?: 'default' | 'home';
-  ariaLabel?: string;
-}
-
-const { variant = 'default', ariaLabel } = Astro.props;
-const navItems = variant === 'home' ? navigation.header : navigation.header;
-const cta = navigation.cta;
+import { navigation } from '../../config/navigation';
 ---
-<header class="border-b border-slate-200 bg-white">
-  <nav class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-5 py-4" aria-label={ariaLabel}>
-    <a href="/" class="flex items-center gap-3 no-underline">
-      <img
-        src="/images/logo-jasa-slo.svg"
-        alt="Logo Jasa SLO"
-        class="h-10 w-auto max-w-[230px] sm:h-12"
-        width="760"
-        height="150"
-        loading="eager"
-        decoding="async"
-      />
-    </a>
-    <div class="order-3 flex w-full flex-wrap items-center gap-x-5 gap-y-3 border-t border-slate-100 pt-3 text-sm font-semibold text-slate-600 md:order-none md:w-auto md:flex-nowrap md:gap-7 md:border-0 md:pt-0">
-      {navItems.map((item) => (
-        <a class="no-underline transition hover:text-blue-800" href={item.href}>{item.label}</a>
-      ))}
-    </div>
-    <a href={cta.href} class="rounded-lg bg-green-600 px-4 py-2.5 text-sm font-bold text-white no-underline transition hover:bg-green-700">
-      {cta.label}
-    </a>
-  </nav>
+<header class="border-b border-[#dfcdb8] bg-[#fef3e2]">
+  <div class="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-5 px-6 py-5 lg:px-12">
+    <a href="/" aria-label="Jasa SLO — Beranda" class="font-[Manrope] text-xl font-extrabold tracking-[-.07em] text-[#2a1a0e]">JASA<span class="text-[#d4621a]">/</span>SLO</a>
+    <nav aria-label="Navigasi utama" class="order-3 flex w-full flex-wrap gap-x-6 gap-y-2 text-sm font-semibold md:order-none md:w-auto">
+      {navigation.header.map((item) => <a href={item.href} class="hover:text-[#d4621a]">{item.label}</a>)}
+    </nav>
+    <a href={navigation.cta.href} class="border border-[#2a1a0e] px-5 py-2.5 text-sm font-bold transition hover:bg-[#2a1a0e] hover:text-[#fef3e2]">{navigation.cta.label} ↗</a>
+  </div>
 </header>
