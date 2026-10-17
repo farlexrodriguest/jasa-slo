@@ -1,15 +1,27 @@
 ---
-const { id = 'proses', eyebrow, heading, description, stepPrefix, steps } = Astro.props as { id?: string; eyebrow: string; heading: string; description: string; stepPrefix: string; steps: Array<{ title: string; text: string }> };
+/**
+ * HomeProcessBlock — bagian pendekatan pada beranda (ber-brand, latar espresso).
+ *
+ * Props:
+ * - id?, eyebrow?, heading, headingHighlight?
+ * - steps: Array<{ number, title }>
+ */
+const { id = 'pendekatan', eyebrow, heading, headingHighlight, steps = [] } = Astro.props as {
+  id?: string;
+  eyebrow?: string;
+  heading: string;
+  headingHighlight?: string;
+  steps: Array<{ number: string; title: string }>;
+};
 ---
-<section id={id} class="scroll-mt-8 border-y border-slate-200 bg-slate-50 py-20 sm:py-24">
-  <div class="mx-auto max-w-7xl px-5">
-    <div class="mx-auto max-w-2xl text-center">
-      <p class="text-sm font-extrabold uppercase tracking-[0.16em] text-blue-700">{eyebrow}</p>
-      <h2 class="mt-3 text-3xl font-black tracking-tight text-slate-950 sm:text-4xl">{heading}</h2>
-      <p class="mt-4 leading-7 text-slate-600">{description}</p>
-    </div>
-    <div class="mt-12 grid gap-8 md:grid-cols-3">
-      {steps.map((step, index) => <div class="relative border-l-2 border-blue-200 pl-6"><span class="text-xs font-black tracking-[0.2em] text-blue-700">{stepPrefix} {String(index + 1).padStart(2, '0')}</span><h3 class="mt-3 text-xl font-extrabold text-slate-950">{step.title}</h3><p class="mt-3 leading-7 text-slate-600">{step.text}</p></div>)}
+<section id={id} class="bg-[#2a1a0e] px-6 py-20 text-[#fef3e2] lg:px-12 lg:py-28">
+  <div class="mx-auto grid max-w-[1344px] gap-10 md:grid-cols-[.7fr_1.3fr]">
+    <p class="eyebrow text-[#f4ae52]">{eyebrow}</p>
+    <div>
+      <h2 class="text-4xl font-extrabold leading-tight md:text-6xl">{heading} {headingHighlight && <span class="text-[#f4ae52]">{headingHighlight}</span>}</h2>
+      <div class="mt-12 grid gap-8 border-t border-[#73513c] pt-8 sm:grid-cols-3">
+        {steps.map((step) => (<div><span class="eyebrow text-[#f4ae52]">{step.number}</span><p class="mt-3 text-xl font-semibold">{step.title}</p></div>))}
+      </div>
     </div>
   </div>
 </section>

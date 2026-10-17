@@ -1,28 +1,50 @@
 ---
-const { eyebrow, titleLead, titleHighlight, description, primaryCta, primaryHref, secondaryCta, secondaryHref, note, image, imageAlt, supportEyebrow, supportItems } = Astro.props as { eyebrow: string; titleLead: string; titleHighlight: string; description: string; primaryCta: string; primaryHref: string; secondaryCta: string; secondaryHref: string; note: string; image: string; imageAlt: string; supportEyebrow: string; supportItems: Array<{ number: string; title: string; text: string }> };
+/**
+ * HomeHeroBlock — hero beranda ber-brand (palet espresso/cream).
+ *
+ * Props:
+ * - eyebrow, headingLead, headingHighlight, intro
+ * - primaryLabel, primaryHref, secondaryLabel, secondaryHref
+ * - sideEyebrow, sideNote, sideFootEyebrow
+ */
+const {
+  eyebrow,
+  headingLead,
+  headingHighlight,
+  intro,
+  primaryLabel,
+  primaryHref,
+  secondaryLabel,
+  secondaryHref,
+  sideEyebrow,
+  sideNote,
+  sideFootEyebrow,
+} = Astro.props as {
+  eyebrow: string;
+  headingLead: string;
+  headingHighlight: string;
+  intro: string;
+  primaryLabel: string;
+  primaryHref: string;
+  secondaryLabel: string;
+  secondaryHref: string;
+  sideEyebrow: string;
+  sideNote: string;
+  sideFootEyebrow: string;
+};
 ---
-<section class="relative isolate overflow-hidden bg-slate-950 text-white">
-  <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-800/50 via-slate-950 to-slate-950"></div>
-  <div class="mx-auto grid max-w-7xl gap-12 px-5 py-20 md:grid-cols-[1.15fr_0.85fr] md:items-center md:py-28">
-    <div>
-      <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-300/30 bg-blue-400/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-blue-200">{eyebrow}</p>
-      <h1 class="max-w-3xl text-4xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl">{titleLead} <span class="text-blue-300">{titleHighlight}</span></h1>
-      <p class="mt-6 max-w-2xl text-lg leading-8 text-slate-300">{description}</p>
-      <div class="mt-9 flex flex-col gap-3 sm:flex-row">
-        <a href={primaryHref} class="inline-flex items-center justify-center rounded-lg bg-blue-500 px-6 py-3.5 font-bold text-white no-underline transition hover:bg-blue-400">{primaryCta} <span class="ml-2" aria-hidden="true">→</span></a>
-        <a href={secondaryHref} class="inline-flex items-center justify-center rounded-lg border border-white/25 px-6 py-3.5 font-bold text-white no-underline transition hover:bg-white/10">{secondaryCta}</a>
-      </div>
-      <p class="mt-6 text-sm text-slate-400">{note}</p>
+<section class="border-b border-[#dfcdb8]">
+  <div class="mx-auto grid max-w-[1440px] lg:grid-cols-[1.55fr_.45fr]">
+    <div class="px-6 py-20 lg:px-12 lg:py-28">
+      <p class="eyebrow mb-8 text-[#a34a17]">{eyebrow}</p>
+      <h1 class="max-w-5xl text-[clamp(3.5rem,7.5vw,8rem)] font-extrabold leading-[.99] tracking-[-.075em]">{headingLead}<br/><span class="text-[#d4621a]">{headingHighlight}</span></h1>
+      <p class="mt-10 max-w-xl text-lg leading-8 text-[#624b39]">{intro}</p>
+      <div class="mt-10 flex flex-wrap gap-3"><a class="bg-[#2a1a0e] px-7 py-4 font-bold text-[#fef3e2] hover:bg-[#d4621a]" href={primaryHref}>{primaryLabel} ↗</a><a class="border border-[#2a1a0e] px-7 py-4 font-bold hover:bg-[#f4ae52]" href={secondaryHref}>{secondaryLabel} →</a></div>
     </div>
-    <div class="relative">
-      <img src={image} alt={imageAlt} class="mx-auto mb-2 h-auto max-h-48 w-full max-w-60 object-contain" width="640" height="520" fetchpriority="high" />
-      <div class="rounded-2xl border border-white/15 bg-white/[0.06] p-6 shadow-2xl backdrop-blur-sm sm:p-8">
-        <h2 class="text-sm font-bold uppercase tracking-[0.16em] text-blue-200">{supportEyebrow}</h2>
-        <div class="mt-6 space-y-4">
-          {supportItems.map((item) => <div class="flex gap-4 rounded-xl border border-white/10 bg-slate-900/70 p-4"><span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-blue-400/15 text-xl text-blue-200" aria-hidden="true">{item.number}</span><div><h3 class="font-bold text-white">{item.title}</h3><p class="mt-1 text-sm leading-6 text-slate-300">{item.text}</p></div></div>)}
-        </div>
-      </div>
-      <div class="absolute -right-3 -top-3 -z-10 h-28 w-28 rounded-full bg-blue-500/30 blur-3xl"></div>
-    </div>
+    <aside class="flex flex-col justify-between border-t border-[#dfcdb8] bg-[#f4ae52] p-8 lg:border-l lg:border-t-0 lg:p-10">
+      <div class="eyebrow">{sideEyebrow}</div>
+      <div class="my-20"><div aria-hidden="true" class="text-[clamp(8rem,18vw,17rem)] font-black leading-none tracking-[-.14em]">⚡</div><p class="mt-8 border-t border-[#2a1a0e] pt-5 text-xl font-semibold leading-8">{sideNote}</p></div>
+      <span class="eyebrow">{sideFootEyebrow}</span>
+    </aside>
   </div>
 </section>

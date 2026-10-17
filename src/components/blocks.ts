@@ -20,6 +20,7 @@ import ContactPanel from './shared/ContactPanel.astro';
 import ContactSection from './shared/ContactSection.astro';
 import PageHeaderBlock from './shared/PageHeaderBlock.astro';
 import HomeHeroBlock from './shared/HomeHeroBlock.astro';
+import HomeServicesBlock from './shared/HomeServicesBlock.astro';
 import ServiceListBlock from './shared/ServiceListBlock.astro';
 import HomeProcessBlock from './shared/HomeProcessBlock.astro';
 import ArticleListBlock from './shared/ArticleListBlock.astro';
@@ -49,6 +50,7 @@ const blocks: Record<string, any> = {
   contact: ContactSection,
   'page-header': PageHeaderBlock,
   'home-hero': HomeHeroBlock,
+  'home-services': HomeServicesBlock,
   'service-list': ServiceListBlock,
   'home-process': HomeProcessBlock,
   'article-list': ArticleListBlock,

@@ -47,4 +47,13 @@ const pages = defineCollection({
   }),
 });
 
-export const collections = { articles, services, pages };
+const home = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/home" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    blocks: z.array(z.object({ component: z.string() }).passthrough()).default([]),
+  }),
+});
+
+export const collections = { articles, services, pages, home };

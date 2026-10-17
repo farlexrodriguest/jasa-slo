@@ -1,0 +1,37 @@
+---
+/**
+ * HomeServicesBlock — daftar topik layanan pada beranda (ber-brand).
+ *
+ * Props:
+ * - id?, eyebrow?, heading, description?
+ * - items: Array<{ number, title, text, href }>
+ */
+const { id, eyebrow, heading, description, items = [] } = Astro.props as {
+  id?: string;
+  eyebrow?: string;
+  heading: string;
+  description?: string;
+  items: Array<{ number: string; title: string; text: string; href: string }>;
+};
+---
+<section id={id} class="mx-auto max-w-[1440px] px-6 py-20 lg:px-12 lg:py-28">
+  <div class="mb-12 flex flex-wrap items-end justify-between gap-5">
+    <div>
+      {eyebrow && <p class="eyebrow mb-4 text-[#a34a17]">{eyebrow}</p>}
+      <h2 class="text-5xl font-extrabold md:text-7xl">{heading}</h2>
+    </div>
+    {description && <p class="max-w-sm text-[#624b39]">{description}</p>}
+  </div>
+  <div class="grid border-t border-[#2a1a0e] md:grid-cols-2">
+    {items.map((item) => (
+      <a href={item.href} class="group border-b border-[#dfcdb8] px-1 py-10 md:px-8 md:odd:border-r md:odd:border-[#dfcdb8]">
+        <div class="flex items-start justify-between">
+          <span class="eyebrow text-[#a34a17]">{item.number} / Layanan</span>
+          <span class="text-2xl transition group-hover:translate-x-1 group-hover:text-[#d4621a]">↗</span>
+        </div>
+        <h3 class="mt-10 text-3xl font-bold md:text-4xl">{item.title}</h3>
+        <p class="mt-4 max-w-sm leading-7 text-[#624b39]">{item.text}</p>
+      </a>
+    ))}
+  </div>
+</section>
