@@ -2,26 +2,28 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from './SiteHeader.astro';
 import SiteFooter from './SiteFooter.astro';
-import PageHeaderBlock from './PageHeaderBlock.astro';
-import ContentCard from './ContentCard.astro';
-import CtaBlock from './CtaBlock.astro';
+const {service}=Astro.props;
 ---
-
-<BaseLayout title={`${Astro.props.service.title} | Jasa SLO`}>
-	<SiteHeader />
-	<main class="max-w-4xl mx-auto px-4 py-12">
-		<PageHeaderBlock title={Astro.props.service.title} description={Astro.props.service.description} />
-		<div class="space-y-8">
-			<ContentCard class="prose">
-				<slot />
-			</ContentCard>
-			<CtaBlock 
-				title="Siap mengurus SLO Anda?"
-				description="Hubungi kami melalui WhatsApp untuk konsultasi gratis dan penawaran yang transparan."
-				ctaText="Konsultasi Sekarang"
-				ctaLink="https://wa.me/6281234567890"
-			/>
-		</div>
-	</main>
-	<SiteFooter />
+<BaseLayout title={service.title} description={service.description}>
+<SiteHeader />
+<main id="main-content">
+<section class="border-b border-[#dfcdb8] bg-[#2a1a0e] text-[#fef3e2]">
+<div class="mx-auto grid max-w-[1440px] lg:grid-cols-[1.2fr_.8fr]">
+<div class="px-6 py-20 lg:px-12 lg:py-28"><a href="/layanan/" class="eyebrow text-[#f4ae52] hover:underline">← Kembali ke semua layanan</a><p class="eyebrow mt-16 text-[#f4ae52]">Informasi layanan / Instalasi listrik</p><h1 class="mt-5 max-w-4xl text-[clamp(3.2rem,6vw,6.5rem)] font-extrabold leading-[1.04]">{service.title}</h1><p class="mt-8 max-w-xl text-lg leading-8 text-[#e0cbb9]">{service.description}</p></div>
+<div class="flex flex-col justify-between border-t border-[#74503a] bg-[#d4621a] p-8 lg:border-l lg:border-t-0 lg:p-12"><span class="eyebrow">Informasi penting / SLO</span><div class="my-16 text-7xl font-extrabold leading-none tracking-[-.1em]">SLO<span class="text-[#f4ae52]">.</span></div><p class="border-t border-[#f3ad7b] pt-6 leading-7">Pemeriksaan dan penerbitan sertifikat mengikuti kewenangan lembaga inspeksi yang sesuai. Informasi di sini bukan jaminan penerbitan sertifikat.</p></div>
+</div></section>
+<section class="mx-auto grid max-w-[1440px] gap-14 px-6 py-20 lg:grid-cols-[.3fr_.7fr] lg:px-12 lg:py-28">
+<aside><p class="eyebrow sticky top-8 text-[#a34a17]">01 / Ruang lingkup & proses</p></aside>
+<div class="service-body max-w-3xl text-lg leading-8 text-[#594332]"><slot /></div>
+</section>
+<section class="border-t border-[#dfcdb8] bg-[#f4ae52]"><div class="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-8 px-6 py-16 lg:px-12"><div><p class="eyebrow">02 / Perlu klarifikasi?</p><h2 class="mt-4 text-3xl font-extrabold md:text-5xl">Pastikan kebutuhan instalasi Anda.</h2></div><a href="/kontak/" class="bg-[#2a1a0e] px-7 py-4 font-bold text-[#fef3e2] hover:bg-[#5b3420]">Halaman kontak ↗</a></div></section>
+</main><SiteFooter />
 </BaseLayout>
+<style is:global>
+.service-body h2{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;line-height:1.15;margin:2.5rem 0 1.25rem;color:#2a1a0e}
+.service-body h2:first-child{margin-top:0}
+.service-body p{margin:0 0 1.5rem}
+.service-body ul{padding-left:1.5rem;list-style:disc;margin-bottom:2rem}
+.service-body li{padding:.4rem 0}
+.service-body .grid{margin:2rem 0}
+</style>
