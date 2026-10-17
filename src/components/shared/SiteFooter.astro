@@ -1,72 +1,17 @@
 ---
-import { getCollection } from 'astro:content';
-import { site } from '../../config/site.ts';
-
-export interface Props {
-  ariaLabel?: string;
-  group?: 'slf' | 'pbg';
-  serviceTitle?: string;
-}
-
-const { ariaLabel = "Footer navigasi", group, serviceTitle } = Astro.props;
+import { navigation } from '../../config/navigation';
 const year = new Date().getFullYear();
-
-let footerTagline = "Jasa Konsultan SLO";
-if (serviceTitle) {
-  footerTagline = `${site.name} menyediakan jasa ${serviceTitle}.`;
-} else {
-  const filter = group ? (s: any) => !s.data.draft && s.data.status === 'active' && s.data.serviceGroup === group : (s: any) => !s.data.draft && s.data.status === 'active';
-  const allServices = await getCollection('services', filter);
-  const activeServices = allServices.sort((a, b) => a.data.order - b.data.order);
-  const serviceLabels = activeServices.map((s) => {
-    const t = s.data.title;
-    const m = t.match(/\(([^)]+)\)$/);
-    return m ? `${t.replace(/\s*\([^)]+\)$/, '').trim()} (${m[1]})` : t.replace(/^Pendampingan\s+/i, '').trim();
-  });
-  if (serviceLabels.length > 0) {
-    footerTagline = `${site.name} menyediakan jasa${serviceLabels.length === 1 ? ' ' + serviceLabels[0] : ' ' + serviceLabels.slice(0, -1).join(', ') + ' dan ' + serviceLabels.at(-1)}.`;
-  }
-}
 ---
-<footer class="border-t border-slate-200 bg-slate-950 text-slate-300">
-  <div class="mx-auto grid max-w-7xl gap-10 px-5 py-16 md:grid-cols-2">
-    <div>
-      <a href="/" class="flex items-center gap-3 no-underline">
-        <img
-          src="/images/logo-jasa-slo.svg"
-          alt="Logo Jasa SLO"
-          class="h-10 w-auto max-w-[230px] sm:h-12"
-          width="760"
-          height="150"
-          loading="lazy"
-          decoding="async"
-        />
-      </a>
-      <p class="mt-5 max-w-md text-sm leading-7 text-slate-400">{footerTagline}</p>
-      {site.address && <p class="mt-6 text-sm leading-7 text-slate-400">{site.address}</p>}
-      <div class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-slate-400">
-        {site.whatsapp && (
-          <a class="no-underline transition hover:text-white" href={`https://wa.me/${site.whatsapp}`}>WhatsApp</a>
-        )}
-        {site.phone && (
-          <a class="no-underline transition hover:text-white" href={`tel:${site.phone}`}>Telepon</a>
-        )}
-      </div>
-    </div>
-    <div>
-      <nav aria-label={ariaLabel}>
-        <ul class="grid grid-cols-2 gap-x-6 gap-y-3 text-sm font-semibold text-slate-300 sm:grid-cols-4">
-          <li><a class="no-underline transition hover:text-white" href="/">Beranda</a></li>
-          <li><a class="no-underline transition hover:text-white" href="/layanan">Layanan</a></li>
-          <li><a class="no-underline transition hover:text-white" href="/alur-dan-persyaratan">Alur & Persyaratan</a></li>
-          <li><a class="no-underline transition hover:text-white" href="/edukasi">Edukasi & FAQ</a></li>
-          <li><a class="no-underline transition hover:text-white" href="/tentang-kami">Tentang & Legalitas</a></li>
-          <li><a class="no-underline transition hover:text-white" href="/kontak">Konsultasi</a></li>
-          <li><a class="no-underline transition hover:text-white" href="/kebijakan-privasi">Kebijakan Privasi</a></li>
-          <li><a class="no-underline transition hover:text-white" href="/syarat-ketentuan">Syarat & Ketentuan</a></li>
-        </ul>
+<footer class="bg-[#2a1a0e] text-[#fef3e2]">
+  <div class="mx-auto max-w-[1440px] px-6 py-16 lg:px-12">
+    <div class="grid gap-12 border-b border-[#6b4a34] pb-16 md:grid-cols-[1.4fr_1fr]">
+      <div><p class="eyebrow text-[#f4ae52]">Informasi & pendampingan kelistrikan</p><p class="mt-6 max-w-xl font-[Manrope] text-4xl font-extrabold leading-tight md:text-5xl">Langkah yang jelas dimulai dari informasi yang tepat.</p></div>
+      <nav aria-label="Navigasi footer" class="grid grid-cols-2 content-start gap-4 text-sm">
+        {navigation.header.map((item) => <a href={item.href} class="hover:text-[#f4ae52]">{item.label}</a>)}
+        <a href="/kontak/" class="hover:text-[#f4ae52]">Kontak</a>
+        {navigation.footer.links.map((item) => <a href={item.href} class="hover:text-[#f4ae52]">{item.label}</a>)}
       </nav>
-      <p class="mt-10 text-xs text-slate-500">© {year} {site.name}. Hak cipta dilindungi undang-undang.</p>
     </div>
+    <div class="flex flex-wrap justify-between gap-5 pt-7 text-xs text-[#d5bca4]"><span>© {year} Jasa SLO</span><span>Informasi pada situs ini bukan layanan resmi PLN atau Kementerian ESDM.</span></div>
   </div>
 </footer>
