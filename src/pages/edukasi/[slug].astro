@@ -1,0 +1,28 @@
+---
+import {getCollection,render} from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SiteHeader from '../../components/shared/SiteHeader.astro';
+import SiteFooter from '../../components/shared/SiteFooter.astro';
+export async function getStaticPaths(){const articles=await getCollection('articles');return articles.map(article=>({params:{slug:article.id},props:{article}}))}
+const {article}=Astro.props;
+const {Content}=await render(article);
+---
+<BaseLayout title={article.data.title} description={article.data.description}>
+<SiteHeader/>
+<main id="main-content" class="mx-auto max-w-[1120px] px-6 py-16 lg:py-24">
+<a href="/edukasi/" class="eyebrow text-[#a34a17] hover:underline">← Kembali ke pustaka</a>
+<div class="mt-12 grid gap-12 lg:grid-cols-[190px_minmax(0,1fr)]">
+<aside class="border-t border-[#2a1a0e] pt-5"><p class="eyebrow text-[#a34a17]">Catatan / Edukasi</p>{article.data.publishDate&&<p class="mt-4 text-sm text-[#624b39]">{article.data.publishDate.toLocaleDateString('id-ID',{year:'numeric',month:'long',day:'numeric'})}</p>}</aside>
+<article><header class="border-b border-[#dfcdb8] pb-12"><h1 class="max-w-3xl text-4xl font-extrabold leading-[1.13] md:text-6xl">{article.data.title}</h1><p class="mt-7 max-w-2xl text-xl leading-8 text-[#624b39]">{article.data.description}</p></header><div class="reading-prose pt-12"><Content/></div><div class="mt-20 border-t border-[#dfcdb8] pt-7"><a href="/edukasi/" class="font-bold text-[#a34a17]">← Semua artikel</a></div></article>
+</div></main><SiteFooter/>
+</BaseLayout>
+<style is:global>
+.reading-prose{max-width:68ch;font-size:1.075rem;line-height:1.9;color:#463427}
+.reading-prose h2,.reading-prose h3{color:#2a1a0e;font-weight:800;line-height:1.2;margin:2.7rem 0 1rem}
+.reading-prose h2{font-size:2rem}.reading-prose h3{font-size:1.45rem}
+.reading-prose p,.reading-prose ul,.reading-prose ol,.reading-prose blockquote{margin-bottom:1.5rem}
+.reading-prose ul{list-style:disc;padding-left:1.5rem}.reading-prose ol{list-style:decimal;padding-left:1.5rem}
+.reading-prose a{color:#a34a17;text-decoration:underline;text-underline-offset:3px}
+.reading-prose blockquote{border-left:3px solid #d4621a;padding-left:1.5rem;font-style:italic}
+.reading-prose img{max-width:100%;height:auto}.reading-prose :not(pre)>code{background:#edd9c1;padding:.15rem .35rem}
+</style>
