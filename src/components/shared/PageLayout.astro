@@ -14,17 +14,17 @@ const showCta = page.showCta !== false;
 <BaseLayout title={page.title} description={page.description}>
 <SiteHeader />
 <main id="main-content">
-<section class="border-b border-[#dfcdb8] bg-[#2a1a0e] text-[#fef3e2]">
+<section id="utama" class="border-b border-[#dfcdb8] bg-[#2a1a0e] text-[#fef3e2]">
 <div class="mx-auto max-w-[1440px] px-6 py-20 lg:px-12 lg:py-28">
 {page.eyebrow && <p class="eyebrow text-[#f4ae52]">{page.eyebrow}</p>}
 <h1 class="mt-6 max-w-4xl text-[clamp(2.8rem,6vw,6rem)] font-extrabold leading-[1.04]">{page.title}</h1>
 <p class="mt-8 max-w-2xl text-lg leading-8 text-[#e0cbb9]">{page.description}</p>
 </div>
 </section>
-<section class="mx-auto max-w-3xl px-6 py-20 lg:py-28">
+<section id="isi" class="mx-auto max-w-3xl px-6 py-20 lg:py-28">
 <div class="page-body text-lg leading-8 text-[#594332]"><slot /></div>
 </section>
-{showCta && <section class="border-t border-[#dfcdb8] bg-[#f4ae52]"><div class="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-8 px-6 py-16 lg:px-12"><div><p class="eyebrow">Perlu klarifikasi?</p><h2 class="mt-4 text-3xl font-extrabold md:text-5xl">Siapkan kebutuhan instalasi Anda.</h2></div><a href="/kontak/" class="bg-[#2a1a0e] px-7 py-4 font-bold text-[#fef3e2] hover:bg-[#5b3420]">Halaman kontak ↗</a></div></section>}
+{showCta && <section id="klarifikasi" class="border-t border-[#dfcdb8] bg-[#f4ae52]"><div class="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-8 px-6 py-16 lg:px-12"><div><p class="eyebrow">Perlu klarifikasi?</p><h2 class="mt-4 text-3xl font-extrabold md:text-5xl">Siapkan kebutuhan instalasi Anda.</h2></div><a href="/kontak/" class="bg-[#2a1a0e] px-7 py-4 font-bold text-[#fef3e2] hover:bg-[#5b3420]">Halaman kontak ↗</a></div></section>}
 </main>
 <SiteFooter />
 </BaseLayout>
