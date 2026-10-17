@@ -1,0 +1,62 @@
+---
+id: 21
+ulid: "01K7R000000000000000000021"
+type: "page"
+slug: "persiapan-slo-tegangan-rendah"
+section: "panduan"
+title: "Persiapan SLO Tegangan Rendah"
+pubDate: "2026-10-13T00:00:00Z"
+updatedDate: "2026-10-13T00:00:00Z"
+description: "Daftar informasi dan dokumen yang sebaiknya disiapkan sebelum konsultasi Sertifikat Laik Operasi untuk instalasi tegangan rendah."
+draft: false
+eyebrow: "Panduan / Tegangan rendah"
+order: 2
+relatedType: "service"
+relatedId: 101
+blocks:
+  - component: "section"
+    id: "gambaran"
+    heading: "Apa yang perlu disiapkan"
+    content:
+      - type: "p"
+        text: "Panduan ini merangkum informasi dan dokumen yang umumnya dibutuhkan sebelum memulai proses Sertifikat Laik Operasi (SLO) untuk instalasi pemanfaatan tenaga listrik tegangan rendah. Menyiapkannya sejak awal membantu pemetaan kebutuhan berjalan lebih tertib."
+      - type: "p"
+        text: "Daftar bersifat indikatif. Jenis, kapasitas, dan kondisi instalasi dapat menambah atau mengubah kebutuhan dokumen sesuai ketentuan lembaga yang berwenang."
+  - component: "checklist-card"
+    id: "daftar-persiapan"
+    title: "Daftar persiapan awal"
+    description: "Kumpulkan informasi berikut sebelum konsultasi awal:"
+    items:
+      - label: "Lokasi instalasi beserta fungsi atau kegiatan yang didukung"
+      - label: "Identitas pemilik atau penanggung jawab instalasi"
+      - label: "Diagram satu garis dan data teknis instalasi, apabila tersedia"
+      - label: "Catatan kondisi instalasi — baru dibangun, sedang beroperasi, atau sedang diperbaiki"
+    note: "Bila sebagian data belum tersedia, catat dulu yang sudah ada; pemetaan kelengkapan dapat dilakukan pada konsultasi."
+  - component: "process-timeline"
+    id: "alur-persiapan"
+    title: "Urutan persiapan yang disarankan"
+    steps:
+      - title: "Identifikasi kebutuhan"
+        description: "Tentukan apakah instalasi baru, sedang beroperasi, atau memerlukan peninjauan kelaikan."
+      - title: "Himpun data teknis"
+        description: "Kumpulkan diagram satu garis, data peralatan, dan kapasitas instalasi yang diketahui."
+      - title: "Catat kondisi instalasi"
+        description: "Abadikan perubahan atau perbaikan yang pernah dilakukan agar informasi akurat saat pemeriksaan."
+      - title: "Konsultasi dan pemetaan"
+        description: "Sampaikan data yang terkumpul untuk memetakan kelengkapan dan tahapan berikutnya."
+  - component: "note"
+    id: "catatan-kewenangan"
+    variant: "warning"
+    title: "Bukan jaminan penerbitan"
+    text: "Persyaratan dan keputusan akhir mengikuti peraturan serta lembaga berwenang. Persiapan mandiri tidak menjamin penerbitan atau kelulusan pemeriksaan."
+  - component: "faq"
+    id: "faq"
+    heading: "Pertanyaan umum"
+    items:
+      - question: "Kapan sebaiknya mulai menyiapkan dokumen?"
+        answer: "Sejak awal perencanaan atau sebelum instalasi beroperasi, agar data teknis masih mudah dihimpun."
+      - question: "Apakah semua dokumen harus lengkap sebelum konsultasi?"
+        answer: "Tidak harus. Konsultasi awal justru berguna untuk memetakan dokumen mana yang sudah ada dan mana yang masih perlu dilengkapi."
+      - question: "Apakah persiapan ini berlaku untuk instalasi tegangan menengah?"
+        answer: "Tidak sepenuhnya. Instalasi tegangan menengah memiliki kebutuhan dokumen teknis yang lebih rinci; lihat panduan persiapan SLO tegangan menengah."
+---

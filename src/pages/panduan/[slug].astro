@@ -1,7 +1,9 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { relatedService } from '../../utils/services.ts';
 import PageLayout from '../../components/shared/PageLayout.astro';
 import BlockRenderer from '../../components/blocks/BlockRenderer.astro';
+import RelatedServiceCta from '../../components/shared/RelatedServiceCta.astro';
 
 export async function getStaticPaths() {
   const pages = (await getCollection('pages'))
@@ -12,8 +14,11 @@ export async function getStaticPaths() {
 
 const { page } = Astro.props;
 const { Content } = await render(page);
+// Satu resolusi dipakai bersama oleh tagline footer dan CTA layanan agar sejalan.
+const service = await relatedService(page.data.relatedType, page.data.relatedId);
 ---
-<PageLayout page={page.data}>
+<PageLayout page={page.data} serviceTitle={service?.data.title}>
   {page.data.blocks.map((block) => <BlockRenderer block={block} />)}
   <div class="page-markdown mt-8"><Content /></div>
+  <RelatedServiceCta service={service} sourceTitle={page.data.title} sourceLabel="panduan" />
 </PageLayout>

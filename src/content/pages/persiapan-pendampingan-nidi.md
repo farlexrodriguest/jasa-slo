@@ -1,0 +1,62 @@
+---
+id: 23
+ulid: "01K7R000000000000000000023"
+type: "page"
+slug: "persiapan-pendampingan-nidi"
+section: "panduan"
+title: "Persiapan Pendampingan NIDI"
+pubDate: "2026-10-15T00:00:00Z"
+updatedDate: "2026-10-15T00:00:00Z"
+description: "Data identitas, alamat, dan dokumen teknis yang sebaiknya disiapkan untuk proses pencatatan Nomor Identitas Instalasi Tenaga Listrik."
+draft: false
+eyebrow: "Panduan / Identitas instalasi"
+order: 4
+relatedType: "service"
+relatedId: 103
+blocks:
+  - component: "section"
+    id: "gambaran"
+    heading: "Mengapa persiapan data penting"
+    content:
+      - type: "p"
+        text: "Nomor Identitas Instalasi Tenaga Listrik (NIDI) berkaitan dengan pencatatan identitas instalasi. Karena prosesnya berpusat pada data, kelengkapan dan kesesuaian informasi sejak awal menentukan lancarnya tahapan berikutnya."
+      - type: "p"
+        text: "Panduan ini merangkum data yang umumnya dibutuhkan sebelum memulai proses NIDI. Persyaratan final tetap mengikuti ketentuan pihak yang berwenang atas pencatatan instalasi."
+  - component: "checklist-card"
+    id: "daftar-persiapan"
+    title: "Daftar persiapan awal"
+    description: "Siapkan data berikut sebelum konsultasi awal:"
+    items:
+      - label: "Identitas pemilik atau penanggung jawab instalasi"
+      - label: "Alamat instalasi selengkap mungkin beserta informasi penggunaannya"
+      - label: "Data teknis instalasi yang tersedia, seperti kapasitas dan jenis peralatan"
+      - label: "Dokumen pendukung kepemilikan atau penggunaan lokasi, bila ada"
+    note: "Konsultasi awal dapat dilakukan tanpa seluruh dokumen; daftar ini untuk mempercepat pemetaan."
+  - component: "process-timeline"
+    id: "alur-persiapan"
+    title: "Urutan persiapan yang disarankan"
+    steps:
+      - title: "Himpun data identitas"
+        description: "Pastikan identitas pemilik atau penanggung jawab dan alamat instalasi tercatat lengkap."
+      - title: "Validasi data teknis"
+        description: "Cocokkan data kapasitas dan jenis peralatan dengan kondisi instalasi di lapangan."
+      - title: "Lengkapi dokumen pendukung"
+        description: "Kumpulkan dokumen yang tersedia; catat bagian yang belum dapat dipenuhi beserta alasannya."
+      - title: "Konsultasi dan tindak lanjut"
+        description: "Sampaikan data untuk pemeriksaan kelengkapan dan arahan jalur pencatatan sesuai kewenangan."
+  - component: "note"
+    id: "catatan-kewenangan"
+    variant: "warning"
+    title: "Bukan jaminan penerbitan"
+    text: "Persyaratan dan keputusan akhir mengikuti peraturan serta lembaga berwenang. Pendampingan bukan jaminan penerbitan dokumen atau pencatatan."
+  - component: "faq"
+    id: "faq"
+    heading: "Pertanyaan umum"
+    items:
+      - question: "Apakah NIDI sama dengan SLO?"
+        answer: "Tidak. NIDI berkaitan dengan identitas instalasi, sedangkan SLO berkaitan dengan kelaikan operasi melalui pemeriksaan yang berlaku."
+      - question: "Apakah alamat harus ditulis dalam format tertentu?"
+        answer: "Gunakan alamat selengkap mungkin termasuk patokan lokasi. Format mengikuti ketentuan pencatatan yang berlaku saat pengajuan."
+      - question: "Bagaimana bila data instalasi berubah setelah dicatat?"
+        answer: "Sampaikan perubahan data saat konsultasi tindak lanjut agar kebutuhan pembaruan dapat dipetakan sesuai ketentuan yang berlaku."
+---

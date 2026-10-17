@@ -1,0 +1,63 @@
+---
+id: 26
+ulid: "01K7R000000000000000000026"
+type: "page"
+slug: "persiapan-pengujian-trafo"
+section: "panduan"
+title: "Persiapan Pengujian Trafo"
+pubDate: "2026-10-18T00:00:00Z"
+updatedDate: "2026-10-18T00:00:00Z"
+description: "Data nama plate, riwayat operasi, dan kondisi akses yang sebaiknya disiapkan sebelum pengujian transformator tenaga dan distribusi."
+draft: false
+eyebrow: "Panduan / Pengujian trafo"
+order: 7
+relatedType: "service"
+relatedId: 106
+blocks:
+  - component: "section"
+    id: "gambaran"
+    heading: "Sebelum hari pengujian"
+    content:
+      - type: "p"
+        text: "Pengujian transformator mengacu standar IEC 60076 dan SPLN, mencakup antara lain uji tahanan isolasi, rasio belitan, resistansi gulungan, kualitas minyak, dan partial discharge. Data dan kondisi lokasi yang disiapkan sejak awal membantu pengujian berjalan efektif."
+      - type: "p"
+        text: "Panduan ini berfokus pada persiapan operasional di lokasi. Metode, ambang batas, dan lingkup uji mengikuti ketentuan lembaga pengujian yang berwenang."
+  - component: "checklist-card"
+    id: "daftar-persiapan"
+    title: "Daftar persiapan sebelum pengujian"
+    description: "Hal berikut sebaiknya beres sebelum jadwal pengujian:"
+    items:
+      - label: "Data nama plate trafo — kapasitas, rasio tegangan, tahun pembuatan — tercatat"
+      - label: "Riwayat operasi dan gangguan yang pernah terjadi tersedia, termasuk hasil uji terdahulu bila ada"
+      - label: "Akses ke lokasi trafo aman dan cukup ruang kerja untuk teknisi"
+      - label: "Kondisi pendinginan (oli atau udara) dan kebersihan trafo diperhatikan"
+      - label: "Kebutuhan pengambilan sampel oli dikonfirmasi untuk trafo jenis basah"
+    note: "Untuk trafo baru hasil pabrik, uji FAT (Factory Acceptance Test) jika tersedia dapat dipakai sebagai pembanding hasil."
+  - component: "process-timeline"
+    id: "alur-persiapan"
+    title: "Urutan persiapan yang disarankan"
+    steps:
+      - title: "Petakan jenis dan kondisi trafo"
+        description: "Identifikasi trafo tenaga atau distribusi, kering atau minyak, beserta kapasitasnya."
+      - title: "Himpun data operasi"
+        description: "Siapkan riwayat operasi, gangguan terdahulu, dan hasil uji pabrik bila tersedia."
+      - title: "Siapkan akses dan kondisi lokasi"
+        description: "Pastikan area kerja aman dan trafo dapat dijangkau pada hari pengujian."
+      - title: "Tinjau hasil dan tindak lanjut"
+        description: "Evaluasi temuan bersama teknisi untuk menentukan perawatan atau perbaikan yang diperlukan."
+  - component: "note"
+    id: "catatan-kewenangan"
+    variant: "warning"
+    title: "Bukan pengganti sertifikasi"
+    text: "Hasil pengujian adalah evaluasi teknis atas kondisi trafo pada saat diuji, bukan pengganti sertifikasi atau persetujuan resmi dari lembaga yang berwenang."
+  - component: "faq"
+    id: "faq"
+    heading: "Pertanyaan umum"
+    items:
+      - question: "Kapan trafo sebaiknya diuji?"
+        answer: "Secara rutin setiap 1–2 tahun, sebelum komisioning unit baru, setelah relokasi, atau ketika terdapat indikasi gangguan seperti kenaikan suhu berlebih atau kebocoran oli."
+      - question: "Apakah semua trafo memerlukan uji kualitas minyak?"
+        answer: "Hanya untuk trafo jenis minyak. Trafo kering lebih difokuskan pada kondisi isolasi, pendingin, dan kebersihan fisik."
+      - question: "Apakah pengujian dilakukan saat trafo masih bertenaga?"
+        answer: "Sebagian besar pengujian dielektrik memerlukan trafo dalam kondisi tidak bertenaga. Koordinasikan kebutuhan pemadaman sejak penjadwalan."
+---

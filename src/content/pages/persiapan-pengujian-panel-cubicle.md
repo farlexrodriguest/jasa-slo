@@ -1,0 +1,63 @@
+---
+id: 25
+ulid: "01K7R000000000000000000025"
+type: "page"
+slug: "persiapan-pengujian-panel-cubicle"
+section: "panduan"
+title: "Persiapan Pengujian Panel Cubicle"
+pubDate: "2026-10-17T00:00:00Z"
+updatedDate: "2026-10-17T00:00:00Z"
+description: "Kondisi panel, akses teknis, dan dokumen pendukung yang sebaiknya disiapkan sebelum hari pengujian panel cubicle 20 kV."
+draft: false
+eyebrow: "Panduan / Pengujian panel"
+order: 6
+relatedType: "service"
+relatedId: 105
+blocks:
+  - component: "section"
+    id: "gambaran"
+    heading: "Sebelum hari pengujian"
+    content:
+      - type: "p"
+        text: "Pengujian panel cubicle 20 kV mengacu standar IEC 62271-200 dan mencakup aspek mekanikal, elektrikal, dan proteksi. Kesiapan panel sebelum teknisi tiba di lokasi memengaruhi kelancaran sebagian besar uji yang dilakukan."
+      - type: "p"
+        text: "Panduan ini berfokus pada persiapan operasional di lokasi, bukan pada teknis pengujian itu sendiri. Lingkup dan metode uji mengikuti ketentuan lembaga pengujian yang berwenang."
+  - component: "checklist-card"
+    id: "daftar-persiapan"
+    title: "Daftar persiapan sebelum pengujian"
+    description: "Hal berikut sebaiknya beres sebelum jadwal pengujian:"
+    items:
+      - label: "Jadwal pengujian dikonfirmasi beserta perkiraan durasi di lokasi"
+      - label: "Akses ke panel terbuka dan ruang panel dalam kondisi aman untuk dikerjakan"
+      - label: "Diagram satu garis (SLD) dan data panel tersedia sebagai pembanding"
+      - label: "Riwayat gangguan atau keluhan fungsi (proteksi, mekanisme, hubung) tercatat"
+      - label: "Kebersihan panel diperhatikan — debu dan kelembapan memengaruhi hasil pengukuran"
+    note: "Bila panel sedang dalam perbaikan atau gangguan aktif, sampaikan kondisinya saat konfirmasi jadwal."
+  - component: "process-timeline"
+    id: "alur-persiapan"
+    title: "Urutan persiapan yang disarankan"
+    steps:
+      - title: "Konfirmasi lingkup uji"
+        description: "Pastikan jenis pengujian (type test, routine test, atau pemeriksaan tertentu) sesuai kebutuhan dan standar yang dipakai."
+      - title: "Siapkan kondisi panel"
+        description: "Amankan area kerja, pastikan akses, dan rapikan kondisi panel agar pengukuran berjalan lancar."
+      - title: "Sediakan dokumen pendukung"
+        description: "SED dan data panel tersedia untuk dicocokkan dengan hasil pengujian di lapangan."
+      - title: "Evaluasi hasil bersama"
+        description: "Tinjau temuan dan rekomendasi tindak lanjut sebelum laporan akhir diterbitkan."
+  - component: "note"
+    id: "catatan-kewenangan"
+    variant: "warning"
+    title: "Bukan pengganti sertifikasi"
+    text: "Hasil pengujian adalah evaluasi teknis atas kondisi panel pada saat diuji, bukan pengganti sertifikasi atau persetujuan resmi dari lembaga yang berwenang."
+  - component: "faq"
+    id: "faq"
+    heading: "Pertanyaan umum"
+    items:
+      - question: "Apakah panel harus dimatikan saat pengujian?"
+        answer: "Sebagian besar pengujian elektrikal memerlukan kondisi panel tertentu dan berkoordinasi dengan pemadaman. Koordinasikan kebutuhan pemadaman sejak penjadwalan."
+      - question: "Berapa lama satu kali pengujian panel cubicle?"
+        answer: "Bergantung pada lingkup uji dan jumlah cubicle. Durasi perkiraan dapat dikonfirmasi saat penjadwalan agar akses lokasi disiapkan secukupnya."
+      - question: "Kapan panel perlu diuji ulang?"
+        answer: "Umumnya berkala setiap 1 tahun, atau lebih sering bila terdapat anomali fungsi, misalnya perbedaan suhu antar fasa atau setelah terjadi gangguan hubung singkat."
+---

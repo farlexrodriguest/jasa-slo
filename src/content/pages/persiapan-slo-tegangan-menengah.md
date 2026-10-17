@@ -1,0 +1,62 @@
+---
+id: 22
+ulid: "01K7R000000000000000000022"
+type: "page"
+slug: "persiapan-slo-tegangan-menengah"
+section: "panduan"
+title: "Persiapan SLO Tegangan Menengah"
+pubDate: "2026-10-14T00:00:00Z"
+updatedDate: "2026-10-14T00:00:00Z"
+description: "Daftar informasi teknis dan dokumen yang sebaiknya disiapkan sebelum konsultasi Sertifikat Laik Operasi instalasi tegangan menengah."
+draft: false
+eyebrow: "Panduan / Tegangan menengah"
+order: 3
+relatedType: "service"
+relatedId: 102
+blocks:
+  - component: "section"
+    id: "gambaran"
+    heading: "Apa yang perlu disiapkan"
+    content:
+      - type: "p"
+        text: "Instalasi tegangan menengah melibatkan konfigurasi sistem yang lebih rinci dibanding tegangan rendah, sehingga persiapan dokumen teknis menjadi bagian penting dari proses Sertifikat Laik Operasi (SLO). Panduan ini merangkum informasi yang umumnya dibutuhkan sebelum konsultasi awal."
+      - type: "p"
+        text: "Daftar bersifat indikatif. Klasifikasi instalasi, kapasitas, dan kondisi lapangan dapat menentukan kebutuhan yang berbeda sesuai ketentuan lembaga yang berwenang."
+  - component: "checklist-card"
+    id: "daftar-persiapan"
+    title: "Daftar persiapan awal"
+    description: "Kumpulkan informasi berikut sebelum konsultasi awal:"
+    items:
+      - label: "Data kapasitas dan konfigurasi instalasi, termasuk sistem pembumian dan proteksi"
+      - label: "Diagram satu garis (SLD) dan spesifikasi peralatan utama"
+      - label: "Informasi lokasi serta penanggung jawab instalasi"
+      - label: "Riwayat pemeriksaan atau pengujian terdahulu, apabila ada"
+    note: "Dokumen teknis lama dapat dipakai sebagai pembanding; pastikan versi paling mutakhir yang disiapkan."
+  - component: "process-timeline"
+    id: "alur-persiapan"
+    title: "Urutan persiapan yang disarankan"
+    steps:
+      - title: "Petakan karakteristik sistem"
+        description: "Identifikasi tegangan operasi, skema hubung, dan batas instalasi yang menjadi lingkup pemeriksaan."
+      - title: "Susun dokumen teknis"
+        description: "Lengkapi diagram satu garis dan spesifikasi peralatan; catat perubahan yang pernah dilakukan."
+      - title: "Inventarisasi kelengkapan"
+        description: "Cocokkan dokumen yang tersedia dengan kebutuhan pemeriksaan dan tandai yang masih kurang."
+      - title: "Koordinasi pemeriksaan"
+        description: "Konfirmasi jadwal dan lingkup pemeriksaan bersama pihak yang berwenang."
+  - component: "note"
+    id: "catatan-kewenangan"
+    variant: "warning"
+    title: "Bukan jaminan penerbitan"
+    text: "Persyaratan dan keputusan akhir mengikuti peraturan serta lembaga berwenang. Persiapan mandiri tidak menjamin penerbitan atau kelulusan pemeriksaan."
+  - component: "faq"
+    id: "faq"
+    heading: "Pertanyaan umum"
+    items:
+      - question: "Apa perbedaan utama persiapan SLO TM dibanding SLO TR?"
+        answer: "Instalasi tegangan menengah menuntut dokumen teknis yang lebih rinci, seperti diagram satu garis dan spesifikasi peralatan, karena konfigurasi sistemnya lebih kompleks."
+      - question: "Apakah diagram satu garis wajib disiapkan?"
+        answer: "Diagram satu garis menjadi dokumen teknis penting untuk pemetaan sistem. Bila belum tersedia, hal ini perlu dikonfirmasi pada konsultasi awal sesuai kondisi instalasi."
+      - question: "Bagaimana bila instalasi mengalami perubahan setelah pemeriksaan?"
+        answer: "Perubahan signifikan dapat memengaruhi status dokumen. Sampaikan riwayat perubahan saat konsultasi agar kebutuhan peninjauan dapat dipetakan."
+---

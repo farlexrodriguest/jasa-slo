@@ -58,6 +58,8 @@ const pages = defineCollection({
     showCta: z.boolean().default(true),
     canonical: z.string().optional(),
     noindex: z.boolean().default(false),
+    relatedType: z.enum(['service', 'page', 'article']).optional(),
+    relatedId: z.number().int().positive().optional(),
     blocks: contentBlocks,
   })),
 });

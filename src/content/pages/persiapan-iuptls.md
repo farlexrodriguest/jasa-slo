@@ -1,0 +1,62 @@
+---
+id: 24
+ulid: "01K7R000000000000000000024"
+type: "page"
+slug: "persiapan-iuptls"
+section: "panduan"
+title: "Persiapan IUPTLS"
+pubDate: "2026-10-16T00:00:00Z"
+updatedDate: "2026-10-16T00:00:00Z"
+description: "Karakteristik pembangkit, data kegiatan, dan dokumen administrasi yang sebaiknya disiapkan sebelum konsultasi perizinan IUPTLS."
+draft: false
+eyebrow: "Panduan / Perizinan"
+order: 5
+relatedType: "service"
+relatedId: 104
+blocks:
+  - component: "section"
+    id: "gambaran"
+    heading: "Mengapa klasifikasi kebutuhan penting"
+    content:
+      - type: "p"
+        text: "Izin Usaha Penyediaan Tenaga Listrik untuk Kepentingan Sendiri (IUPTLS) menyangkut kegiatan penyediaan listrik yang digunakan sendiri, misalnya pembangkit di kawasan industri. Kewajiban perizinan dapat berbeda menurut kapasitas dan karakteristik kegiatan."
+      - type: "p"
+        text: "Panduan ini merangkum informasi yang umumnya dibutuhkan untuk memetakan kebutuhan izin sejak awal. Jenis izin dan persyaratan final mengikuti ketentuan yang berlaku saat pengajuan."
+  - component: "checklist-card"
+    id: "daftar-persiapan"
+    title: "Daftar persiapan awal"
+    description: "Siapkan informasi berikut sebelum konsultasi awal:"
+    items:
+      - label: "Identitas pemilik kegiatan atau badan usaha beserta profil singkat"
+      - label: "Lokasi kegiatan dan tujuan penggunaan tenaga listrik"
+      - label: "Kapasitas serta karakteristik pembangkit atau sumber tenaga listrik"
+      - label: "Dokumen administrasi dan teknis yang tersedia terkait kegiatan"
+    note: "Bila kapasitas atau karakteristik pembangkit belum pasti, catat perkiraannya untuk pemetaan awal."
+  - component: "process-timeline"
+    id: "alur-persiapan"
+    title: "Urutan persiapan yang disarankan"
+    steps:
+      - title: "Klasifikasi kegiatan"
+        description: "Tentukan kapasitas, tujuan penggunaan, dan karakteristik kegiatan ketenagalistrikan."
+      - title: "Pemetaan ketentuan"
+        description: "Identifikasi jenis izin atau pelaporan yang mungkin berlaku untuk kegiatan tersebut."
+      - title: "Penyiapan dokumen"
+        description: "Susun dokumen administrasi dan teknis sesuai ketentuan yang teridentifikasi."
+      - title: "Konfirmasi jalur pengurusan"
+        description: "Pastikan jenis izin dan instansi tempat pengajuan sesuai aturan yang berlaku."
+  - component: "note"
+    id: "catatan-kewenangan"
+    variant: "warning"
+    title: "Bukan jaminan penerbitan"
+    text: "Persyaratan dan keputusan akhir mengikuti peraturan serta instansi berwenang. Pemetaan awal bukan jaminan penerbitan izin."
+  - component: "faq"
+    id: "faq"
+    heading: "Pertanyaan umum"
+    items:
+      - question: "Apakah setiap pembangkit kepentingan sendiri memerlukan IUPTLS?"
+        answer: "Tidak selalu. Kewajiban dapat berbeda menurut kapasitas, tujuan penggunaan, dan ketentuan yang berlaku; perlu dipetakan per kasus."
+      - question: "Apa hubungan IUPTLS dengan SLO?"
+        answer: "IUPTLS menyangkut perizinan kegiatan penyediaan listrik, sedangkan SLO berkaitan dengan kelaikan operasi instalasi. Keduanya dapat menjadi kebutuhan terpisah sesuai kondisi kegiatan."
+      - question: "Kapan sebaiknya mulai mempersiapkan perizinan?"
+        answer: "Sejak tahap perencanaan kegiatan, agar kapasitas dan karakteristik pembangkit dapat dipetakan sebelum dokumen disusun."
+---

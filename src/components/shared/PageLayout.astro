@@ -7,10 +7,16 @@
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from './SiteHeader.astro';
-const { page } = Astro.props;
+import type { CollectionEntry } from 'astro:content';
+interface Props {
+  page: CollectionEntry<'pages'>['data'];
+  /** Judul layanan terkait (sudah diresolusi pemanggil) untuk tagline footer. */
+  serviceTitle?: string;
+}
+const { page, serviceTitle } = Astro.props;
 const showCta = page.showCta !== false;
 ---
-<BaseLayout title={page.title} description={page.description}>
+<BaseLayout title={page.title} description={page.description} serviceTitle={serviceTitle}>
 <SiteHeader />
 <main id="main-content">
 <section id="utama" class="border-b border-[#dfcdb8] bg-[#2a1a0e] text-[#fef3e2]">

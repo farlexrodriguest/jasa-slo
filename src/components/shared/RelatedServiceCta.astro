@@ -1,12 +1,13 @@
 ---
 /**
- * ArticleServiceCta — CTA panel yang menautkan artikel ke layanan terkait.
+ * RelatedServiceCta — CTA panel yang menautkan konten (artikel/panduan) ke
+ * layanan terkait.
  *
  * Menerima layanan yang sudah diresolusi pemanggil (lihat `utils/services.ts`)
  * agar satu resolusi dipakai bersama oleh CTA dan tagline footer, sehingga
  * keduanya selalu sejalan. Menampilkan panel CTA dengan dua aksi: menuju halaman
  * layanan, atau memulai konsultasi WhatsApp dengan pesan yang membawa konteks
- * layanan dan artikel. Panel tidak dirender bila relasi tidak ada.
+ * layanan dan judul konten. Panel tidak dirender bila relasi tidak ada.
  */
 import type { CollectionEntry } from 'astro:content';
 import { site } from '../../config/site.ts';
@@ -14,16 +15,18 @@ import { ui } from '../../config/ui.ts';
 
 interface Props {
   service?: CollectionEntry<'services'> | null;
-  articleTitle?: string;
+  sourceTitle?: string;
+  /** Jenis konten untuk pesan WhatsApp ("artikel" atau "panduan"). */
+  sourceLabel?: string;
 }
 
-const { service, articleTitle } = Astro.props;
+const { service, sourceTitle, sourceLabel = 'artikel' } = Astro.props;
 
 const waNumber = String(site.contact?.whatsapp ?? '').replace(/\D/g, '');
 const waMessage = [
   ui.contact.whatsappMessage.header,
   `${ui.contact.whatsappMessage.service}: ${service?.data.title ?? ''}`,
-  articleTitle ? `Saya membaca artikel: ${articleTitle}` : '',
+  sourceTitle ? `Saya membaca ${sourceLabel}: ${sourceTitle}` : '',
 ]
   .filter(Boolean)
   .join('\n');

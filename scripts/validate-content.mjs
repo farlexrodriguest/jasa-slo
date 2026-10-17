@@ -62,7 +62,7 @@ for (const [collection, items] of records) {
       if (allUlids.has(item.ulid)) errors.push(item.file + ': ULID duplikat dengan ' + allUlids.get(item.ulid));
       else allUlids.set(item.ulid, item.file);
     }
-    if (collection === 'articles') {
+    if (collection === 'articles' || collection === 'pages') {
       if ((item.relatedType === undefined) !== (item.relatedId === undefined))
         errors.push(item.file + ': relatedType dan relatedId harus ditulis berpasangan');
       if (item.relatedType && item.relatedId !== undefined) {
