@@ -2,7 +2,6 @@
 import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/shared/SiteHeader.astro';
-import SiteFooter from '../components/shared/SiteFooter.astro';
 import BlockRenderer from '../components/blocks/BlockRenderer.astro';
 
 const home = await getEntry('pages', 'home');
@@ -12,5 +11,4 @@ if (home.data.draft) throw new Error('Halaman "home" ditandai draft tetapi memil
 <BaseLayout title={home.data.title} description={home.data.description}>
 <SiteHeader />
 <main id="main-content">{home.data.blocks.map((block) => <BlockRenderer block={block} />)}</main>
-<SiteFooter />
 </BaseLayout>

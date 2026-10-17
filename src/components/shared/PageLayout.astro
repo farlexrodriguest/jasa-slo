@@ -7,7 +7,6 @@
  */
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from './SiteHeader.astro';
-import SiteFooter from './SiteFooter.astro';
 const { page } = Astro.props;
 const showCta = page.showCta !== false;
 ---
@@ -26,5 +25,4 @@ const showCta = page.showCta !== false;
 </section>
 {showCta && <section id="klarifikasi" class="border-t border-[#dfcdb8] bg-[#f4ae52]"><div class="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-8 px-6 py-16 lg:px-12"><div><p class="eyebrow">Perlu klarifikasi?</p><h2 class="mt-4 text-3xl font-extrabold md:text-5xl">Siapkan kebutuhan instalasi Anda.</h2></div><a href="/kontak/" class="bg-[#2a1a0e] px-7 py-4 font-bold text-[#fef3e2] hover:bg-[#5b3420]">Halaman kontak ↗</a></div></section>}
 </main>
-<SiteFooter />
 </BaseLayout>

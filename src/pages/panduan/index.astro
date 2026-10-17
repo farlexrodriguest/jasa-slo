@@ -2,7 +2,6 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/shared/SiteHeader.astro';
-import SiteFooter from '../../components/shared/SiteFooter.astro';
 
 const guides = (await getCollection('pages'))
   .filter((page) => !page.data.draft && page.data.section === 'panduan')
@@ -24,5 +23,4 @@ const guides = (await getCollection('pages'))
       ))}
     </div>
   </main>
-  <SiteFooter />
 </BaseLayout>

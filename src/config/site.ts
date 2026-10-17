@@ -42,6 +42,13 @@ export const site = {
     nib: "9120001234567", // simulasi
   },
 
+  // ── Copy footer (simulasi) ─────────────────────────────────────────────
+  // Sumber tunggal copy footer; `disclaimer` di bawah dipakai sebagai nota hukum.
+  footer: {
+    eyebrow: "Informasi & pendampingan kelistrikan",
+    tagline: "Langkah yang jelas dimulai dari informasi yang tepat.",
+  },
+
   // ── Ringkasan layanan (cadangan; sumber utama = content collection) ────
   services: [
     { id: "slo-tr", name: "SLO Tegangan Rendah", active: true },

@@ -137,10 +137,16 @@ Sitemap di atas merupakan rancangan informasi, **bukan** instruksi membuat file 
 ## 5. Struktur footer
 
 - Identitas dan kontak penyedia jasa yang terverifikasi.
-- Tautan: Beranda, Layanan, Alur & Persyaratan, Edukasi, Tentang, Kontak.
+- Tautan: Beranda, Layanan, Panduan, Artikel, Tentang, Kontak.
 - Tautan hukum: Kebijakan Privasi, Syarat & Ketentuan.
 - Disclaimer yang disesuaikan dengan legalitas: “Situs ini bukan situs resmi PLN atau Kementerian ESDM. Pemeriksaan dan sertifikasi SLO dilakukan sesuai kewenangan lembaga terkait.”
 - Tahun hak cipta dan nama usaha **setelah identitas dipastikan**.
+
+### 5.1 Implementasi footer
+
+- Footer dirender otomatis oleh `src/layouts/BaseLayout.astro`, sehingga setiap halaman memperoleh footer tanpa perlu memanggilnya satu per satu. Halaman redirect statis (`/alur-dan-persyaratan/`, `/articles/`, `/edukasi/`) memang tidak memuat footer karena hanya berisi meta refresh.
+- Sumber data footer: menu dari `src/config/navigation.ts`, nama badan usaha dari `site.legalName`, copy eyebrow/tagline dari `site.footer`, dan nota hukum dari `site.disclaimer` sebagai satu-satunya sumber.
+- Seluruh nilai identitas di `src/config/site.ts` masih **data simulasi** (nama badan usaha, telepon, alamat, nomor legal) dan wajib diganti dengan data resmi sebelum publikasi.
 
 ## 6. Aturan konten dan konversi
 
