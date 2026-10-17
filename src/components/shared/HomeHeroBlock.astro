@@ -22,15 +22,15 @@ const { id, eyebrow, headingLead, headingHighlight, intro, primaryLabel, primary
   sideFootEyebrow: string;
 };
 ---
-<section id={id} class="border-b border-[#dfcdb8]">
+<section id={id} class="border-b border-[#73513c] bg-[#2a1a0e] text-[#fef3e2]">
   <div class="mx-auto grid max-w-[1440px] lg:grid-cols-[1.55fr_.45fr]">
     <div class="px-6 py-20 lg:px-12 lg:py-28">
-      <p class="eyebrow mb-8 text-[#a34a17]">{eyebrow}</p>
-      <h1 class="max-w-5xl text-[clamp(3.5rem,7.5vw,8rem)] font-extrabold leading-[.99] tracking-[-.075em]">{headingLead}<br/><span class="text-[#d4621a]">{headingHighlight}</span></h1>
-      <p class="mt-10 max-w-xl text-lg leading-8 text-[#624b39]">{intro}</p>
-      <div class="mt-10 flex flex-wrap gap-3"><a class="bg-[#2a1a0e] px-7 py-4 font-bold text-[#fef3e2] hover:bg-[#d4621a]" href={primaryHref}>{primaryLabel} ↗</a><a class="border border-[#2a1a0e] px-7 py-4 font-bold hover:bg-[#f4ae52]" href={secondaryHref}>{secondaryLabel} →</a></div>
+      <p class="eyebrow mb-8 text-[#f4ae52]">{eyebrow}</p>
+      <h1 class="max-w-5xl text-[clamp(3.5rem,7.5vw,8rem)] font-extrabold leading-[.99] tracking-[-.075em] text-[#fef3e2]">{headingLead}<br/><span class="text-[#f4ae52]">{headingHighlight}</span></h1>
+      <p class="mt-10 max-w-xl text-lg leading-8 text-[#e9d3ba]">{intro}</p>
+      <div class="mt-10 flex flex-wrap gap-3"><a class="bg-[#f4ae52] px-7 py-4 font-bold text-[#2a1a0e] hover:bg-[#fef3e2]" href={primaryHref}>{primaryLabel} ↗</a><a class="border border-[#f4ae52] px-7 py-4 font-bold text-[#fef3e2] hover:bg-[#f4ae52] hover:text-[#2a1a0e]" href={secondaryHref}>{secondaryLabel} →</a></div>
     </div>
-    <aside class="flex flex-col justify-between border-t border-[#dfcdb8] bg-[#f4ae52] p-8 lg:border-l lg:border-t-0 lg:p-10">
+    <aside class="flex flex-col justify-between border-t border-[#73513c] bg-[#f4ae52] p-8 text-[#2a1a0e] lg:border-l lg:border-t-0 lg:p-10">
       <div class="eyebrow">{sideEyebrow}</div>
       <div class="my-20"><div aria-hidden="true" class="text-[clamp(8rem,18vw,17rem)] font-black leading-none tracking-[-.14em]">⚡</div><p class="mt-8 border-t border-[#2a1a0e] pt-5 text-xl font-semibold leading-8">{sideNote}</p></div>
       <span class="eyebrow">{sideFootEyebrow}</span>
