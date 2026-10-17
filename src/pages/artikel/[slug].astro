@@ -10,10 +10,10 @@ const {Content}=await render(article);
 <BaseLayout title={article.data.title} description={article.data.description}>
 <SiteHeader/>
 <main id="main-content" class="mx-auto max-w-[1120px] px-6 py-16 lg:py-24">
-<a href="/edukasi/" class="eyebrow text-[#a34a17] hover:underline">← Kembali ke pustaka</a>
+<a href="/artikel/" class="eyebrow text-[#a34a17] hover:underline">← Kembali ke pustaka</a>
 <div class="mt-12 grid gap-12 lg:grid-cols-[190px_minmax(0,1fr)]">
-<aside class="border-t border-[#2a1a0e] pt-5"><p class="eyebrow text-[#a34a17]">Catatan / Edukasi</p>{article.data.pubDate&&<p class="mt-4 text-sm text-[#624b39]">{article.data.pubDate.toLocaleDateString('id-ID',{year:'numeric',month:'long',day:'numeric'})}</p>}</aside>
-<article><header class="border-b border-[#dfcdb8] pb-12"><h1 class="max-w-3xl text-4xl font-extrabold leading-[1.13] md:text-6xl">{article.data.title}</h1><p class="mt-7 max-w-2xl text-xl leading-8 text-[#624b39]">{article.data.description}</p></header><div class="reading-prose pt-12"><Content/></div><div class="mt-20 border-t border-[#dfcdb8] pt-7"><a href="/edukasi/" class="font-bold text-[#a34a17]">← Semua artikel</a></div></article>
+<aside class="border-t border-[#2a1a0e] pt-5"><p class="eyebrow text-[#a34a17]">Artikel / Pengetahuan</p>{article.data.pubDate&&<p class="mt-4 text-sm text-[#624b39]">{article.data.pubDate.toLocaleDateString('id-ID',{year:'numeric',month:'long',day:'numeric'})}</p>}</aside>
+<article><header class="border-b border-[#dfcdb8] pb-12"><h1 class="max-w-3xl text-4xl font-extrabold leading-[1.13] md:text-6xl">{article.data.title}</h1><p class="mt-7 max-w-2xl text-xl leading-8 text-[#624b39]">{article.data.description}</p></header><div class="reading-prose pt-12"><Content/></div><div class="mt-20 border-t border-[#dfcdb8] pt-7"><a href="/artikel/" class="font-bold text-[#a34a17]">← Semua artikel</a></div></article>
 </div></main><SiteFooter/>
 </BaseLayout>
 <style is:global>

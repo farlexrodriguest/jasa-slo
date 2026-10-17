@@ -12,7 +12,7 @@ const latest = [...articles].filter((item) => !item.data.draft).sort((a: any, b:
 <section class="mx-auto max-w-7xl px-5 py-16">
   <div class="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
     <div><p class="text-sm font-bold uppercase tracking-wider text-blue-700">{ui.article.latestEyebrow}</p><h2 class="mt-2 text-3xl font-extrabold tracking-tight text-slate-950">{heading}</h2><p class="mt-3 max-w-2xl text-slate-600">{description}</p></div>
-    <a href="/articles/" class="font-semibold text-blue-700 hover:text-blue-900">{ui.article.allArticlesLink}</a>
+    <a href="/artikel/" class="font-semibold text-blue-700 hover:text-blue-900">{ui.article.allArticlesLink}</a>
   </div>
   {latest.length ? <div class="grid gap-5 md:grid-cols-3">{latest.map((a: CollectionEntry<'articles'>) => <ArticleCard article={a} />)}</div> : <p class="rounded-xl border border-dashed border-slate-300 p-8 text-slate-500">{ui.article.empty}</p>}
 </section>

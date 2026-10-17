@@ -3,6 +3,7 @@ id: 2
 ulid: "01K7R000000000000000000002"
 type: "page"
 slug: "alur-dan-persyaratan"
+section: "panduan"
 title: "Alur & Persyaratan"
 pubDate: "2026-10-17T00:00:00Z"
 updatedDate: "2026-10-17T00:00:00Z"

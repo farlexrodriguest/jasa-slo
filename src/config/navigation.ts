@@ -2,8 +2,8 @@ export const navigation = {
   header: [
     { label: 'Beranda', href: '/' },
     { label: 'Layanan', href: '/layanan/' },
-    { label: 'Alur & Persyaratan', href: '/alur-dan-persyaratan/' },
-    { label: 'Edukasi', href: '/edukasi/' },
+    { label: 'Panduan', href: '/panduan/' },
+    { label: 'Artikel', href: '/artikel/' },
     { label: 'Tentang', href: '/tentang-kami/' },
   ],
   footer: { links: [

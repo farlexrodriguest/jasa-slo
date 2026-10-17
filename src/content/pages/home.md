@@ -19,7 +19,7 @@ blocks:
     primaryLabel: "Jelajahi layanan"
     primaryHref: "/layanan/"
     secondaryLabel: "Pelajari alur"
-    secondaryHref: "/alur-dan-persyaratan/"
+    secondaryHref: "/panduan/alur-dan-persyaratan/"
     sideEyebrow: "Catatan lapangan / 001"
     sideNote: "Dokumen yang tepat. Proses yang dipahami. Keputusan yang lebih terarah."
     sideFootEyebrow: "SLO ≠ NIDI · Kenali perbedaannya"

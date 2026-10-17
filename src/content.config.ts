@@ -42,6 +42,7 @@ const pages = defineCollection({
     pubDate: utcDate,
     updatedDate: utcDate,
     eyebrow: z.string().optional(),
+    section: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).optional(),
     order: z.number().int().default(0),
     showCta: z.boolean().default(true),
     canonical: z.string().optional(),

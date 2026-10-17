@@ -5,7 +5,7 @@ import BlockRenderer from '../components/blocks/BlockRenderer.astro';
 
 export async function getStaticPaths() {
   const pages = (await getCollection('pages'))
-    .filter((page) => !page.data.draft && page.data.slug !== 'home')
+    .filter((page) => !page.data.draft && page.data.slug !== 'home' && !page.data.section)
     .sort((a, b) => a.data.order - b.data.order);
   return pages.map((page) => ({ params: { slug: page.data.slug }, props: { page } }));
 }
