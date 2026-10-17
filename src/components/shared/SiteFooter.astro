@@ -5,7 +5,7 @@ const year = new Date().getFullYear();
 <footer class="bg-[#2a1a0e] text-[#fef3e2]">
   <div class="mx-auto max-w-[1440px] px-6 py-16 lg:px-12">
     <div class="grid gap-12 border-b border-[#6b4a34] pb-16 md:grid-cols-[1.4fr_1fr]">
-      <div><div class="inline-block bg-[#fef3e2] px-3 py-2"><img src="/images/logo-jasa-slo.svg" alt="Jasa SLO" width="540" height="110" class="h-9 w-auto" loading="lazy" /></div><p class="eyebrow mt-8 text-[#f4ae52]">Informasi & pendampingan kelistrikan</p><p class="mt-6 max-w-xl font-[Manrope] text-4xl font-extrabold leading-tight md:text-5xl">Langkah yang jelas dimulai dari informasi yang tepat.</p></div>
+      <div><a href="/" aria-label="Jasa SLO — Beranda" class="inline-block"><img src="/images/logo-jasa-slo-light.svg" alt="Jasa SLO" width="540" height="110" class="h-10 w-auto" loading="lazy" /></a><p class="eyebrow mt-8 text-[#f4ae52]">Informasi & pendampingan kelistrikan</p><p class="mt-6 max-w-xl font-[Manrope] text-4xl font-extrabold leading-tight md:text-5xl">Langkah yang jelas dimulai dari informasi yang tepat.</p></div>
       <nav aria-label="Navigasi footer" class="grid grid-cols-2 content-start gap-4 text-sm">
         {navigation.header.map((item) => <a href={item.href} class="hover:text-[#f4ae52]">{item.label}</a>)}
         <a href="/kontak/" class="hover:text-[#f4ae52]">Kontak</a>
