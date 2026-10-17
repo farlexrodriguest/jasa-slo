@@ -43,8 +43,15 @@ const formId = `${id}-form`;
 
 const waNumber = String(site.contact?.whatsapp ?? '').replace(/[^0-9]/g, '');
 const waDisplay = site.contact?.whatsapp ?? '';
+const phone = site.contact?.phone ?? '';
+const phoneDisplay = site.contact?.phoneDisplay ?? phone;
 const email = site.contact?.email ?? '';
 const address = site.contact?.address ?? '';
+const socialEntries = Object.entries(site.social ?? {}).filter(([, v]) => v);
+const legalEntries = [
+  ['NPWP', site.legal?.npwp],
+  ['NIB', site.legal?.nib],
+].filter(([, v]) => v) as [string, string][];
 const fieldClass = 'w-full border border-[#dfcdb8] bg-white px-4 py-3 text-[#2a1a0e] outline-none transition focus:border-[#d4621a]';
 const labelClass = 'mb-1 block text-sm font-bold text-[#2a1a0e]';
 ---
@@ -59,6 +66,12 @@ const labelClass = 'mb-1 block text-sm font-bold text-[#2a1a0e]';
       <span class="eyebrow text-[#a34a17]">{ui.contact.whatsappLabel}</span>
       <span class="mt-2 block text-lg font-bold text-[#2a1a0e]">{waDisplay}</span>
     </a>
+    {phone && (
+      <a href={`tel:${phone}`} class="block border border-[#dfcdb8] bg-[#fef3e2] p-5 transition hover:border-[#d4621a]">
+        <span class="eyebrow text-[#a34a17]">{ui.contact.phoneLabel}</span>
+        <span class="mt-2 block text-lg font-bold text-[#2a1a0e]">{phoneDisplay}</span>
+      </a>
+    )}
     <a href={`mailto:${email}`} class="block border border-[#dfcdb8] bg-[#fef3e2] p-5 transition hover:border-[#d4621a]">
       <span class="eyebrow text-[#a34a17]">Email</span>
       <span class="mt-2 block break-all text-lg font-bold text-[#2a1a0e]">{email}</span>
@@ -67,6 +80,22 @@ const labelClass = 'mb-1 block text-sm font-bold text-[#2a1a0e]';
       <span class="eyebrow text-[#a34a17]">{ui.contact.addressHeading}</span>
       <p class="mt-2 font-semibold text-[#2a1a0e]">{legalDisplayName}</p>
       <p class="text-[#624b39]">{address}</p>
+      {socialEntries.length > 0 && (
+        <div class="mt-3 flex flex-wrap gap-x-4 gap-y-1">
+          {socialEntries.map(([label, value]) => (
+            <a href={value} target="_blank" rel="noopener noreferrer" class="text-sm font-bold text-[#a34a17] hover:text-[#d4621a]">
+              {label.charAt(0).toUpperCase() + label.slice(1)}
+            </a>
+          ))}
+        </div>
+      )}
+      {legalEntries.length > 0 && (
+        <div class="mt-3 space-y-1 text-xs text-[#624b39]">
+          {legalEntries.map(([label, value]) => (
+            <p><span class="font-bold text-[#2a1a0e]">{label}:</span> {value}</p>
+          ))}
+        </div>
+      )}
     </div>
     {hours.length > 0 && (
       <div class="border border-[#dfcdb8] bg-[#fef3e2] p-5 sm:col-span-2">

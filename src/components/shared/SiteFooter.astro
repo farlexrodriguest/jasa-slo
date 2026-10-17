@@ -6,6 +6,21 @@ const { serviceTitle } = Astro.props as { serviceTitle?: string };
 const taglineText = serviceTitle
   ? `${legalDisplayName} menyediakan jasa ${serviceTitle}.`
   : site.footer.tagline;
+
+const contact = site.contact ?? {};
+const phone = contact.phone ?? '';
+const phoneDisplay = contact.phoneDisplay ?? phone;
+const email = contact.email ?? '';
+const socialEntries = Object.entries(site.social ?? {}).filter(([, v]) => v) as [string, string][];
+const legalEntries = [
+  ['NPWP', site.legal?.npwp],
+  ['NIB', site.legal?.nib],
+].filter(([, v]) => v) as [string, string][];
+const identityItems: { label: string; href?: string; text: string }[] = [];
+if (phone) identityItems.push({ label: 'Telepon', href: `tel:${phone}`, text: phoneDisplay });
+if (email) identityItems.push({ label: 'Email', href: `mailto:${email}`, text: email });
+for (const [label, value] of socialEntries) identityItems.push({ label, text: value });
+for (const [label, value] of legalEntries) identityItems.push({ label, text: value });
 ---
 <footer class="bg-[#2a1a0e] text-[#fef3e2]">
   <div class="mx-auto max-w-[1440px] px-6 py-16 lg:px-12">
@@ -17,6 +32,22 @@ const taglineText = serviceTitle
         {navigation.footer.links.map((item) => <a href={item.href} class="hover:text-[#f4ae52]">{item.label}</a>)}
       </nav>
     </div>
+    {identityItems.length > 0 && (
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-2 pt-7 text-xs text-[#d5bca4]">
+        {identityItems.map((item, index) => (
+          <span class="flex items-center gap-5">
+            {index > 0 && <span aria-hidden="true" class="h-px w-5 bg-[#6b4a34]" />}
+            {item.href ? (
+              <a href={item.href} target={item.href.startsWith('http') ? '_blank' : undefined} rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined} class="hover:text-[#f4ae52]">
+                <span class="font-bold text-[#e0cbb9]">{item.label}:</span> {item.text}
+              </a>
+            ) : (
+              <span><span class="font-bold text-[#e0cbb9]">{item.label}:</span> {item.text}</span>
+            )}
+          </span>
+        ))}
+      </div>
+    )}
     <div class="flex flex-wrap justify-between gap-5 pt-7 text-xs text-[#d5bca4]"><span>© {year} {legalDisplayName}</span><span class="max-w-2xl">{site.disclaimer}</span></div>
   </div>
 </footer>

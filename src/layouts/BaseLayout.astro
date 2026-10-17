@@ -2,9 +2,30 @@
 import '../styles/global.css';
 import { site } from '../config/site';
 import SiteFooter from '../components/shared/SiteFooter.astro';
-interface Props {title?:string;description?:string;serviceTitle?:string}
-const {title,description='Informasi dan pendampingan kebutuhan SLO dan NIDI.',serviceTitle}=Astro.props;
-const fullTitle=title?title+' | '+site.name:site.name;
+
+interface Props {
+  title?: string;
+  description?: string;
+  serviceTitle?: string;
+  /** URL gambar untuk meta Open Graph (og:image). Kosong = fallback logo. */
+  socialImage?: string;
+  /** URL kanonik; kosong = mengikuti URL permintaan. */
+  canonical?: string;
+  /** Jika true, halaman tidak diindeks oleh mesin pencari. */
+  noindex?: boolean;
+}
+const {
+  title,
+  description = 'Informasi dan pendampingan kebutuhan SLO dan NIDI.',
+  serviceTitle,
+  socialImage,
+  canonical,
+  noindex = false,
+} = Astro.props;
+const fullTitle = title ? title + ' | ' + site.name : site.name;
+const ogImage = socialImage || '/images/logo-jasa-slo.svg';
+const canonicalUrl = canonical || Astro.url.href;
+const robots = noindex ? 'noindex, nofollow' : 'index, follow';
 ---
 <!doctype html>
 <html lang="id">
@@ -13,6 +34,14 @@ const fullTitle=title?title+' | '+site.name:site.name;
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
 <title>{fullTitle}</title><meta name="description" content={description} />
+<meta name="robots" content={robots} />
+<link rel="canonical" href={canonicalUrl} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="id_ID" />
+<meta name="twitter:card" content="summary_large_image" />
 </head>
 <body class="min-h-screen"><slot /><SiteFooter serviceTitle={serviceTitle} /></body>
 </html>
