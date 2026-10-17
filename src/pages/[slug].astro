@@ -1,0 +1,19 @@
+---
+import { getCollection, render } from 'astro:content';
+import PageLayout from '../components/shared/PageLayout.astro';
+import BlockRenderer from '../components/blocks/BlockRenderer.astro';
+
+export async function getStaticPaths() {
+  const pages = (await getCollection('pages')).sort(
+    (a, b) => (a.data.order ?? 0) - (b.data.order ?? 0),
+  );
+  return pages.map((page) => ({ params: { slug: page.id }, props: { page } }));
+}
+
+const { page } = Astro.props;
+const { Content } = await render(page);
+---
+<PageLayout page={page.data}>
+  {page.data.blocks.map((block) => <BlockRenderer block={block} />)}
+  <div class="page-markdown mt-8"><Content /></div>
+</PageLayout>

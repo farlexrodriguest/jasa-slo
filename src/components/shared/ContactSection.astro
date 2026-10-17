@@ -1,0 +1,141 @@
+---
+/**
+ * ContactSection — blok kontak ber-brand untuk halaman statis.
+ *
+ * Menampilkan kanal WhatsApp, email, alamat, dan jam layanan, serta formulir
+ * yang menyusun pesan konsultasi melalui WhatsApp.
+ *
+ * Identitas (nomor WhatsApp, email, alamat) diambil dari `src/config/site.ts`;
+ * label bersama dari `src/config/ui.ts`. Hanya salinan khusus halaman yang
+ * diterima lewat props.
+ *
+ * Props:
+ * - id?: string — anchor id (default "kontak")
+ * - title: string — judul bagian
+ * - intro: string — teks pengantar
+ * - hoursTitle?: string — judul jam layanan
+ * - hours?: string[] — baris jam layanan
+ * - formTitle?: string — judul formulir
+ * - serviceOptions?: string[] — pilihan layanan pada formulir
+ */
+import { site } from '../../config/site.ts';
+import { ui } from '../../config/ui.ts';
+const {
+  id = 'kontak',
+  title,
+  intro,
+  hoursTitle,
+  hours = [] as string[],
+  formTitle,
+  serviceOptions = [] as string[],
+} = Astro.props as {
+  id?: string;
+  title: string;
+  intro: string;
+  hoursTitle?: string;
+  hours?: string[];
+  formTitle?: string;
+  serviceOptions?: string[];
+};
+
+const titleId = `${id}-title`;
+const formId = `${id}-form`;
+
+const waNumber = String(site.contact?.whatsapp ?? '').replace(/[^0-9]/g, '');
+const waDisplay = site.contact?.whatsapp ?? '';
+const email = site.contact?.email ?? '';
+const address = site.contact?.address ?? '';
+const fieldClass = 'w-full border border-[#dfcdb8] bg-white px-4 py-3 text-[#2a1a0e] outline-none transition focus:border-[#d4621a]';
+const labelClass = 'mb-1 block text-sm font-bold text-[#2a1a0e]';
+---
+<section id={id} class="my-10" aria-labelledby={titleId}>
+  <header class="border-b border-[#dfcdb8] pb-6">
+    <h2 id={titleId} class="text-2xl font-extrabold tracking-tight text-[#2a1a0e] sm:text-3xl">{title}</h2>
+    {intro && <p class="mt-3 leading-8 text-[#624b39]">{intro}</p>}
+  </header>
+
+  <div class="mt-8 grid gap-4 sm:grid-cols-2">
+    <a href={`https://wa.me/${waNumber}`} target="_blank" rel="noopener noreferrer" class="block border border-[#dfcdb8] bg-[#fef3e2] p-5 transition hover:border-[#d4621a]">
+      <span class="eyebrow text-[#a34a17]">{ui.contact.whatsappLabel}</span>
+      <span class="mt-2 block text-lg font-bold text-[#2a1a0e]">{waDisplay}</span>
+    </a>
+    <a href={`mailto:${email}`} class="block border border-[#dfcdb8] bg-[#fef3e2] p-5 transition hover:border-[#d4621a]">
+      <span class="eyebrow text-[#a34a17]">Email</span>
+      <span class="mt-2 block break-all text-lg font-bold text-[#2a1a0e]">{email}</span>
+    </a>
+    <div class="border border-[#dfcdb8] bg-[#fef3e2] p-5 sm:col-span-2">
+      <span class="eyebrow text-[#a34a17]">{ui.contact.addressHeading}</span>
+      <p class="mt-2 font-semibold text-[#2a1a0e]">{site.name}</p>
+      <p class="text-[#624b39]">{address}</p>
+    </div>
+    {hours.length > 0 && (
+      <div class="border border-[#dfcdb8] bg-[#fef3e2] p-5 sm:col-span-2">
+        <span class="eyebrow text-[#a34a17]">{hoursTitle}</span>
+        <ul class="mt-2 space-y-1 text-[#624b39]">
+          {hours.map((hour: string) => <li>{hour}</li>)}
+        </ul>
+      </div>
+    )}
+  </div>
+
+  <form
+    id={formId}
+    data-contact-form
+    data-whatsapp={waNumber}
+    data-msg-header={ui.contact.whatsappMessage.header}
+    data-msg-name={ui.contact.whatsappMessage.name}
+    data-msg-company={ui.contact.whatsappMessage.company}
+    data-msg-phone={ui.contact.whatsappMessage.phone}
+    data-msg-service={ui.contact.whatsappMessage.service}
+    data-msg-message={ui.contact.whatsappMessage.message}
+    class="mt-10 space-y-4 border border-[#dfcdb8] bg-[#fffaf2] p-6 sm:p-8"
+  >
+    {formTitle && <h3 class="text-xl font-extrabold text-[#2a1a0e]">{formTitle}</h3>}
+    <div>
+      <label for={`${formId}-name`} class={labelClass}>{ui.contact.fields.name.label}</label>
+      <input id={`${formId}-name`} name="name" type="text" required class={fieldClass} placeholder={ui.contact.fields.name.placeholder} />
+    </div>
+    <div>
+      <label for={`${formId}-company`} class={labelClass}>{ui.contact.fields.company.label}</label>
+      <input id={`${formId}-company`} name="company" type="text" required class={fieldClass} placeholder={ui.contact.fields.company.placeholder} />
+    </div>
+    <div>
+      <label for={`${formId}-phone`} class={labelClass}>{ui.contact.fields.phone.label}</label>
+      <input id={`${formId}-phone`} name="phone" type="tel" required class={fieldClass} placeholder={ui.contact.fields.phone.placeholder} />
+    </div>
+    <div>
+      <label for={`${formId}-service`} class={labelClass}>{ui.contact.fields.service.label}</label>
+      <select id={`${formId}-service`} name="service" required class={fieldClass}>
+        {serviceOptions.map((option: string) => <option value={option}>{option}</option>)}
+      </select>
+    </div>
+    <div>
+      <label for={`${formId}-message`} class={labelClass}>{ui.contact.fields.message.label}</label>
+      <textarea id={`${formId}-message`} name="message" rows="4" class={fieldClass} placeholder={ui.contact.fields.message.placeholder}></textarea>
+    </div>
+    <button type="submit" class="w-full bg-[#d4621a] py-4 font-bold text-white transition hover:bg-[#b8500f]">
+      {ui.contact.submitLabel}
+    </button>
+    <p class="text-xs leading-relaxed text-[#8a6b52]">{ui.contact.disclaimer}</p>
+  </form>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('[data-contact-form]').forEach((form) => {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const formData = new FormData(form);
+      const labels = form.dataset;
+      const message = [
+        labels.msgHeader,
+        labels.msgName + ': ' + String(formData.get('name') || ''),
+        labels.msgCompany + ': ' + String(formData.get('company') || ''),
+        labels.msgPhone + ': ' + String(formData.get('phone') || ''),
+        labels.msgService + ': ' + String(formData.get('service') || ''),
+        labels.msgMessage + ': ' + String(formData.get('message') || ''),
+      ].join(String.fromCharCode(10));
+      const phone = form.dataset.whatsapp;
+      if (phone) window.open('https://wa.me/' + phone + '?text=' + encodeURIComponent(message), '_blank', 'noopener,noreferrer');
+    });
+  });
+</script>

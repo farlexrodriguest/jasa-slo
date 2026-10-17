@@ -1,0 +1,41 @@
+---
+title: "Tentang Kami"
+description: "Peran, pendekatan, dan batasan layanan konsultan pendamping untuk kebutuhan SLO, NIDI, dan kelistrikan."
+eyebrow: "Profil / Konsultan pendamping"
+order: 2
+blocks:
+  - component: "section"
+    id: "peran"
+    heading: "Peran kami"
+    content:
+      - type: "p"
+        text: "Kami berperan sebagai konsultan pendamping yang membantu memahami kebutuhan kelistrikan, memetakan dokumen, dan menyiapkan langkah menuju proses yang dijalankan oleh lembaga yang berwenang."
+      - type: "p"
+        text: "Layanan ini berfokus pada pendampingan dan informasi. Kami bukan penerbit sertifikat dan bukan lembaga inspeksi."
+  - component: "section"
+    id: "pendekatan"
+    heading: "Cara kami bekerja"
+    content:
+      - type: "p"
+        text: "Kami mengutamakan kejelasan informasi sejak awal agar Anda dapat mengambil keputusan dengan pemahaman yang memadai."
+      - type: "list"
+        items:
+          - "Menjelaskan tahapan dan persyaratan secara umum dan mudah dipahami."
+          - "Membantu memetakan dokumen serta informasi teknis yang perlu disiapkan."
+          - "Mengarahkan koordinasi dengan pihak yang berwenang tanpa menjanjikan hasil tertentu."
+  - component: "note"
+    id: "independensi"
+    variant: "info"
+    title: "Catatan independensi"
+    text: "Situs ini bukan situs resmi PLN atau Kementerian ESDM. Pemeriksaan dan sertifikasi dilakukan sesuai kewenangan lembaga terkait, dan penyedia jasa ini berperan sebagai konsultan pendamping, bukan penerbit SLO."
+  - component: "faq"
+    id: "faq"
+    heading: "Pertanyaan umum"
+    items:
+      - question: "Apakah Anda lembaga resmi penerbit SLO?"
+        answer: "Bukan. Kami adalah konsultan pendamping. Penerbitan dan pemeriksaan dilakukan oleh lembaga yang berwenang."
+      - question: "Layanan apa saja yang didampingi?"
+        answer: "Pendampingan untuk kebutuhan SLO tegangan rendah dan menengah, NIDI, serta layanan terkait kelistrikan lainnya."
+      - question: "Wilayah layanan mana yang dicakup?"
+        answer: "Cakupan wilayah dapat berbeda dan perlu dikonfirmasi terlebih dahulu sebelum pengajuan."
+---
