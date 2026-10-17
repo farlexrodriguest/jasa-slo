@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  excludeSlug: string;
+}
+
+const { excludeSlug } = Astro.props;
+
+// Hanya halaman yang bersection `panduan`; mengikuti urutan `order`
+// seperti listing /panduan/ agar konsisten.
+const allPages = await getCollection('pages');
+const others = allPages
+  .filter(p => !p.data.draft && p.data.section === 'panduan' && p.data.slug !== excludeSlug)
+  .sort((a, b) => a.data.order - b.data.order);
+---
+{others.length > 0 && (
+  <nav class="space-y-8">
+    <div class="space-y-4">
+      <p class="eyebrow text-[#a34a17]">Panduan Lainnya</p>
+      <ul class="divide-y divide-[#dfcdb8] border-t border-[#dfcdb8]">
+        {others.map(p => (
+          <li>
+            <a href={`/panduan/${p.data.slug}/`} class="group block py-5">
+              <h3 class="text-sm font-bold uppercase tracking-tight text-[#2a1a0e] group-hover:text-[#d4621a] transition-colors">
+                {p.data.title}
+              </h3>
+              <p class="mt-1 text-xs leading-5 text-[#624b39] line-clamp-2 transition-colors group-hover:text-[#2a1a0e]">
+                {p.data.description}
+              </p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <a href="/panduan/" class="inline-block text-xs font-bold uppercase tracking-widest text-[#a34a17] hover:text-[#d4621a] transition-colors">
+      Lihat semua panduan →
+    </a>
+  </nav>
+)}

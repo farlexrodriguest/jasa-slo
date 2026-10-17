@@ -17,7 +17,7 @@ const { Content } = await render(page);
 // Satu resolusi dipakai bersama oleh tagline footer dan CTA layanan agar sejalan.
 const service = await relatedService(page.data.relatedType, page.data.relatedId);
 ---
-<PageLayout page={page.data} serviceTitle={service?.data.title}>
+<PageLayout page={page.data} serviceTitle={service?.data.title} othersList>
   {page.data.blocks.map((block) => <BlockRenderer block={block} />)}
   <div class="page-markdown mt-8"><Content /></div>
   <RelatedServiceCta service={service} sourceTitle={page.data.title} sourceLabel="panduan" />
