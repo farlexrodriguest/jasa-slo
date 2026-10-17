@@ -16,6 +16,7 @@ export const ui = {
     allArticlesLink: 'Lihat semua artikel',
     relatedHeading: 'Artikel terkait',
     relatedHeadingAlt: 'Artikel Terkait',
+    relatedServiceHeading: 'Layanan terkait',
     empty: 'Belum ada artikel tersedia.',
     emptyList: 'Belum ada artikel tersedia.',
   },

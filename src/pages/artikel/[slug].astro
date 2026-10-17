@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/shared/SiteHeader.astro';
 import SiteFooter from '../../components/shared/SiteFooter.astro';
 import ArticleOthersList from '../../components/shared/ArticleOthersList.astro';
+import ArticleServiceCta from '../../components/shared/ArticleServiceCta.astro';
 export async function getStaticPaths(){const articles=(await getCollection('articles')).filter((a)=>!a.data.draft);return articles.map(article=>({params:{slug:article.data.slug},props:{article}}))}
 const {article}=Astro.props;
 const {Content}=await render(article);
@@ -14,7 +15,7 @@ const {Content}=await render(article);
 <a href="/artikel/" class="eyebrow text-[#a34a17] hover:underline">← Kembali ke pustaka</a>
 <div class="mt-12 grid gap-12 lg:grid-cols-[240px_minmax(0,1fr)]">
 <aside class="border-t border-[#2a1a0e] pt-5"><p class="eyebrow text-[#a34a17]">Artikel / Pengetahuan</p>{article.data.pubDate&&<p class="mt-4 text-sm text-[#624b39]">{article.data.pubDate.toLocaleDateString('id-ID',{year:'numeric',month:'long',day:'numeric'})}</p>}<div class="mt-10 hidden lg:block"><ArticleOthersList excludeSlug={article.data.slug} /></div></aside>
-<article><header class="border-b border-[#dfcdb8] pb-12"><h1 class="max-w-3xl text-4xl font-extrabold leading-[1.13] md:text-6xl">{article.data.title}</h1><p class="mt-7 max-w-2xl text-xl leading-8 text-[#624b39]">{article.data.description}</p></header><div class="reading-prose pt-12"><Content/></div><div class="mt-20 border-t border-[#dfcdb8] pt-7"><a href="/artikel/" class="font-bold text-[#a34a17]">← Semua artikel</a></div></article>
+<article><header class="border-b border-[#dfcdb8] pb-12"><h1 class="max-w-3xl text-4xl font-extrabold leading-[1.13] md:text-6xl">{article.data.title}</h1><p class="mt-7 max-w-2xl text-xl leading-8 text-[#624b39]">{article.data.description}</p></header><div class="reading-prose pt-12"><Content/></div><ArticleServiceCta relatedType={article.data.relatedType} relatedId={article.data.relatedId} /><div class="mt-20 border-t border-[#dfcdb8] pt-7"><a href="/artikel/" class="font-bold text-[#a34a17]">← Semua artikel</a></div></article>
 </div></main><SiteFooter/>
 </BaseLayout>
 <style is:global>

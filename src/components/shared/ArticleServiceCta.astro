@@ -1,0 +1,44 @@
+---
+/**
+ * ArticleServiceCta — CTA panel yang menautkan artikel ke layanan terkait.
+ *
+ * Membaca `relatedType`/`relatedId` dari frontmatter artikel (pola konsultan-slf),
+ * mencari layanan yang cocok, lalu menampilkan panel CTA. Panel tidak dirender bila
+ * relasi tidak ada, bukan bertipe `service`, atau layanan tidak ditemukan/tidak aktif.
+ */
+import { getCollection } from 'astro:content';
+import { ui } from '../../config/ui.ts';
+
+interface Props {
+  relatedType?: string;
+  relatedId?: number;
+}
+
+const { relatedType, relatedId } = Astro.props;
+
+const service =
+  relatedType === 'service' && relatedId
+    ? (await getCollection('services')).find(
+        (s) => s.data.id === relatedId && !s.data.draft && s.data.status === 'active',
+      ) ?? null
+    : null;
+---
+
+{service && (
+  <aside
+    aria-labelledby="layanan-terkait-eyebrow layanan-terkait-heading"
+    class="mt-16 border border-[#74503a] bg-[#2a1a0e] p-8 text-[#fef3e2] md:p-10"
+  >
+    <p id="layanan-terkait-eyebrow" class="eyebrow text-[#f4ae52]">{ui.article.relatedServiceHeading}</p>
+    <h2 id="layanan-terkait-heading" class="mt-4 text-3xl font-extrabold leading-tight md:text-4xl">
+      {service.data.title}
+    </h2>
+    <p class="mt-4 max-w-2xl leading-8 text-[#e0cbb9]">{service.data.description}</p>
+    <a
+      href={`/layanan/${service.data.slug}/`}
+      class="mt-8 inline-flex items-center gap-2 border border-[#f3ad7b] bg-[#d4621a] px-6 py-3 text-xs font-bold uppercase tracking-widest text-[#fef3e2] transition-colors hover:bg-[#f4ae52] hover:text-[#2a1a0e]"
+    >
+      {ui.services.readMore} <span aria-hidden="true">↗</span>
+    </a>
+  </aside>
+)}
