@@ -12,6 +12,7 @@ canonical: "/"
 order: 0
 blocks:
   - component: "home-hero"
+    id: "ikhtisar"
     eyebrow: "Instalasi listrik / sertifikasi / informasi"
     headingLead: "Urusan listrik."
     headingHighlight: "Lebih terang."

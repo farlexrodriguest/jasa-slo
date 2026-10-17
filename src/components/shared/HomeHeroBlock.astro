@@ -3,23 +3,12 @@
  * HomeHeroBlock — hero beranda ber-brand (palet espresso/cream).
  *
  * Props:
- * - eyebrow, headingLead, headingHighlight, intro
+ * - id?, eyebrow, headingLead, headingHighlight, intro
  * - primaryLabel, primaryHref, secondaryLabel, secondaryHref
  * - sideEyebrow, sideNote, sideFootEyebrow
  */
-const {
-  eyebrow,
-  headingLead,
-  headingHighlight,
-  intro,
-  primaryLabel,
-  primaryHref,
-  secondaryLabel,
-  secondaryHref,
-  sideEyebrow,
-  sideNote,
-  sideFootEyebrow,
-} = Astro.props as {
+const { id, eyebrow, headingLead, headingHighlight, intro, primaryLabel, primaryHref, secondaryLabel, secondaryHref, sideEyebrow, sideNote, sideFootEyebrow } = Astro.props as {
+  id?: string;
   eyebrow: string;
   headingLead: string;
   headingHighlight: string;
@@ -33,7 +22,7 @@ const {
   sideFootEyebrow: string;
 };
 ---
-<section class="border-b border-[#dfcdb8]">
+<section id={id} class="border-b border-[#dfcdb8]">
   <div class="mx-auto grid max-w-[1440px] lg:grid-cols-[1.55fr_.45fr]">
     <div class="px-6 py-20 lg:px-12 lg:py-28">
       <p class="eyebrow mb-8 text-[#a34a17]">{eyebrow}</p>
