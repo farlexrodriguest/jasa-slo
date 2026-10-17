@@ -18,6 +18,8 @@ const services = defineCollection({
     title: z.string(),
     description: z.string(),
     icon: z.string().optional(),
+    image: z.string().optional(),
+    imageAlt: z.string().optional(),
     order: z.number().default(0),
   }),
 });

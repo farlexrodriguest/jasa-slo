@@ -3,7 +3,7 @@ import {getCollection} from 'astro:content';
 import ServiceLayout from '../../components/shared/ServiceLayout.astro';
 export async function getStaticPaths(){
  const services=await getCollection('services');
- return services.map(s=>({params:{slug:s.id},props:{service:{title:s.data.title,description:s.data.description}}}));
+ return services.map(s=>({params:{slug:s.id},props:{service:{title:s.data.title,description:s.data.description,image:s.data.image,imageAlt:s.data.imageAlt}}}));
 }
 const {service}=Astro.props;
 ---
