@@ -1,14 +1,14 @@
 ---
-import {getCollection,render} from 'astro:content';
+import {getCollection} from 'astro:content';
 import {relatedService} from '../../utils/services.ts';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/shared/SiteHeader.astro';
 import ArticleOthersList from '../../components/shared/ArticleOthersList.astro';
 import RelatedServiceCta from '../../components/shared/RelatedServiceCta.astro';
 import ArticleRelatedList from '../../components/shared/ArticleRelatedList.astro';
+import BlockRenderer from '../../components/blocks/BlockRenderer.astro';
 export async function getStaticPaths(){const articles=(await getCollection('articles')).filter((a)=>!a.data.draft);return articles.map(article=>({params:{slug:article.data.slug},props:{article}}))}
 const {article}=Astro.props;
-const {Content}=await render(article);
 const service=await relatedService(article.data.relatedType,article.data.relatedId);
 ---
 <BaseLayout title={article.data.title} description={article.data.description} serviceTitle={service?.data.title}>
@@ -17,18 +17,12 @@ const service=await relatedService(article.data.relatedType,article.data.related
 <a href="/artikel/" class="eyebrow text-[#a34a17] hover:underline">← Kembali ke pustaka</a>
 <div class="mt-12 grid gap-12 lg:grid-cols-[240px_minmax(0,1fr)]">
 <aside class="border-t border-[#2a1a0e] pt-5"><p class="eyebrow text-[#a34a17]">Artikel / Pengetahuan</p>{article.data.pubDate&&<p class="mt-4 text-sm text-[#624b39]">{article.data.pubDate.toLocaleDateString('id-ID',{year:'numeric',month:'long',day:'numeric'})}</p>}<div class="mt-10 hidden lg:block"><ArticleOthersList excludeSlug={article.data.slug} /></div></aside>
-<article><header class="border-b border-[#dfcdb8] pb-12"><h1 class="max-w-3xl text-4xl font-extrabold leading-[1.13] md:text-6xl">{article.data.title}</h1><p class="mt-7 max-w-2xl text-xl leading-8 text-[#624b39]">{article.data.description}</p></header><div class="reading-prose pt-12"><Content/></div><RelatedServiceCta service={service} sourceTitle={article.data.title} /><div class="mt-20 border-t border-[#dfcdb8] pt-7"><a href="/artikel/" class="font-bold text-[#a34a17]">← Semua artikel</a></div>
+<article><header class="border-b border-[#dfcdb8] pb-12"><h1 class="max-w-3xl text-4xl font-extrabold leading-[1.13] md:text-6xl">{article.data.title}</h1><p class="mt-7 max-w-2xl text-xl leading-8 text-[#624b39]">{article.data.description}</p></header>
+<div class="pt-8">
+{article.data.blocks.map((block) => <BlockRenderer block={block} />)}
+</div>
+<RelatedServiceCta service={service} sourceTitle={article.data.title} /><div class="mt-20 border-t border-[#dfcdb8] pt-7"><a href="/artikel/" class="font-bold text-[#a34a17]">← Semua artikel</a></div>
 {article.data.relatedArticles.length > 0 && <ArticleRelatedList articleId={article.data.id} relatedIds={article.data.relatedArticles} />}
 </article>
 </div></main>
 </BaseLayout>
-<style is:global>
-.reading-prose{max-width:68ch;font-size:1.075rem;line-height:1.9;color:#463427}
-.reading-prose h2,.reading-prose h3{color:#2a1a0e;font-weight:800;line-height:1.2;margin:2.7rem 0 1rem}
-.reading-prose h2{font-size:2rem}.reading-prose h3{font-size:1.45rem}
-.reading-prose p,.reading-prose ul,.reading-prose ol,.reading-prose blockquote{margin-bottom:1.5rem}
-.reading-prose ul{list-style:disc;padding-left:1.5rem}.reading-prose ol{list-style:decimal;padding-left:1.5rem}
-.reading-prose a{color:#a34a17;text-decoration:underline;text-underline-offset:3px}
-.reading-prose blockquote{border-left:3px solid #d4621a;padding-left:1.5rem;font-style:italic}
-.reading-prose img{max-width:100%;height:auto}.reading-prose :not(pre)>code{background:#edd9c1;padding:.15rem .35rem}
-</style>
