@@ -6,7 +6,7 @@ slug: "uji-panel-cubicle"
 title: "Pengujian Panel Cubicle"
 pubDate: "2026-10-17T00:00:00Z"
 updatedDate: "2026-10-17T00:00:00Z"
-description: "Pengujian dan verifikasi panel hubung bagi (switchgear/cubicle) 20 kV mengacu IEC 61439 — memastikan keandalan proteksi, ketahanan isolasi, dan kelayakan operasional gardu."
+description: "Pengujian dan verifikasi panel hubung bagi (switchgear/cubicle) 20 kV mengacu IEC 62271-200 — memastikan keandalan proteksi, ketahanan isolasi, dan kelayakan operasional gardu."
 serviceGroup: "pengujian"
 order: 5
 draft: false
@@ -20,13 +20,13 @@ blocks:
     heading: "Ruang lingkup pengujian"
     content:
       - type: "p"
-        text: "Pengujian panel cubicle 20 kV mencakup verifikasi desain (Type Test) dan pengujian rutin berkala untuk memastikan pemutus tenaga (PMT), busbar, pembumian, dan sistem proteksi berfungsi andal sesuai standar IEC 61439."
+        text: "Pengujian panel cubicle 20 kV mencakup verifikasi desain (Type Test) dan pengujian rutin berkala untuk memastikan pemutus tenaga (PMT), busbar, pembumian, dan sistem proteksi berfungsi andal sesuai standar IEC 62271-200."
       - type: "p"
         text: "Pengujian ini penting untuk gardu distribusi dan gardu hubung guna mendeteksi degradasi isolasi lebih awal serta mencegah korsleting, kegagalan proteksi, dan risiko kebakaran."
   - component: "checklist-card"
     id: "parameter-uji"
     title: "Item pengujian utama"
-    description: "Item pengujian mengacu pada standar IEC 61439 dan pedoman pemeliharaan gardu distribusi:"
+    description: "Item pengujian mengacu pada standar IEC 62271-200 dan pedoman pemeliharaan gardu distribusi:"
     items:
       - label: "Uji kenaikan suhu (Temperature Rise Test) pada terminasi dan busbar"
       - label: "Uji ketahanan hubung singkat (Short Circuit Withstand Test)"
@@ -60,5 +60,5 @@ blocks:
       - question: "Apakah cubicle harus padam total saat pengujian?"
         answer: "Ya, sebagian besar pengujian elektrikal (isolasi, tahanan kontak, pembumian) memerlukan pemadaman total demi keselamatan teknisi dan akurasi instrumen ukur."
       - question: "Standar apa yang menjadi rujukan pengujian?"
-        answer: "Rujukan utama adalah IEC 61439 (standar perakitan panel distribusi) serta SPLN terkait sistem distribusi tegangan menengah di Indonesia."
+        answer: "Rujukan utama adalah IEC 62271-200 untuk peralatan pemutus beban tegangan menengah (cubicle 20 kV) serta SPLN terkait sistem distribusi tegangan menengah di Indonesia. Untuk panel tegangan rendah seperti MCC atau panel distribusi 400 V, rujukannya adalah IEC 61439."
 ---
