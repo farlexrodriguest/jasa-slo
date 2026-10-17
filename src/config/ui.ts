@@ -15,6 +15,7 @@ export const ui = {
     latestDescription: 'Informasi untuk memahami instalasi, dokumen, dan proses terkait.',
     allArticlesLink: 'Lihat semua artikel',
     relatedHeading: 'Artikel terkait',
+    relatedHeadingAlt: 'Artikel Terkait',
     empty: 'Belum ada artikel tersedia.',
     emptyList: 'Belum ada artikel tersedia.',
   },
@@ -27,6 +28,17 @@ export const ui = {
       warning: 'Perlu diperhatikan',
       danger: 'Peringatan',
     },
+  },
+  dialog: {
+    ariaLabel: 'Dialog',
+    closeLabel: 'Tutup',
+    menuLabel: 'Menu',
+  },
+  imagePanel: {
+    ariaLabel: 'Ilustrasi layanan',
+  },
+  stats: {
+    ariaLabel: 'Ringkasan statistik',
   },
   contact: {
     channelsHeading: 'Hubungi kami',
