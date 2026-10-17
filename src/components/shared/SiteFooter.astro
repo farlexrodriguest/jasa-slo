@@ -2,11 +2,15 @@
 import { navigation } from '../../config/navigation';
 import { site, legalDisplayName } from '../../config/site.ts';
 const year = new Date().getFullYear();
+const { serviceTitle } = Astro.props as { serviceTitle?: string };
+const taglineText = serviceTitle
+  ? `${legalDisplayName} menyediakan jasa ${serviceTitle}.`
+  : site.footer.tagline;
 ---
 <footer class="bg-[#2a1a0e] text-[#fef3e2]">
   <div class="mx-auto max-w-[1440px] px-6 py-16 lg:px-12">
     <div class="grid gap-12 border-b border-[#6b4a34] pb-16 md:grid-cols-[1.4fr_1fr]">
-      <div><a href="/" aria-label={`${site.name} — Beranda`} class="inline-block"><img src="/images/logo-jasa-slo-light.svg" alt={site.name} width="621" height="110" class="h-10 w-auto" loading="lazy" /></a><p class="eyebrow mt-8 text-[#f4ae52]">{site.footer.eyebrow}</p><p class="mt-6 max-w-xl font-[Manrope] text-4xl font-extrabold leading-tight md:text-5xl">{site.footer.tagline}</p></div>
+      <div><a href="/" aria-label={`${site.name} — Beranda`} class="inline-block"><img src="/images/logo-jasa-slo-light.svg" alt={site.name} width="621" height="110" class="h-10 w-auto" loading="lazy" /></a><p class="eyebrow mt-8 text-[#f4ae52]">{site.footer.eyebrow}</p><p class="mt-6 max-w-xl font-[Manrope] text-4xl font-extrabold leading-tight md:text-5xl">{taglineText}</p></div>
       <nav aria-label="Navigasi footer" class="grid grid-cols-2 content-start gap-4 text-sm">
         {navigation.header.map((item) => <a href={item.href} class="hover:text-[#f4ae52]">{item.label}</a>)}
         <a href="/kontak/" class="hover:text-[#f4ae52]">Kontak</a>

@@ -4,7 +4,7 @@ import SiteHeader from './SiteHeader.astro';
 import ServiceOthersList from './ServiceOthersList.astro';
 const {service}=Astro.props;
 ---
-<BaseLayout title={service.title} description={service.description}>
+<BaseLayout title={service.title} description={service.description} serviceTitle={service.title}>
 <SiteHeader />
 <main id="main-content">
 <section id="utama" class="border-b border-[#dfcdb8] bg-[#2a1a0e] text-[#fef3e2]">
