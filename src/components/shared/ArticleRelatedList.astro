@@ -1,0 +1,54 @@
+---
+/**
+ * ArticleRelatedList — daftar "Artikel terkait" berdasarkan `relatedArticles`
+ * (array id artikel) di frontmatter.
+ *
+ * Id diresolusi ke koleksi `articles` melalui `getEntry` agar urutan dan
+ * keberadaan selalu mengikuti sumber kebenaran (content collection), bukan
+ * array hard-coded. Artikel yang draft atau sama dengan artikel saat ini
+ * dilewatkan. Panel tidak dirender bila tidak ada relasi.
+ */
+import { getCollection } from 'astro:content';
+import { ui } from '../../config/ui.ts';
+
+interface Props {
+  articleId: number;
+  relatedIds: number[];
+}
+
+const { articleId, relatedIds } = Astro.props;
+
+// `getEntry` mengakses berdasarkan slug, bukan id, jadi id diresolusi
+// melalui koleksi penuh — satu sumber kebenaran dengan content collection.
+const allArticles = await getCollection('articles');
+const byId = new Map(allArticles.map((a) => [a.data.id, a]));
+const uniqueIds = [...new Set(relatedIds)].filter((id) => id !== articleId);
+const entries = uniqueIds
+  .map((id) => byId.get(id))
+  .filter((entry): entry is NonNullable<typeof entry> => !!entry && !entry.data.draft);
+
+entries.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+{entries.length > 0 && (
+  <section class="mt-20 border-t border-[#dfcdb8] pt-10" aria-labelledby="artikel-terkait-title">
+    <p id="artikel-terkait-title" class="eyebrow text-[#a34a17]">{ui.article.relatedHeading}</p>
+    <ul class="mt-6 divide-y divide-[#dfcdb8] border-t border-[#dfcdb8]">
+      {entries.map((entry) => (
+        <li>
+          <a href={`/artikel/${entry.data.slug}/`} class="group block py-5">
+            <h3 class="text-sm font-bold uppercase tracking-tight text-[#2a1a0e] group-hover:text-[#d4621a] transition-colors">
+              {entry.data.title}
+            </h3>
+            <p class="mt-1 text-xs leading-5 text-[#624b39] line-clamp-2 transition-colors group-hover:text-[#2a1a0e]">
+              {entry.data.description}
+            </p>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <a href="/artikel/" class="mt-6 inline-block text-xs font-bold uppercase tracking-widest text-[#a34a17] hover:text-[#d4621a] transition-colors">
+      Lihat semua artikel →
+    </a>
+  </section>
+)}
