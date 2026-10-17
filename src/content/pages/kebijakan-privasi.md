@@ -17,6 +17,21 @@ blocks:
     content:
       - type: "p"
         text: "Kebijakan ini menjelaskan bagaimana informasi yang Anda berikan melalui situs ini dikumpulkan, digunakan, dan dilindungi. Dengan menggunakan situs ini, Anda menyetujui praktik yang dijelaskan di halaman ini."
+  - component: "table"
+    id: "tabel-data"
+    heading: "Ringkasan Pengumpulan Data"
+    head: ["Jenis Data", "Tujuan Pengumpulan", "Sifat"]
+    rows:
+      - ["Identitas Kontak", "Komunikasi konsultasi", "Wajib"]
+      - ["Data Teknis", "Pemetaan kebutuhan instalasi", "Opsional"]
+  - component: "glossary"
+    id: "glosarium-privasi"
+    heading: "Glosarium Istilah"
+    items:
+      - term: "Data Pribadi"
+        definition: "Informasi yang mengidentifikasi atau dapat mengidentifikasi individu."
+      - term: "Kanal Resmi"
+        definition: "Saluran komunikasi terverifikasi seperti WhatsApp dan email."
   - component: "section"
     id: "data"
     heading: "Informasi yang kami kumpulkan"
@@ -65,6 +80,16 @@ blocks:
     content:
       - type: "p"
         text: "Kebijakan ini dapat diperbarui dari waktu ke waktu. Perubahan akan berlaku sejak dipublikasikan pada halaman ini."
+  - component: "source-links"
+    id: "tautan-referensi"
+    intro: "Referensi dan rujukan regulasi ketenagalistrikan."
+    items:
+      - label: "Kementerian ESDM"
+        url: "https://www.esdm.go.id"
+        description: "Portal resmi energi dan sumber daya mineral."
+      - label: "Direktorat Jenderal Ketenagalistrikan"
+        url: "https://gatrik.esdm.go.id"
+        description: "Regulasi dan informasi teknis ketenagalistrikan."
   - component: "note"
     id: "catatan-privasi"
     variant: "info"

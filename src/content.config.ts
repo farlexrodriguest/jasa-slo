@@ -213,7 +213,7 @@ const contentBlocks = z.array(
       id: z.string().optional(),
       title: z.string().min(1),
       intro: z.string().optional(),
-      documents: z.array(z.object({ name: z.string().min(1), purpose: z.string().optional(), href: z.string().optional() })).min(1),
+      items: z.array(z.object({ name: z.string().min(1), purpose: z.string().optional(), mandatory: z.boolean().optional() })).min(1),
       class: z.record(z.string(), z.string()).optional(),
     }),
     z.object({
@@ -241,7 +241,7 @@ const contentBlocks = z.array(
       component: z.literal('source-links'),
       id: z.string().optional(),
       intro: z.string().optional(),
-      links: z.array(z.object({ label: z.string().min(1), href: z.string().min(1), description: z.string().optional() })).min(1),
+      items: z.array(z.object({ label: z.string().min(1), url: z.string().min(1), description: z.string().optional() })).min(1),
       class: z.record(z.string(), z.string()).optional(),
     }),
     z.object({
@@ -277,12 +277,20 @@ const contentBlocks = z.array(
     z.object({
       component: z.literal('service-list'),
       id: z.string().optional(),
+      eyebrow: z.string().optional(),
+      heading: z.string().optional(),
+      description: z.string().optional(),
+      variant: z.string().optional(),
+      columns: z.number().int().optional(),
       class: z.record(z.string(), z.string()).optional(),
     }),
     z.object({
       component: z.literal('article-list'),
       id: z.string().optional(),
       mode: z.string().optional(),
+      heading: z.string().optional(),
+      description: z.string().optional(),
+      limit: z.number().int().optional(),
       class: z.record(z.string(), z.string()).optional(),
     }),
     z.object({

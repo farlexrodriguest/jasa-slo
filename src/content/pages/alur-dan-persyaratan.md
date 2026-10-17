@@ -20,6 +20,16 @@ blocks:
         text: "Setiap pengajuan Sertifikat Laik Operasi (SLO) atau pendampingan NIDI memiliki tahapan yang dapat berbeda tergantung jenis, kapasitas, dan kondisi instalasi. Halaman ini merangkum alur umum agar Anda dapat mempersiapkan kebutuhan sejak awal."
       - type: "p"
         text: "Alur di bawah bersifat indikatif. Persyaratan, urutan, dan keputusan akhir tetap mengikuti ketentuan lembaga inspeksi yang berwenang."
+  - component: "steps"
+    id: "langkah-tahapan"
+    heading: "Langkah Utama Pengurusan"
+    items:
+      - title: "1. Konsultasi Awal"
+        text: "Sampaikan spesifikasi instalasi dan jenis kebutuhan Anda."
+      - title: "2. Verifikasi Dokumen"
+        text: "Himpun data teknis, identitas, dan diagram satu garis."
+      - title: "3. Pemeriksaan & Pengujian"
+        text: "Koordinasikan pelaksanaan inspeksi bersama Lembaga Inspeksi Teknik (LIT)."
   - component: "process-timeline"
     id: "alur"
     title: "Tahapan umum pendampingan"
@@ -44,6 +54,25 @@ blocks:
       - label: "Data teknis dan diagram instalasi, apabila tersedia"
       - label: "Dokumen legalitas usaha atau bangunan, bila dipersyaratkan"
     note: "Kelengkapan dan format dokumen mengikuti ketentuan lembaga yang berwenang."
+  - component: "document-list"
+    id: "daftar-dokumen-wajib"
+    title: "Daftar Dokumen Pendukung"
+    intro: "Dokumen yang umumnya disiapkan dalam proses perizinan dan sertifikasi."
+    items:
+      - name: "Identitas Pemohon / Penanggung Jawab"
+        purpose: "KTP atau akta badan usaha untuk pencatatan."
+      - name: "Diagram Satu Garis (SLD)"
+        purpose: "Skema kelistrikan instalasi untuk verifikasi teknis."
+  - component: "comparison-table"
+    id: "tabel-perbandingan"
+    title: "Perbandingan Jalur Layanan"
+    intro: "Ringkasan perbedaan utama antara pengurusan tegangan rendah dan menengah."
+    headers: ["Parameter", "Tegangan Rendah", "Tegangan Menengah"]
+    rows:
+      - ["Klasifikasi", "Rumah tinggal / usaha kecil", "Gardu / industri / gedung"]
+      - ["Dokumen Teknis", "Relatif sederhana", "SLD & proteksi rinci"]
+      - ["Pengujian", "Inspeksi instalasi pemanfaatan", "Uji cubicle & transformator"]
+    note: "Persyaratan detail dapat disesuaikan dengan kapasitas aktual."
   - component: "note"
     id: "catatan-kewenangan"
     variant: "warning"
