@@ -1,0 +1,100 @@
+---
+/**
+ * HomeLatestBlock — bagian "artikel terbaru" pada beranda: gabungan artikel
+ * (koleksi `articles`) dan panduan (`pages` ber-section `panduan`).
+ *
+ * Pola mengikuti mode `latest` ArticleListBlock (pola konsultan-slf):
+ * header eyebrow + heading + deskripsi + tautan "lihat semua", grid 3 kolom.
+ * Gabungan sumber diurutkan `updatedDate` DESC (fallback `pubDate`) lalu
+ * dibatasi `limit` — sumber kebenaran tetap content collection.
+ *
+ * Props (dari frontmatter blok `home-latest` di home.md):
+ * - id?, eyebrow?, heading?, description?, ctaLabel?, ctaHref?
+ * - limit?: number — jumlah item (default 3)
+ */
+import { getCollection } from 'astro:content';
+import { ui } from '../../config/ui.ts';
+
+interface Props {
+  id?: string;
+  eyebrow?: string;
+  heading?: string;
+  description?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  limit?: number;
+}
+const { id, eyebrow, heading, description, ctaLabel, ctaHref, limit = 3 } = Astro.props;
+
+type LatestItem = {
+  kind: 'artikel' | 'panduan';
+  eyebrow: string;
+  title: string;
+  description: string;
+  image?: string;
+  href: string;
+  pubDate: Date;
+  updatedDate: Date;
+};
+
+const articles: LatestItem[] = (await getCollection('articles'))
+  .filter((a) => !a.data.draft)
+  .map((a) => ({
+    kind: 'artikel' as const,
+    eyebrow: a.data.category ?? 'Artikel',
+    href: `/artikel/${a.data.slug}/`,
+    title: a.data.title,
+    description: a.data.description,
+    image: a.data.image,
+    pubDate: a.data.pubDate,
+    updatedDate: a.data.updatedDate,
+  }));
+const guides: LatestItem[] = (await getCollection('pages'))
+  .filter((p) => !p.data.draft && p.data.section === 'panduan')
+  .map((p) => ({
+    kind: 'panduan' as const,
+    eyebrow: ui.guide.eyebrow,
+    href: `/panduan/${p.data.slug}/`,
+    title: p.data.title,
+    description: p.data.description,
+    image: p.data.image,
+    pubDate: p.data.pubDate,
+    updatedDate: p.data.updatedDate,
+  }));
+// updatedDate unik lintas koleksi (dijaga validate:dates) — tak ada urutan seri.
+const items = [...articles, ...guides]
+  .sort(
+    (a, b) =>
+      b.updatedDate.valueOf() - a.updatedDate.valueOf() || b.pubDate.valueOf() - a.pubDate.valueOf(),
+  )
+  .slice(0, Math.max(1, limit));
+const utcIso = (date: Date) => date.toISOString().replace(/\.\d{3}Z$/, 'Z');
+const readMoreLabel = { artikel: ui.article.readMore, panduan: ui.guide.readMore } as const;
+---
+<section id={id} class="mx-auto max-w-[1440px] px-6 py-20 lg:px-12 lg:py-28">
+  <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+    <div>
+      {eyebrow && <p class="eyebrow text-[#a34a17]">{eyebrow}</p>}
+      {heading && <h2 class="mt-5 text-5xl font-extrabold md:text-6xl">{heading}</h2>}
+      {description && <p class="mt-5 max-w-2xl text-lg leading-8 text-[#624b39]">{description}</p>}
+    </div>
+    {ctaLabel && ctaHref && <a href={ctaHref} class="font-bold text-[#a34a17] hover:text-[#d4621a]">{ctaLabel} →</a>}
+  </div>
+  {items.length ? (
+    <div class="mt-14 grid gap-5 md:grid-cols-3">
+      {items.map((item) => (
+        <article class="flex h-full flex-col overflow-hidden rounded-2xl border border-[#dfcdb8] bg-white transition hover:-translate-y-1 hover:border-[#dfcdb8] hover:shadow-lg">
+          {item.image && <a href={item.href} class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img src={item.image} alt="" class="h-40 w-full object-cover" loading="lazy" decoding="async" /></a>}
+          <div class="flex flex-1 flex-col p-6">
+            <p class="text-xs font-bold uppercase tracking-wider text-[#d4621a]">{item.eyebrow}</p>
+            <h3 class="mt-3 text-lg font-bold leading-snug text-[#2a1a0e]"><a href={item.href} class="hover:text-[#d4621a]">{item.title}</a></h3>
+            <p class="mt-3 flex-1 text-sm leading-6 text-[#624b39]">{item.description}</p>
+            <div class="mt-5 flex items-center justify-between text-xs text-[#624b39]"><time datetime={utcIso(item.pubDate)}>{item.pubDate.toLocaleDateString(ui.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Jakarta' })}</time><a href={item.href} class="font-semibold text-[#d4621a]">{readMoreLabel[item.kind]}</a></div>
+          </div>
+        </article>
+      ))}
+    </div>
+  ) : (
+    <p class="mt-10 rounded-xl border border-dashed border-[#dfcdb8] p-8 text-[#624b39]">{ui.article.emptyList}</p>
+  )}
+</section>

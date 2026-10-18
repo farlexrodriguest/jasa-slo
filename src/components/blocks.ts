@@ -25,6 +25,7 @@ import ServiceListBlock from './shared/ServiceListBlock.astro';
 import HomeProcessBlock from './shared/HomeProcessBlock.astro';
 import ArticleListBlock from './shared/ArticleListBlock.astro';
 import HomeCtaBlock from './shared/HomeCtaBlock.astro';
+import HomeLatestBlock from './shared/HomeLatestBlock.astro';
 import NotFoundBlock from './shared/NotFoundBlock.astro';
 
 const blocks: Record<string, any> = {
@@ -54,6 +55,7 @@ const blocks: Record<string, any> = {
   'service-list': ServiceListBlock,
   'home-process': HomeProcessBlock,
   'article-list': ArticleListBlock,
+  'home-latest': HomeLatestBlock,
   'home-cta': HomeCtaBlock,
   'not-found': NotFoundBlock,
 };

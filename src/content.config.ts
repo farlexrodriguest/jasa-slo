@@ -141,6 +141,18 @@ const contentBlocks = z.array(
       class: z.record(z.string(), z.string()).optional(),
     }),
     z.object({
+      component: z.literal('home-latest'),
+      id: z.string().optional(),
+      eyebrow: z.string().optional(),
+      heading: z.string().optional(),
+      description: z.string().optional(),
+      ctaLabel: z.string().optional(),
+      ctaHref: z.string().optional(),
+      /** Jumlah item gabungan (artikel + panduan) yang ditampilkan. */
+      limit: z.number().int().positive().default(3),
+      class: z.record(z.string(), z.string()).optional(),
+    }),
+    z.object({
       component: z.literal('card'),
       id: z.string().optional(),
       heading: z.string().min(1),
