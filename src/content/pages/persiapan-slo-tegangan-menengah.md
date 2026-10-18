@@ -15,6 +15,8 @@ image: "/images/panduan/persiapan-slo-tegangan-menengah.webp"
 imageAlt: "Ilustrasi switchgear dan simbol trafo untuk panduan persiapan SLO tegangan menengah"
 relatedType: "service"
 relatedId: 102
+howTo:
+  blockId: "alur-persiapan"
 blocks:
   - component: "section"
     id: "gambaran"
