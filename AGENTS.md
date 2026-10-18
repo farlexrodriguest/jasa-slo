@@ -33,6 +33,14 @@ di-gitignore, karena itu `typecheck` menjalankan `astro sync` lebih dulu. Jangan
 mengandalkan type-check untuk kesalahan props/tipe di dalam `.astro`; andalkan
 `npm run validate` untuk menangkap kesalahan data.
 
+## Delegasi Subagent (SWE-Pro)
+
+Jika Anda adalah subagent (mis. `swe-frontend`, `swe-mini`, `swe-backend`), ikuti protokol ini:
+1. **Dilarang keras melakukan Hardcoding**: Jangan pernah menulis teks konten langsung di dalam file `.astro`. Ambil dari `Astro.props` (untuk blok) atau gunakan `src/config/ui.ts` untuk label UI.
+2. **Workflow Konten**: Jika diminta menambah bagian di beranda, **JANGAN** edit `src/pages/index.astro`. Buatlah komponen blok baru di `src/components/shared/`, daftarkan di `src/components/blocks.ts`, lalu biarkan agen utama yang memasangnya di `src/content/pages/home.md`.
+3. **Verifikasi Wajib**: Setiap kali selesai melakukan perubahan kode, Anda **WAJIB** menjalankan `npm run validate` dan memastikan semua gerbang (7 lapis) lulus sebelum melaporkan tugas selesai.
+4. **Keunikan Gambar**: Jangan gunakan gambar yang sudah ada untuk komponen baru. Selalu buat aset baru sesuai standar SVG/WebP unik.
+
 ## Gerbang validasi (7 lapis)
 
 1. **`validate:content`** (`scripts/validate-content.mjs`) — pemeriksaan lintas berkas:
