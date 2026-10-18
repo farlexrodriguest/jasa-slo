@@ -2,7 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import PageLayout from '../components/shared/PageLayout.astro';
 import BlockRenderer from '../components/blocks/BlockRenderer.astro';
-import { webPageSchema } from '../utils/schema.ts';
+import { faqFromBlocks, faqPageSchema } from '../utils/schema.ts';
 
 export async function getStaticPaths() {
   const pages = (await getCollection('pages'))
@@ -14,15 +14,14 @@ export async function getStaticPaths() {
 const { page } = Astro.props;
 const { Content } = await render(page);
 const base = Astro.site?.href ?? Astro.url.origin;
-const jsonLd = [webPageSchema({
-  base,
-  path: `/${page.data.slug}/`,
-  title: page.data.title,
-  description: page.data.description,
-  dateModified: page.data.updatedDate,
-})];
+// WebPage/BreadcrumbList sitewide dirakit BaseLayout; route hanya menambahkan
+// FAQPage bila halaman punya blok `faq` (mis. tentang-kami).
+const faqItems = faqFromBlocks(page.data.blocks);
+const jsonLd = faqItems.length
+  ? [faqPageSchema({ base, path: `/${page.data.slug}/`, items: faqItems })]
+  : [];
 ---
-<PageLayout page={page.data} jsonLd={jsonLd}>
+<PageLayout page={page.data} pubDate={page.data.pubDate} updatedDate={page.data.updatedDate} jsonLd={jsonLd}>
   {page.data.blocks.map((block) => <BlockRenderer block={block} />)}
   <div class="page-markdown mt-8"><Content /></div>
 </PageLayout>

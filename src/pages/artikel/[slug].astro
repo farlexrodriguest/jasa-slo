@@ -8,25 +8,53 @@ import RelatedServiceCta from '../../components/shared/RelatedServiceCta.astro';
 import ArticleRelatedList from '../../components/shared/ArticleRelatedList.astro';
 import BlockRenderer from '../../components/blocks/BlockRenderer.astro';
 import { ui } from '../../config/ui.ts';
-import { articleSchema } from '../../utils/schema.ts';
+import { articleSchema, faqFromBlocks, faqPageSchema, itemListSchema, serviceSchema } from '../../utils/schema.ts';
 export async function getStaticPaths(){const articles=(await getCollection('articles')).filter((a)=>!a.data.draft);return articles.map(article=>({params:{slug:article.data.slug},props:{article}}))}
 const {article}=Astro.props;
 const service=await relatedService(article.data.relatedType,article.data.relatedId);
 const base = Astro.site?.href ?? Astro.url.origin;
-const jsonLd = [articleSchema({
-  base,
-  path: `/artikel/${article.data.slug}/`,
-  title: article.data.title,
-  description: article.data.description,
-  image: article.data.image,
-  pubDate: article.data.pubDate,
-  updatedDate: article.data.updatedDate,
-  author: article.data.author,
-  articleSection: article.data.category,
-  about: service && article.data.relatedType === 'service' ? { name: service.data.title, url: `${base.replace(/\/+$/, '')}/layanan/${service.data.slug}/` } : undefined,
-})];
+const root = base.replace(/\/+$/, '');
+const pagePath = `/artikel/${article.data.slug}/`;
+const pageUrl = `${root}${pagePath}`;
+// Node service terkait — @id sama dengan Article.about (…#service) agar saling terhubung.
+const serviceNode = service && article.data.relatedType === 'service'
+  ? serviceSchema({ base, slug: service.data.slug, title: service.data.title, description: service.data.description, image: service.data.image, serviceType: service.data.serviceGroup })
+  : null;
+// Resolusi artikel terkait — urutan & penyaringan sama dengan ArticleRelatedList.
+const allArticles = await getCollection('articles');
+const relatedById = new Map(allArticles.map((a) => [a.data.id, a]));
+const relatedEntries = [...new Set(article.data.relatedArticles)]
+  .filter((id) => id !== article.data.id)
+  .map((id) => relatedById.get(id))
+  .filter((entry): entry is NonNullable<typeof entry> => !!entry && !entry.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const faqItems = faqFromBlocks(article.data.blocks);
+const jsonLd = [
+  articleSchema({
+    base,
+    path: pagePath,
+    title: article.data.title,
+    description: article.data.description,
+    image: article.data.image,
+    pubDate: article.data.pubDate,
+    updatedDate: article.data.updatedDate,
+    author: article.data.author,
+    articleSection: article.data.category,
+    about: serviceNode ? { url: `${root}/layanan/${service.data.slug}/` } : undefined,
+  }),
+  ...(serviceNode ? [serviceNode] : []),
+  ...(relatedEntries.length
+    ? [itemListSchema({
+        base,
+        path: pagePath,
+        name: 'Artikel terkait',
+        items: relatedEntries.map((a) => ({ name: a.data.title, url: `${root}/artikel/${a.data.slug}/` })),
+      })]
+    : []),
+  ...(faqItems.length ? [faqPageSchema({ base, path: pagePath, items: faqItems })] : []),
+];
 ---
-<BaseLayout title={article.data.title} description={article.data.description} serviceTitle={service?.data.title} jsonLd={jsonLd}>
+<BaseLayout title={article.data.title} description={article.data.description} serviceTitle={service?.data.title} jsonLd={jsonLd} mainEntityId={`${pageUrl}#article`} pubDate={article.data.pubDate} updatedDate={article.data.updatedDate}>
 <SiteHeader/>
 <main id="main-content">
 <section id="utama" class="border-b border-[#dfcdb8] bg-[#2a1a0e] text-[#fef3e2]">

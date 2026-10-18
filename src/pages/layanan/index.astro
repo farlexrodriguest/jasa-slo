@@ -2,17 +2,28 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/shared/SiteHeader.astro';
-import { collectionPageSchema } from '../../utils/schema.ts';
+import { collectionPageSchema, itemListSchema } from '../../utils/schema.ts';
 const services=(await getCollection('services')).filter((s)=>!s.data.draft&&s.data.status==='active').sort((a,b)=>a.data.order-b.data.order);
 const base = Astro.site?.href ?? Astro.url.origin;
 const root = base.replace(/\/+$/, '');
-const jsonLd = [collectionPageSchema({
-  base,
-  path: '/layanan/',
-  title: 'Layanan',
-  description: 'Daftar informasi layanan terkait SLO dan NIDI.',
-  items: services.map((s) => ({ name: s.data.title, url: `${root}/layanan/${s.data.slug}/` })),
-})];
+// CollectionPage + ItemList dirakit sebagai node terpisah agar keduanya
+// terdeteksi validator; terhubung lewat mainEntity → …#itemlist.
+const jsonLd = [
+  collectionPageSchema({
+    base,
+    path: '/layanan/',
+    title: 'Layanan',
+    description: 'Daftar informasi layanan terkait SLO dan NIDI.',
+    hasItems: services.length > 0,
+  }),
+  ...(services.length
+    ? [itemListSchema({
+        base,
+        path: '/layanan/',
+        items: services.map((s) => ({ name: s.data.title, url: `${root}/layanan/${s.data.slug}/` })),
+      })]
+    : []),
+];
 ---
 <BaseLayout title="Layanan" description="Daftar informasi layanan terkait SLO dan NIDI." jsonLd={jsonLd}>
 <SiteHeader/><main id="main-content" class="mx-auto max-w-[1440px] px-6 py-20 lg:px-12 lg:py-28">

@@ -15,13 +15,18 @@ interface Props {
   serviceTitle?: string;
   /** Tampilkan sidebar "Panduan Lainnya" (2 kolom, seperti pada artikel). */
   othersList?: boolean;
+  /** Tanggal terbit/pembaruan dokumen — diteruskan ke WebPage JSON-LD. */
+  pubDate?: Date;
+  updatedDate?: Date;
+  /** @id tipe utama halaman (mis. `${url}#article`) — dirujuk WebPage.mainEntity. */
+  mainEntityId?: string;
   /** Data schema.org (JSON-LD) yang diteruskan ke BaseLayout. */
   jsonLd?: Record<string, unknown>[];
 }
-const { page, serviceTitle, othersList = false, jsonLd } = Astro.props;
+const { page, serviceTitle, othersList = false, pubDate, updatedDate, mainEntityId, jsonLd } = Astro.props;
 const showCta = page.showCta !== false;
 ---
-<BaseLayout title={page.title} description={page.description} serviceTitle={serviceTitle} jsonLd={jsonLd}>
+<BaseLayout title={page.title} description={page.description} serviceTitle={serviceTitle} pubDate={pubDate} updatedDate={updatedDate} mainEntityId={mainEntityId} jsonLd={jsonLd}>
 <SiteHeader />
 <main id="main-content">
 <section id="utama" class="border-b border-[#dfcdb8] bg-[#2a1a0e] text-[#fef3e2]">

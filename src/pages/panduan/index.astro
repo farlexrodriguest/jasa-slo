@@ -3,18 +3,29 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/shared/SiteHeader.astro';
 import GuideListBlock from '../../components/shared/GuideListBlock.astro';
-import { collectionPageSchema } from '../../utils/schema.ts';
+import { collectionPageSchema, itemListSchema } from '../../utils/schema.ts';
 
 const base = Astro.site?.href ?? Astro.url.origin;
 const root = base.replace(/\/+$/, '');
 const guides = (await getCollection('pages')).filter((p) => !p.data.draft && p.data.section === 'panduan');
-const jsonLd = [collectionPageSchema({
-  base,
-  path: '/panduan/',
-  title: 'Panduan',
-  description: 'Panduan alur, persyaratan, dan proses pengurusan SLO dan NIDI.',
-  items: guides.map((p) => ({ name: p.data.title, url: `${root}/panduan/${p.data.slug}/` })),
-})];
+// CollectionPage + ItemList dirakit sebagai node terpisah agar keduanya
+// terdeteksi validator; terhubung lewat mainEntity → …#itemlist.
+const jsonLd = [
+  collectionPageSchema({
+    base,
+    path: '/panduan/',
+    title: 'Panduan',
+    description: 'Panduan alur, persyaratan, dan proses pengurusan SLO dan NIDI.',
+    hasItems: guides.length > 0,
+  }),
+  ...(guides.length
+    ? [itemListSchema({
+        base,
+        path: '/panduan/',
+        items: guides.map((p) => ({ name: p.data.title, url: `${root}/panduan/${p.data.slug}/` })),
+      })]
+    : []),
+];
 ---
 <BaseLayout title="Panduan" description="Panduan alur, persyaratan, dan proses pengurusan SLO dan NIDI." jsonLd={jsonLd}>
   <SiteHeader />

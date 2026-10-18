@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { site } from '../config/site';
 import SiteFooter from '../components/shared/SiteFooter.astro';
 import JsonLd from '../components/seo/JsonLd.astro';
+import { breadcrumbSchema, organizationSchema, webPageSchema, webSiteSchema } from '../utils/schema';
 
 interface Props {
   title?: string;
@@ -14,7 +15,13 @@ interface Props {
   canonical?: string;
   /** Jika true, halaman tidak diindeks oleh mesin pencari. */
   noindex?: boolean;
-  /** Data schema.org (JSON-LD); objek atau array — dirender di <head>. */
+  /** Tanggal terbit dokumen — dipakai datePublished WebPage. */
+  pubDate?: Date;
+  /** Tanggal pembaruan dokumen — dipakai dateModified WebPage. */
+  updatedDate?: Date;
+  /** @id tipe utama halaman (mis. `${url}#article`) — dirujuk WebPage.mainEntity. */
+  mainEntityId?: string;
+  /** Node schema.org tambahan per halaman (Service/Article/FAQPage/ItemList). */
   jsonLd?: Record<string, unknown>[];
 }
 const {
@@ -24,12 +31,32 @@ const {
   socialImage,
   canonical,
   noindex = false,
+  pubDate,
+  updatedDate,
+  mainEntityId,
   jsonLd,
 } = Astro.props;
 const fullTitle = title ? title + ' | ' + site.name : site.name;
 const ogImage = socialImage || '/images/logo-jasa-slo.svg';
 const canonicalUrl = canonical || Astro.url.href;
 const robots = noindex ? 'noindex, nofollow' : 'index, follow';
+// Node yang selalu ada di setiap halaman: Organization + WebSite (sitewide),
+// WebPage halaman berjalan (…#webpage), dan BreadcrumbList dari pathname.
+const base = Astro.site?.href ?? Astro.url.origin;
+const siteNodes = [
+  organizationSchema(base),
+  webSiteSchema(base),
+  webPageSchema({
+    base,
+    url: canonicalUrl,
+    title: title ?? site.name,
+    description,
+    datePublished: pubDate,
+    dateModified: updatedDate,
+    mainEntityId,
+  }),
+  breadcrumbSchema(base, Astro.url.pathname, title),
+];
 ---
 <!doctype html>
 <html lang="id">
@@ -46,6 +73,7 @@ const robots = noindex ? 'noindex, nofollow' : 'index, follow';
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="id_ID" />
 <meta name="twitter:card" content="summary_large_image" />
+<JsonLd data={siteNodes} />
 {jsonLd && jsonLd.length > 0 && <JsonLd data={jsonLd} />}
 </head>
 <body class="min-h-screen"><slot /><SiteFooter serviceTitle={serviceTitle} /></body>
