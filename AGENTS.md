@@ -37,8 +37,9 @@ mengandalkan type-check untuk kesalahan props/tipe di dalam `.astro`; andalkan
 
 1. **`validate:content`** (`scripts/validate-content.mjs`) — pemeriksaan lintas berkas:
    duplikasi `id` dan `slug` di dalam satu koleksi, **duplikasi `ulid` lintas semua
-   koleksi**, serta kelengkapan pasangan `relatedType`/`relatedId` beserta keberadaan
-   target relasinya.
+   koleksi**, kelengkapan pasangan `relatedType`/`relatedId` beserta keberadaan
+   target relasinya, **kewajiban field `image` & `imageAlt`** (`articles`, `services`, `panduan`),
+   **ketersediaan fisik berkas gambar di `public/`**, serta **keunikan path gambar** lintas semua koleksi.
 2. **`validate:frontmatter`** (`scripts/validate-frontmatter.mjs`) — frontmatter wajib
    dibuka pada baris pertama dan ditutup **tepat satu kali**. Delimiter `---` yang
    berlebih/nyasar ditolak. Body ditolak untuk koleksi `articles` dan `services`

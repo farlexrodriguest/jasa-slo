@@ -6,7 +6,7 @@ slug: "home"
 title: "Beranda"
 pubDate: "2026-10-10T07:18:35Z"
 updatedDate: "2026-10-19T09:24:17Z"
-description: "Panduan dan informasi pendampingan SLO serta NIDI untuk kebutuhan instalasi listrik."
+description: "Panduan lengkap untuk memahami regulasi, tahapan, dan dokumen yang diperlukan dalam proses pengurusan SLO dan NIDI."
 draft: false
 canonical: "/"
 order: 0

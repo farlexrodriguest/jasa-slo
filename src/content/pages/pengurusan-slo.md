@@ -12,7 +12,7 @@ section: panduan
 order: 1
 showCta: true
 canonical: "/panduan/pengurusan-slo/"
-image: "/images/artikel/pengurusan-slo.webp"
+image: "/images/panduan/pengurusan-slo.webp"
 imageAlt: "Ilustrasi proses pengurusan Sertifikat Laik Operasi (SLO) dengan tahapan persiapan dokumen, pengajuan, pemeriksaan, dan penerbitan"
 relatedType: service
 relatedId: 101
