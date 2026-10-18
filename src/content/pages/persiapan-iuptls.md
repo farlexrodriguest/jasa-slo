@@ -15,6 +15,8 @@ image: "/images/panduan/persiapan-iuptls.webp"
 imageAlt: "Ilustrasi gedung pemanfaat dengan jalur tegangan masuk untuk panduan IUPTLS"
 relatedType: "service"
 relatedId: 104
+howTo:
+  blockId: "alur-persiapan"
 blocks:
   - component: "section"
     id: "gambaran"
