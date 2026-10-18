@@ -1,8 +1,9 @@
 ---
 import { site } from '../../config/site.ts';
 const { id, heading, message, buttonText, class: css } = Astro.props;
-const hasWhatsapp = !!site.whatsapp && /^\d{8,15}$/.test(site.whatsapp.replace(/\D/g, ''));
-const cleanWhatsApp = site.whatsapp?.replace(/\D/g, '');
+const waRaw = site.contact?.whatsapp || site.whatsapp || '';
+const cleanWhatsApp = waRaw.replace(/\D/g, '');
+const hasWhatsapp = /^\d{8,15}$/.test(cleanWhatsApp);
 const href = hasWhatsapp ? `https://wa.me/${cleanWhatsApp}?text=${encodeURIComponent(message)}` : undefined;
 ---
 <section id={id} class={`rounded-2xl border border-[#dfcdb8] bg-[#fffaf2] p-6 md:p-8 ${css?.section ?? ''}`}>

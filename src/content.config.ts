@@ -272,6 +272,8 @@ const contentBlocks = z.array(
       eyebrow: z.string().optional(),
       heading: z.string().min(1),
       intro: z.string().optional(),
+      image: z.string().optional(),
+      imageAlt: z.string().optional(),
       class: z.record(z.string(), z.string()).optional(),
     }),
     z.object({

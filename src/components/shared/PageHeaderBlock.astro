@@ -7,5 +7,5 @@ const { eyebrow, heading, intro, image, imageAlt = heading } = Astro.props;
     <h1 class="mt-3 text-4xl font-black tracking-tight text-[#2a1a0e]">{heading}</h1>
     <p class="mt-4 text-lg leading-8 text-[#624b39]">{intro}</p>
   </div>
-  <img src={image} alt={imageAlt} class="mx-auto w-full max-w-md" width="560" height="420" fetchpriority="high" />
+  {image && <img src={image} alt={imageAlt} class="mx-auto w-full max-w-md" width="560" height="420" fetchpriority="high" />}
 </header>

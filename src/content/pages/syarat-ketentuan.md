@@ -16,6 +16,8 @@ blocks:
     eyebrow: "Legal / Ketentuan"
     heading: "Syarat dan Ketentuan Layanan"
     intro: "Ketentuan umum yang mengatur penggunaan situs dan layanan pendampingan."
+    image: "/images/logo-jasa-slo.svg"
+    imageAlt: "Logo Jasa SLO"
   - component: "card"
     id: "kartu-info"
     heading: "Pemberitahuan Penting"
