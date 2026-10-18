@@ -17,7 +17,7 @@ bawah sudah diverifikasi terhadap kondisi repo saat ini.
 ## Perintah
 
 - `npm run validate` — **gerbang lengkap**, wajib lulus sebelum tugas dianggap selesai.
-  Urutan: `validate:content` → `validate:frontmatter` → `typecheck` → `build` → `validate:output`.
+  Urutan: `validate:content` → `validate:frontmatter` → `typecheck` → `build` → `validate:output` → `validate:img-alt`.
 - `npm run build` — hanya `astro build`, tanpa pemeriksaan tambahan.
 - `npm run dev` — server pengembangan.
 - `npm run preview` — pratinjau hasil build.
@@ -33,7 +33,7 @@ di-gitignore, karena itu `typecheck` menjalankan `astro sync` lebih dulu. Jangan
 mengandalkan type-check untuk kesalahan props/tipe di dalam `.astro`; andalkan
 `npm run validate` untuk menangkap kesalahan data.
 
-## Gerbang validasi (5 lapis)
+## Gerbang validasi (6 lapis)
 
 1. **`validate:content`** (`scripts/validate-content.mjs`) — pemeriksaan lintas berkas:
    duplikasi `id` dan `slug` di dalam satu koleksi, **duplikasi `ulid` lintas semua
@@ -50,10 +50,31 @@ mengandalkan type-check untuk kesalahan props/tipe di dalam `.astro`; andalkan
    terbit (draft dilewati) harus benar-benar merender seluruh `heading`/`title`
    bloknya pada rute yang sesuai. Halaman dengan `section` yang tidak ditangani rute
    mana pun juga ditolak.
+6. **`validate:img-alt`** (`scripts/validate-image-alt.mjs`) — setiap `<img>` pada
+   `dist` wajib punya atribut `alt`, dan `src` tidak boleh kosong atau berisi markup
+   (mis. SVG mentah yang merusak HTML dan menyembunyikan atribut setelahnya).
+   `alt=""` diizinkan karena itu cara standar (WCAG) menandai gambar dekoratif.
 
 Alasan lapis 2 dan 5 ada: `blocks` pada `src/content.config.ts` diakhiri `.default([])`,
 sehingga blok yang hilang/terpotong **tidak** membuat build gagal — halaman hanya
 terbit kosong tanpa peringatan. Karena itu jangan mengandalkan Zod untuk hal ini.
+Lapis 6 melengkapi: alt yang hilang juga tidak menggagalkan build, hanya hasil render
+yang menunjukkan masalahnya.
+
+## Aksesibilitas gambar
+
+- Sumber gambar di `dist` harus berupa URL/path aset (mis. `/images/...svg`), bukan
+  markup SVG yang ditempel sebagai string; markup seperti itu merusak HTML.
+- `alt=""` hanya untuk gambar dekoratif (mis. di dalam tautan/kartu yang sudah punya
+  teks). Gambar bermakna wajib mengisi alt.
+- `page-header` menerima `image` **dan** `imageAlt` sebagai opsional (tidak bisa
+  dijadikan "wajib berpasangan" karena `contentBlocks` adalah `z.discriminatedUnion`
+  dan anggotanya tidak bisa diberi `.refine()`). Jika `image` diisi tanpa `imageAlt`,
+  `<img>` akan terbit tanpa `alt` dan **ditolak `validate:img-alt`** — jadi lapis inilah
+  yang menjaga pasangan tersebut.
+- Blok `card` memakai `body: z.array(z.any())`, sehingga isi kartu (termasuk gambar)
+  **melewati schema**. Untuk kasus seperti ini, `validate:img-alt` adalah satu-satunya
+  penjaga; jangan mengandalkan Zod.
 
 ## Struktur berkas konten (WAJIB)
 
