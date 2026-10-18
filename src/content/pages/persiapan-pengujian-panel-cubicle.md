@@ -15,6 +15,8 @@ image: "/images/panduan/persiapan-pengujian-panel-cubicle.webp"
 imageAlt: "Ilustrasi deretan panel cubicle dan perangkat ukur untuk panduan pengujian panel"
 relatedType: "service"
 relatedId: 105
+howTo:
+  blockId: "alur-persiapan"
 blocks:
   - component: "section"
     id: "gambaran"
