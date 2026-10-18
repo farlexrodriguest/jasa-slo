@@ -15,6 +15,8 @@ image: "/images/panduan/persiapan-slo-tegangan-rendah.webp"
 imageAlt: "Ilustrasi panel instalasi tegangan rendah untuk panduan persiapan SLO"
 relatedType: "service"
 relatedId: 101
+howTo:
+  blockId: "alur-persiapan"
 blocks:
   - component: "section"
     id: "gambaran"
