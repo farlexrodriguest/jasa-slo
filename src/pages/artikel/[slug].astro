@@ -9,7 +9,7 @@ import ArticleRelatedList from '../../components/shared/ArticleRelatedList.astro
 import BlockRenderer from '../../components/blocks/BlockRenderer.astro';
 import { ui } from '../../config/ui.ts';
 import { readingTime } from '../../utils/readingTime.ts';
-import { articleSchema, faqFromBlocks, faqPageSchema, itemListSchema, serviceSchema } from '../../utils/schema.ts';
+import { articleSchema, howToSchema, faqFromBlocks, faqPageSchema, itemListSchema, serviceSchema } from '../../utils/schema.ts';
 export async function getStaticPaths(){const articles=(await getCollection('articles')).filter((a)=>!a.data.draft);return articles.map(article=>({params:{slug:article.data.slug},props:{article}}))}
 const {article}=Astro.props;
 const estMinutes = readingTime(article.data.blocks);
@@ -31,7 +31,15 @@ const relatedEntries = [...new Set(article.data.relatedArticles)]
   .filter((entry): entry is NonNullable<typeof entry> => !!entry && !entry.data.draft)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 const faqItems = faqFromBlocks(article.data.blocks);
+const howToNode = article.data.howTo ? howToSchema({
+  base, path: pagePath,
+  name: article.data.howTo.name ?? article.data.title,
+  description: article.data.howTo.description ?? article.data.description,
+  blockId: article.data.howTo.blockId,
+  blocks: article.data.blocks,
+}) : null;
 const jsonLd = [
+  ...(howToNode ? [howToNode] : []),
   articleSchema({
     base,
     path: pagePath,
