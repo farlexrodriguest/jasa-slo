@@ -58,17 +58,28 @@ Sebelum membuat berkas, tentukan jenis kontennya:
 
 ---
 
-## 3. Aturan Aset Gambar (WAJIB Unik)
+## 3. Aturan Aset Gambar (WAJIB Unik & Auto-Generate)
 
 1. **Dilarang berbagi gambar**: Setiap halaman wajib memiliki file gambar unik.
-2. **Format & Nama Berkas**:
-   - Nama berkas gambar = **slug konten**.
-   - Buat ilustrasi SVG di `public/images/<jenis>/<slug>.svg`.
-   - Konversi/render ke WebP di `public/images/<jenis>/<slug>.webp`.
-   - Frontmatter merujuk path `.webp`.
+2. **Spesifikasi Ilustrasi SVG**:
+   - `viewBox="0 0 1200 760"` (rasio 1200x760).
+   - Palet warna brand: Espresso `#2a1a0e`, Moka Pekat `#583520`, Cokelat `#76543c`, Cream `#fef3e2`, Aksen Oranye `#d4621a` & `#f4ae52`.
+   - Pola elemen: Background gradient + pola grid + elemen geometris (lingkaran, segel, dokumen, petir, atau trafo/panel) + sudut bingkai L.
 3. **Penyimpanan**:
    - Artikel → `public/images/artikel/<slug>.svg` & `.webp`
    - Panduan → `public/images/panduan/<slug>.svg` & `.webp`
+4. **Prosedur Render ke WebP (pakai `sharp`)**:
+   Tulis file SVG terlebih dahulu, lalu jalankan snippet Node.js berikut di terminal:
+   ```bash
+   node -e "
+   const sharp = require('sharp');
+   sharp('public/images/<jenis>/<slug>.svg', { density: 96 })
+     .resize(1200, 760)
+     .webp({ quality: 82 })
+     .toFile('public/images/<jenis>/<slug>.webp')
+     .then(info => console.log('WebP Generated:', info.width + 'x' + info.height, info.size + 'B'));
+   "
+   ```
 
 ---
 
