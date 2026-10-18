@@ -4,7 +4,7 @@ import { relatedService } from '../../utils/services.ts';
 import PageLayout from '../../components/shared/PageLayout.astro';
 import BlockRenderer from '../../components/blocks/BlockRenderer.astro';
 import RelatedServiceCta from '../../components/shared/RelatedServiceCta.astro';
-import { articleSchema, faqFromBlocks, faqPageSchema, serviceSchema } from '../../utils/schema.ts';
+import { articleSchema, howToSchema, faqFromBlocks, faqPageSchema, serviceSchema } from '../../utils/schema.ts';
 
 export async function getStaticPaths() {
   const pages = (await getCollection('pages'))
@@ -27,7 +27,15 @@ const serviceNode = service && page.data.relatedType === 'service'
   : null;
 // Semua panduan memakai blok `faq` → dirakit menjadi FAQPage.
 const faqItems = faqFromBlocks(page.data.blocks);
+const howToNode = page.data.howTo ? howToSchema({
+  base, path: pagePath,
+  name: page.data.howTo.name ?? page.data.title,
+  description: page.data.howTo.description ?? page.data.description,
+  blockId: page.data.howTo.blockId,
+  blocks: page.data.blocks,
+}) : null;
 const jsonLd = [
+  ...(howToNode ? [howToNode] : []),
   articleSchema({
     base,
     path: pagePath,
