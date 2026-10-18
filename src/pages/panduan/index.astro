@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/shared/SiteHeader.astro';
 import GuideListBlock from '../../components/shared/GuideListBlock.astro';
+import HomeLatestBlock from '../../components/shared/HomeLatestBlock.astro';
 import { collectionPageSchema, itemListSchema } from '../../utils/schema.ts';
 
 const base = Astro.site?.href ?? Astro.url.origin;
@@ -34,5 +35,6 @@ const jsonLd = [
     <h1 class="mt-5 text-5xl font-extrabold md:text-7xl">Panduan regulasi dan proses.</h1>
     <p class="mt-7 max-w-2xl text-lg leading-8 text-[#624b39]">Pelajari regulasi, tahapan, dan dokumen yang diperlukan dalam proses pengurusan SLO dan NIDI.</p>
     <GuideListBlock id="daftar-panduan" heading="Panduan terbaru" description="Diurutkan dari pembaruan terakhir." />
+    <HomeLatestBlock id="terbaru" eyebrow="Pustaka / Artikel pilihan" heading="Artikel ketenagalistrikan." description="Penjelasan teknis dan regulasi untuk melengkapi pemahaman Anda." ctaLabel="Lihat semua artikel" ctaHref="/artikel/" limit={3} offset={6} />
   </main>
 </BaseLayout>
