@@ -15,6 +15,8 @@ image: "/images/panduan/persiapan-pendampingan-nidi.webp"
 imageAlt: "Ilustrasi denah satu garis dan dokumen pendamping untuk panduan NIDI"
 relatedType: "service"
 relatedId: 103
+howTo:
+  blockId: "alur-persiapan"
 blocks:
   - component: "section"
     id: "gambaran"
