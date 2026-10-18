@@ -150,6 +150,8 @@ const contentBlocks = z.array(
       ctaHref: z.string().optional(),
       /** Jumlah item gabungan (artikel + panduan) yang ditampilkan. */
       limit: z.number().int().positive().default(3),
+      /** Lewati item teratas (offset 3 = mulai dari urutan ke-4). */
+      offset: z.number().int().nonnegative().default(0),
       class: z.record(z.string(), z.string()).optional(),
     }),
     z.object({

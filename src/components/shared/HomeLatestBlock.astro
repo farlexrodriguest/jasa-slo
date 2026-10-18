@@ -23,8 +23,9 @@ interface Props {
   ctaLabel?: string;
   ctaHref?: string;
   limit?: number;
+  offset?: number;
 }
-const { id, eyebrow, heading, description, ctaLabel, ctaHref, limit = 3 } = Astro.props;
+const { id, eyebrow, heading, description, ctaLabel, ctaHref, limit = 3, offset = 0 } = Astro.props;
 
 type LatestItem = {
   kind: 'artikel' | 'panduan';
@@ -67,7 +68,7 @@ const items = [...articles, ...guides]
     (a, b) =>
       b.updatedDate.valueOf() - a.updatedDate.valueOf() || b.pubDate.valueOf() - a.pubDate.valueOf(),
   )
-  .slice(0, Math.max(1, limit));
+  .slice(Math.max(0, offset), Math.max(0, offset) + Math.max(1, limit));
 const utcIso = (date: Date) => date.toISOString().replace(/\.\d{3}Z$/, 'Z');
 const readMoreLabel = { artikel: ui.article.readMore, panduan: ui.guide.readMore } as const;
 ---
