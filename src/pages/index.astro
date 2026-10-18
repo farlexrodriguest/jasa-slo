@@ -3,12 +3,15 @@ import { getEntry } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SiteHeader from '../components/shared/SiteHeader.astro';
 import BlockRenderer from '../components/blocks/BlockRenderer.astro';
+import { organizationSchema, webSiteSchema } from '../utils/schema.ts';
 
 const home = await getEntry('pages', 'home');
 if (!home) throw new Error('Konten beranda tidak ditemukan (src/content/pages/home.md).');
 if (home.data.draft) throw new Error('Halaman "home" ditandai draft tetapi memiliki route statis.');
+const base = Astro.site?.href ?? Astro.url.origin;
+const jsonLd = [webSiteSchema(base), organizationSchema(base)];
 ---
-<BaseLayout title={home.data.title} description={home.data.description}>
+<BaseLayout title={home.data.title} description={home.data.description} jsonLd={jsonLd}>
 <SiteHeader />
 <main id="main-content">{home.data.blocks.map((block) => <BlockRenderer block={block} />)}</main>
 </BaseLayout>

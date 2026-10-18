@@ -15,11 +15,13 @@ interface Props {
   serviceTitle?: string;
   /** Tampilkan sidebar "Panduan Lainnya" (2 kolom, seperti pada artikel). */
   othersList?: boolean;
+  /** Data schema.org (JSON-LD) yang diteruskan ke BaseLayout. */
+  jsonLd?: Record<string, unknown>[];
 }
-const { page, serviceTitle, othersList = false } = Astro.props;
+const { page, serviceTitle, othersList = false, jsonLd } = Astro.props;
 const showCta = page.showCta !== false;
 ---
-<BaseLayout title={page.title} description={page.description} serviceTitle={serviceTitle}>
+<BaseLayout title={page.title} description={page.description} serviceTitle={serviceTitle} jsonLd={jsonLd}>
 <SiteHeader />
 <main id="main-content">
 <section id="utama" class="border-b border-[#dfcdb8] bg-[#2a1a0e] text-[#fef3e2]">

@@ -1,0 +1,19 @@
+---
+/**
+ * JsonLd — render data schema.org sebagai tag JSON-LD di <head>.
+ *
+ * Props:
+ * - data: objek atau array objek schema.org (dari src/utils/schema.ts).
+ *
+ * Nilai `<` di-escape ke \u003c agar aman terhadap `</script>` di dalam data.
+ *
+ * Usage (di BaseLayout lewat prop `jsonLd`):
+ * <BaseLayout jsonLd={[serviceSchema({ ... })]}>
+ */
+interface Props {
+  data: Record<string, unknown> | Record<string, unknown>[];
+}
+const { data } = Astro.props;
+const json = JSON.stringify(data).replace(/</g, '\\u003c');
+---
+<script type="application/ld+json" is:inline set:html={json} />

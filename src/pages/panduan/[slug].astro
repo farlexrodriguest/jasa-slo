@@ -4,6 +4,7 @@ import { relatedService } from '../../utils/services.ts';
 import PageLayout from '../../components/shared/PageLayout.astro';
 import BlockRenderer from '../../components/blocks/BlockRenderer.astro';
 import RelatedServiceCta from '../../components/shared/RelatedServiceCta.astro';
+import { articleSchema } from '../../utils/schema.ts';
 
 export async function getStaticPaths() {
   const pages = (await getCollection('pages'))
@@ -16,8 +17,20 @@ const { page } = Astro.props;
 const { Content } = await render(page);
 // Satu resolusi dipakai bersama oleh tagline footer dan CTA layanan agar sejalan.
 const service = await relatedService(page.data.relatedType, page.data.relatedId);
+const base = Astro.site?.href ?? Astro.url.origin;
+const jsonLd = [articleSchema({
+  base,
+  path: `/panduan/${page.data.slug}/`,
+  title: page.data.title,
+  description: page.data.description,
+  image: page.data.image,
+  pubDate: page.data.pubDate,
+  updatedDate: page.data.updatedDate,
+  articleSection: 'Panduan',
+  about: service && page.data.relatedType === 'service' ? { name: service.data.title, url: `${base.replace(/\/+$/, '')}/layanan/${service.data.slug}/` } : undefined,
+})];
 ---
-<PageLayout page={page.data} serviceTitle={service?.data.title} othersList>
+<PageLayout page={page.data} serviceTitle={service?.data.title} othersList jsonLd={jsonLd}>
   {page.data.blocks.map((block) => <BlockRenderer block={block} />)}
   <div class="page-markdown mt-8"><Content /></div>
   <RelatedServiceCta service={service} sourceTitle={page.data.title} sourceLabel="panduan" />

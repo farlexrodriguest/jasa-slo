@@ -8,11 +8,25 @@ import RelatedServiceCta from '../../components/shared/RelatedServiceCta.astro';
 import ArticleRelatedList from '../../components/shared/ArticleRelatedList.astro';
 import BlockRenderer from '../../components/blocks/BlockRenderer.astro';
 import { ui } from '../../config/ui.ts';
+import { articleSchema } from '../../utils/schema.ts';
 export async function getStaticPaths(){const articles=(await getCollection('articles')).filter((a)=>!a.data.draft);return articles.map(article=>({params:{slug:article.data.slug},props:{article}}))}
 const {article}=Astro.props;
 const service=await relatedService(article.data.relatedType,article.data.relatedId);
+const base = Astro.site?.href ?? Astro.url.origin;
+const jsonLd = [articleSchema({
+  base,
+  path: `/artikel/${article.data.slug}/`,
+  title: article.data.title,
+  description: article.data.description,
+  image: article.data.image,
+  pubDate: article.data.pubDate,
+  updatedDate: article.data.updatedDate,
+  author: article.data.author,
+  articleSection: article.data.category,
+  about: service && article.data.relatedType === 'service' ? { name: service.data.title, url: `${base.replace(/\/+$/, '')}/layanan/${service.data.slug}/` } : undefined,
+})];
 ---
-<BaseLayout title={article.data.title} description={article.data.description} serviceTitle={service?.data.title}>
+<BaseLayout title={article.data.title} description={article.data.description} serviceTitle={service?.data.title} jsonLd={jsonLd}>
 <SiteHeader/>
 <main id="main-content">
 <section id="utama" class="border-b border-[#dfcdb8] bg-[#2a1a0e] text-[#fef3e2]">

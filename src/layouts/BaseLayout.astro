@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { site } from '../config/site';
 import SiteFooter from '../components/shared/SiteFooter.astro';
+import JsonLd from '../components/seo/JsonLd.astro';
 
 interface Props {
   title?: string;
@@ -13,6 +14,8 @@ interface Props {
   canonical?: string;
   /** Jika true, halaman tidak diindeks oleh mesin pencari. */
   noindex?: boolean;
+  /** Data schema.org (JSON-LD); objek atau array — dirender di <head>. */
+  jsonLd?: Record<string, unknown>[];
 }
 const {
   title,
@@ -21,6 +24,7 @@ const {
   socialImage,
   canonical,
   noindex = false,
+  jsonLd,
 } = Astro.props;
 const fullTitle = title ? title + ' | ' + site.name : site.name;
 const ogImage = socialImage || '/images/logo-jasa-slo.svg';
@@ -42,6 +46,7 @@ const robots = noindex ? 'noindex, nofollow' : 'index, follow';
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="id_ID" />
 <meta name="twitter:card" content="summary_large_image" />
+{jsonLd && jsonLd.length > 0 && <JsonLd data={jsonLd} />}
 </head>
 <body class="min-h-screen"><slot /><SiteFooter serviceTitle={serviceTitle} /></body>
 </html>

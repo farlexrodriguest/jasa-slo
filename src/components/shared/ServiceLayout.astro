@@ -2,9 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from './SiteHeader.astro';
 import ServiceOthersList from './ServiceOthersList.astro';
-const {service}=Astro.props;
+const {service, jsonLd}=Astro.props;
 ---
-<BaseLayout title={service.title} description={service.description} serviceTitle={service.title}>
+<BaseLayout title={service.title} description={service.description} serviceTitle={service.title} jsonLd={jsonLd}>
 <SiteHeader />
 <main id="main-content">
 <section id="utama" class="border-b border-[#dfcdb8] bg-[#2a1a0e] text-[#fef3e2]">

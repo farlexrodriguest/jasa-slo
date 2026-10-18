@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import ServiceLayout from '../../components/shared/ServiceLayout.astro';
 import BlockRenderer from '../../components/blocks/BlockRenderer.astro';
+import { serviceSchema } from '../../utils/schema.ts';
 
 export async function getStaticPaths() {
   const services = (await getCollection('services')).filter((service) => !service.data.draft && service.data.status === 'active');
@@ -11,7 +12,9 @@ export async function getStaticPaths() {
   }));
 }
 const { service } = Astro.props;
+const base = Astro.site?.href ?? Astro.url.origin;
+const jsonLd = [serviceSchema({ base, slug: service.slug, title: service.title, description: service.description, image: service.image, serviceType: service.serviceGroup })];
 ---
-<ServiceLayout service={service}>
+<ServiceLayout service={service} jsonLd={jsonLd}>
   {service.blocks.map((block) => <BlockRenderer block={block} />)}
 </ServiceLayout>

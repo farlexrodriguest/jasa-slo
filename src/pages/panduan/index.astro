@@ -1,9 +1,22 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/shared/SiteHeader.astro';
 import GuideListBlock from '../../components/shared/GuideListBlock.astro';
+import { collectionPageSchema } from '../../utils/schema.ts';
+
+const base = Astro.site?.href ?? Astro.url.origin;
+const root = base.replace(/\/+$/, '');
+const guides = (await getCollection('pages')).filter((p) => !p.data.draft && p.data.section === 'panduan');
+const jsonLd = [collectionPageSchema({
+  base,
+  path: '/panduan/',
+  title: 'Panduan',
+  description: 'Panduan alur, persyaratan, dan proses pengurusan SLO dan NIDI.',
+  items: guides.map((p) => ({ name: p.data.title, url: `${root}/panduan/${p.data.slug}/` })),
+})];
 ---
-<BaseLayout title="Panduan" description="Panduan alur, persyaratan, dan proses pengurusan SLO dan NIDI.">
+<BaseLayout title="Panduan" description="Panduan alur, persyaratan, dan proses pengurusan SLO dan NIDI." jsonLd={jsonLd}>
   <SiteHeader />
   <main id="main-content" class="mx-auto max-w-[1440px] px-6 py-20 lg:px-12 lg:py-28">
     <p class="eyebrow text-[#a34a17]">Pusat informasi / Panduan</p>

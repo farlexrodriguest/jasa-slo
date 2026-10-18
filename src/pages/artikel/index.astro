@@ -1,9 +1,22 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/shared/SiteHeader.astro';
 import ArticleListBlock from '../../components/shared/ArticleListBlock.astro';
+import { collectionPageSchema } from '../../utils/schema.ts';
+
+const base = Astro.site?.href ?? Astro.url.origin;
+const root = base.replace(/\/+$/, '');
+const articles = (await getCollection('articles')).filter((a) => !a.data.draft);
+const jsonLd = [collectionPageSchema({
+  base,
+  path: '/artikel/',
+  title: 'Artikel',
+  description: 'Artikel dan panduan memahami SLO, NIDI, dan instalasi listrik.',
+  items: articles.map((a) => ({ name: a.data.title, url: `${root}/artikel/${a.data.slug}/` })),
+})];
 ---
-<BaseLayout title="Artikel" description="Artikel dan panduan memahami SLO, NIDI, dan instalasi listrik.">
+<BaseLayout title="Artikel" description="Artikel dan panduan memahami SLO, NIDI, dan instalasi listrik." jsonLd={jsonLd}>
 <SiteHeader/><main id="main-content" class="mx-auto max-w-[1440px] px-6 py-20 lg:px-12 lg:py-28">
 <p class="eyebrow text-[#a34a17]">Pustaka / Pengetahuan</p><h1 class="mt-5 text-5xl font-extrabold md:text-7xl">Baca sebelum melangkah.</h1><p class="mt-7 max-w-2xl text-lg leading-8 text-[#624b39]">Catatan, penjelasan, dan panduan untuk membantu memahami proses kelistrikan.</p>
 <ArticleListBlock id="daftar-artikel" heading="Artikel terbaru" description="Diurutkan dari pembaruan terakhir." />
