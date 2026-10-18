@@ -17,7 +17,7 @@ bawah sudah diverifikasi terhadap kondisi repo saat ini.
 ## Perintah
 
 - `npm run validate` — **gerbang lengkap**, wajib lulus sebelum tugas dianggap selesai.
-  Urutan: `validate:content` → `validate:frontmatter` → `typecheck` → `build` → `validate:output` → `validate:img-alt`.
+  Urutan: `validate:content` → `validate:frontmatter` → `validate:dates` → `typecheck` → `build` → `validate:output` → `validate:img-alt`.
 - `npm run build` — hanya `astro build`, tanpa pemeriksaan tambahan.
 - `npm run dev` — server pengembangan.
 - `npm run preview` — pratinjau hasil build.
@@ -33,7 +33,7 @@ di-gitignore, karena itu `typecheck` menjalankan `astro sync` lebih dulu. Jangan
 mengandalkan type-check untuk kesalahan props/tipe di dalam `.astro`; andalkan
 `npm run validate` untuk menangkap kesalahan data.
 
-## Gerbang validasi (6 lapis)
+## Gerbang validasi (7 lapis)
 
 1. **`validate:content`** (`scripts/validate-content.mjs`) — pemeriksaan lintas berkas:
    duplikasi `id` dan `slug` di dalam satu koleksi, **duplikasi `ulid` lintas semua
@@ -44,21 +44,26 @@ mengandalkan type-check untuk kesalahan props/tipe di dalam `.astro`; andalkan
    berlebih/nyasar ditolak. Body ditolak untuk koleksi `articles` dan `services`
    (rutenya hanya merender `blocks`), tetapi **diizinkan** untuk `pages` (rutenya
    merender `<Content />`).
-3. **`typecheck`** — `astro sync && tsc --noEmit`.
-4. **`build`** — render seluruh halaman.
-5. **`validate:output`** (`scripts/validate-content-output.mjs`) — setiap dokumen
+3. **`validate:dates`** (`scripts/validate-content-dates.mjs`) — `pubDate`/`updatedDate`
+   wajib UTC tanpa milisekon (`YYYY-MM-DDTHH:mm:ssZ`), `updatedDate` tidak boleh lebih
+   awal dari atau sama dengan `pubDate`, dan setiap timestamp harus **unik** lintas
+   semua koleksi (termasuk draft) — dua konten tidak mungkin disubmit pada detik yang
+   sama.
+4. **`typecheck`** — `astro sync && tsc --noEmit`.
+5. **`build`** — render seluruh halaman.
+6. **`validate:output`** (`scripts/validate-content-output.mjs`) — setiap dokumen
    terbit (draft dilewati) harus benar-benar merender seluruh `heading`/`title`
    bloknya pada rute yang sesuai. Halaman dengan `section` yang tidak ditangani rute
    mana pun juga ditolak.
-6. **`validate:img-alt`** (`scripts/validate-image-alt.mjs`) — setiap `<img>` pada
+7. **`validate:img-alt`** (`scripts/validate-image-alt.mjs`) — setiap `<img>` pada
    `dist` wajib punya atribut `alt`, dan `src` tidak boleh kosong atau berisi markup
    (mis. SVG mentah yang merusak HTML dan menyembunyikan atribut setelahnya).
    `alt=""` diizinkan karena itu cara standar (WCAG) menandai gambar dekoratif.
 
-Alasan lapis 2 dan 5 ada: `blocks` pada `src/content.config.ts` diakhiri `.default([])`,
+Alasan lapis 2 dan 6 ada: `blocks` pada `src/content.config.ts` diakhiri `.default([])`,
 sehingga blok yang hilang/terpotong **tidak** membuat build gagal — halaman hanya
 terbit kosong tanpa peringatan. Karena itu jangan mengandalkan Zod untuk hal ini.
-Lapis 6 melengkapi: alt yang hilang juga tidak menggagalkan build, hanya hasil render
+Lapis 7 melengkapi: alt yang hilang juga tidak menggagalkan build, hanya hasil render
 yang menunjukkan masalahnya.
 
 ## Aksesibilitas gambar
@@ -116,6 +121,10 @@ Aturan field:
 - `pubDate`/`updatedDate` bertipe tanggal; schema menolak `updatedDate` sebelum
   `pubDate`. Jangan ubah `pubDate` saat memperbarui konten lama, dan ubah
   `updatedDate` hanya bila konten benar-benar berubah.
+- `pubDate`/`updatedDate` wajib berformat UTC tanpa milisekon
+  (`YYYY-MM-DDTHH:mm:ssZ`), `updatedDate` tidak boleh sama dengan `pubDate`, dan setiap
+  nilai harus **unik** lintas semua koleksi (`articles`, `pages`, `services`) termasuk
+  draft — dijaga `validate:dates`.
 - Pasangan `relatedType`/`relatedId` harus lengkap dan targetnya harus ada
   (diperiksa `validate:content`). `relatedArticles` merujuk `id` artikel dan
   dirender oleh `ArticleRelatedList`, tetapi **belum** diperiksa otomatis — pastikan
@@ -156,7 +165,7 @@ menambah teks literal baru — ambil dari props/frontmatter atau taruh label ber
 1. Buat/ubah entri `.md` pada koleksi yang tepat dengan frontmatter lengkap
    (`id` dan `ulid` unik).
 2. Susun `blocks` memakai komponen yang terdaftar di `src/components/blocks.ts`.
-3. Jalankan `npm run validate` dan pastikan kelima lapis lulus.
+3. Jalankan `npm run validate` dan pastikan ketujuh lapis lulus.
 
 ## Batasan
 
