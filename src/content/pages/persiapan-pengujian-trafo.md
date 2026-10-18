@@ -15,6 +15,8 @@ image: "/images/panduan/persiapan-pengujian-trafo.webp"
 imageAlt: "Ilustrasi trafo distribusi dengan perangkat ukur untuk panduan persiapan pengujian trafo"
 relatedType: "service"
 relatedId: 106
+howTo:
+  blockId: "alur-persiapan"
 blocks:
   - component: "section"
     id: "gambaran"
