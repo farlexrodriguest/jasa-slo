@@ -11,6 +11,8 @@ description: "Gambaran tahapan umum dan dokumen yang perlu disiapkan sebelum pen
 draft: false
 eyebrow: "Panduan / Proses"
 order: 1
+image: "/images/panduan/alur-dan-persyaratan.webp"
+imageAlt: "Ilustrasi alur bertahap dari konsultasi hingga sertifikat untuk panduan alur dan persyaratan"
 blocks:
   - component: "section"
     id: "ikhtisar"

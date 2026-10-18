@@ -11,6 +11,8 @@ description: "Kondisi panel, akses teknis, dan dokumen pendukung yang sebaiknya 
 draft: false
 eyebrow: "Panduan / Pengujian panel"
 order: 6
+image: "/images/panduan/persiapan-pengujian-panel-cubicle.webp"
+imageAlt: "Ilustrasi deretan panel cubicle dan perangkat ukur untuk panduan pengujian panel"
 relatedType: "service"
 relatedId: 105
 blocks:

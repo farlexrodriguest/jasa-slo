@@ -63,6 +63,10 @@ yang menunjukkan masalahnya.
 
 ## Aksesibilitas gambar
 
+- **Setiap halaman wajib punya gambar unik** (`image` / `socialImage`); dilarang
+  berbagi (share) gambar yang sama antar halaman. Jika perlu ilustrasi serupa,
+  buat varian berbeda (mis. ganti sudut, elemen, atau warna aksen) meski satu
+  keluarga desain.
 - Sumber gambar di `dist` harus berupa URL/path aset (mis. `/images/...svg`), bukan
   markup SVG yang ditempel sebagai string; markup seperti itu merusak HTML.
 - `alt=""` hanya untuk gambar dekoratif (mis. di dalam tautan/kartu yang sudah punya

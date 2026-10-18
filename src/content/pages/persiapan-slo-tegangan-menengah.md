@@ -11,6 +11,8 @@ description: "Daftar informasi teknis dan dokumen yang sebaiknya disiapkan sebel
 draft: false
 eyebrow: "Panduan / Tegangan menengah"
 order: 3
+image: "/images/panduan/persiapan-slo-tegangan-menengah.webp"
+imageAlt: "Ilustrasi switchgear dan simbol trafo untuk panduan persiapan SLO tegangan menengah"
 relatedType: "service"
 relatedId: 102
 blocks:

@@ -11,6 +11,8 @@ description: "Daftar informasi dan dokumen yang sebaiknya disiapkan sebelum kons
 draft: false
 eyebrow: "Panduan / Tegangan rendah"
 order: 2
+image: "/images/panduan/persiapan-slo-tegangan-rendah.webp"
+imageAlt: "Ilustrasi panel instalasi tegangan rendah untuk panduan persiapan SLO"
 relatedType: "service"
 relatedId: 101
 blocks:

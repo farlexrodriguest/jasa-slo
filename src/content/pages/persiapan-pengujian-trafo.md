@@ -11,6 +11,8 @@ description: "Data nama plate, riwayat operasi, dan kondisi akses yang sebaiknya
 draft: false
 eyebrow: "Panduan / Pengujian trafo"
 order: 7
+image: "/images/panduan/persiapan-pengujian-trafo.webp"
+imageAlt: "Ilustrasi trafo distribusi dengan perangkat ukur untuk panduan persiapan pengujian trafo"
 relatedType: "service"
 relatedId: 106
 blocks:

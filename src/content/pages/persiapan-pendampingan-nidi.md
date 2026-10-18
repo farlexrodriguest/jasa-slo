@@ -11,6 +11,8 @@ description: "Data identitas, alamat, dan dokumen teknis yang sebaiknya disiapka
 draft: false
 eyebrow: "Panduan / Identitas instalasi"
 order: 4
+image: "/images/panduan/persiapan-pendampingan-nidi.webp"
+imageAlt: "Ilustrasi denah satu garis dan dokumen pendamping untuk panduan NIDI"
 relatedType: "service"
 relatedId: 103
 blocks:

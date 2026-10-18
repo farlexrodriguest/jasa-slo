@@ -23,10 +23,15 @@ const showCta = page.showCta !== false;
 <SiteHeader />
 <main id="main-content">
 <section id="utama" class="border-b border-[#dfcdb8] bg-[#2a1a0e] text-[#fef3e2]">
-<div class="mx-auto max-w-[1440px] px-6 py-20 lg:px-12 lg:py-28">
+<div class:list={["mx-auto max-w-[1440px] px-6 py-20 lg:px-12 lg:py-28", page.image && "grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]"]}>
+<div>
 {page.eyebrow && <p class="eyebrow text-[#f4ae52]">{page.eyebrow}</p>}
-<h1 class="mt-6 max-w-4xl text-[clamp(2.8rem,6vw,6rem)] font-extrabold leading-[1.04]">{page.title}</h1>
+<h1 class:list={["mt-6 text-[clamp(2.8rem,6vw,6rem)] font-extrabold leading-[1.04]", !page.image && "max-w-4xl"]}>{page.title}</h1>
 <p class="mt-8 max-w-2xl text-lg leading-8 text-[#e0cbb9]">{page.description}</p>
+</div>
+{page.image && (
+<img src={page.image} alt={page.imageAlt || page.title} width="1200" height="760" fetchpriority="high" class="mx-auto w-full max-w-xl rounded-2xl border border-[#594332] lg:max-w-none" />
+)}
 </div>
 </section>
 <section id="isi" class={othersList ? 'mx-auto max-w-[1120px] px-6 py-20 lg:py-28' : 'mx-auto max-w-3xl px-6 py-20 lg:py-28'}>
