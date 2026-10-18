@@ -5,12 +5,12 @@ const hasWhatsapp = !!site.whatsapp && /^\d{8,15}$/.test(site.whatsapp.replace(/
 const cleanWhatsApp = site.whatsapp?.replace(/\D/g, '');
 const href = hasWhatsapp ? `https://wa.me/${cleanWhatsApp}?text=${encodeURIComponent(message)}` : undefined;
 ---
-<section id={id} class={`rounded-2xl border border-blue-200 bg-blue-50 p-6 md:p-8 ${css?.section ?? ''}`}>
-  {heading && <h2 class={`mb-2 text-xl font-bold text-slate-950 ${css?.heading ?? ''}`}>{heading}</h2>}
-  <p class={`mb-5 text-slate-700 ${css?.message ?? ''}`}>{message}</p>
+<section id={id} class={`rounded-2xl border border-[#dfcdb8] bg-[#fffaf2] p-6 md:p-8 ${css?.section ?? ''}`}>
+  {heading && <h2 class={`mb-2 text-xl font-bold text-[#2a1a0e] ${css?.heading ?? ''}`}>{heading}</h2>}
+  <p class={`mb-5 text-[#594332] ${css?.message ?? ''}`}>{message}</p>
   {href ? (
-    <a href={href} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg bg-green-600 px-5 py-2.5 font-semibold text-white transition hover:bg-green-700">{buttonText || 'Konsultasi Sekarang'}</a>
+    <a href={href} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-lg bg-[#d4621a] px-5 py-2.5 font-semibold text-white transition hover:bg-[#b8500f]">{buttonText || 'Konsultasi Sekarang'}</a>
   ) : (
-    <p class="text-sm text-slate-600">Nomor WhatsApp tidak valid atau tidak terisi</p>
+    <p class="text-sm text-[#624b39]">Nomor WhatsApp tidak valid atau tidak terisi</p>
   )}
 </section>

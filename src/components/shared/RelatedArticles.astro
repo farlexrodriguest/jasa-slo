@@ -13,4 +13,4 @@ const { articles = [], type, id, excludeId, heading = ui.article.relatedHeadingA
 };
 const chosen = articlesForParent(articles, type, id, 3, excludeId);
 ---
-{chosen.length > 0 && <section class="mx-auto max-w-7xl px-5 py-12"><h2 class="mb-6 text-2xl font-extrabold text-slate-950">{heading}</h2><div class="grid gap-5 md:grid-cols-3">{chosen.map((a: CollectionEntry<'articles'>) => <ArticleCard article={a} />)}</div></section>}
+{chosen.length > 0 && <section class="mx-auto max-w-7xl px-5 py-12"><h2 class="mb-6 text-2xl font-extrabold text-[#2a1a0e]">{heading}</h2><div class="grid gap-5 md:grid-cols-3">{chosen.map((a: CollectionEntry<'articles'>) => <ArticleCard article={a} />)}</div></section>}

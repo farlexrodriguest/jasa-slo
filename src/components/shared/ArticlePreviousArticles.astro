@@ -13,21 +13,21 @@ const previousArticles = articles
   .slice(0, limit);
 ---
 {previousArticles.length > 0 && (
-  <section class="mt-8 border-t border-slate-200 pt-5" aria-labelledby="previous-articles-heading">
-    <h2 id="previous-articles-heading" class="mb-3 text-xs font-bold uppercase tracking-wider text-slate-500">
+  <section class="mt-8 border-t border-[#dfcdb8] pt-5" aria-labelledby="previous-articles-heading">
+    <h2 id="previous-articles-heading" class="mb-3 text-xs font-bold uppercase tracking-wider text-[#624b39]">
       Artikel sebelumnya
     </h2>
     <ol class="space-y-3">
       {previousArticles.map((item) => (
-        <li class="border-l-2 border-slate-200 pl-3 transition-colors hover:border-blue-600">
+        <li class="border-l-2 border-[#dfcdb8] pl-3 transition-colors hover:border-[#d4621a]">
           <a
             href={`/artikel/${item.data.slug}/`}
-            class="text-sm font-semibold leading-5 text-slate-700 no-underline hover:text-blue-700"
+            class="text-sm font-semibold leading-5 text-[#594332] no-underline hover:text-[#d4621a]"
           >
             {item.data.title}
           </a>
           {item.data.category && (
-            <p class="mt-1 text-xs text-slate-500">{item.data.category}</p>
+            <p class="mt-1 text-xs text-[#624b39]">{item.data.category}</p>
           )}
         </li>
       ))}

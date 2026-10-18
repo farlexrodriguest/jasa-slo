@@ -12,12 +12,12 @@
 import { ui } from '../../config/ui.ts';
 const { id, items } = Astro.props as { id: string; items: {value: string; label: string}[] };
 ---
-<section id={id} class="py-12 bg-slate-50" aria-label={ui.stats.ariaLabel}>
+<section id={id} class="py-12 bg-[#fffaf2]" aria-label={ui.stats.ariaLabel}>
   <div class="max-w-7xl mx-auto px-5 stats-container grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
     {items.map((item: {value: string; label: string}) => (
       <div class="stat-card text-center">
-        <p class="text-3xl font-bold text-blue-600">{item.value}</p>
-        <p class="text-sm text-slate-500 mt-2">{item.label}</p>
+        <p class="text-3xl font-bold text-[#d4621a]">{item.value}</p>
+        <p class="text-sm text-[#624b39] mt-2">{item.label}</p>
       </div>
     ))}
   </div>
