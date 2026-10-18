@@ -324,6 +324,12 @@ const contentBlocks = z.array(
   ])
 ).default([]);
 
+const howTo = z.object({
+  blockId: z.string().min(1),
+  name: z.string().min(1).optional(),
+  description: z.string().min(1).optional(),
+});
+
 const articles = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/articles" }),
   schema: dated(z.object({
@@ -338,6 +344,7 @@ const articles = defineCollection({
     relatedType: z.enum(['service', 'page', 'article']).optional(),
     relatedId: z.number().int().positive().optional(),
     relatedArticles: z.array(z.number().int().positive()).default([]),
+    howTo: howTo.optional(),
     blocks: contentBlocks,
   })),
 });
@@ -358,6 +365,7 @@ const pages = defineCollection({
     noindex: z.boolean().default(false),
     relatedType: z.enum(['service', 'page', 'article']).optional(),
     relatedId: z.number().int().positive().optional(),
+    howTo: howTo.optional(),
     blocks: contentBlocks,
   })),
 });
@@ -376,6 +384,7 @@ const services = defineCollection({
     eyebrow: z.string().optional(),
     image: z.string(),
     imageAlt: z.string(),
+    howTo: howTo.optional(),
     blocks: contentBlocks,
   })),
 });
