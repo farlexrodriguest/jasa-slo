@@ -15,7 +15,7 @@ const jsonLd = [
     base,
     path: '/panduan/',
     title: 'Panduan',
-    description: 'Panduan alur, persyaratan, dan proses pengurusan SLO dan NIDI.',
+    description: 'Panduan lengkap untuk memahami regulasi, tahapan, dan dokumen yang diperlukan dalam proses pengurusan SLO dan NIDI.',
     hasItems: guides.length > 0,
   }),
   ...(guides.length
@@ -27,12 +27,12 @@ const jsonLd = [
     : []),
 ];
 ---
-<BaseLayout title="Panduan" description="Panduan alur, persyaratan, dan proses pengurusan SLO dan NIDI." jsonLd={jsonLd}>
+<BaseLayout title="Panduan" description="Panduan lengkap untuk memahami regulasi, tahapan, dan dokumen yang diperlukan dalam proses pengurusan SLO dan NIDI." jsonLd={jsonLd}>
   <SiteHeader />
   <main id="main-content" class="mx-auto max-w-[1440px] px-6 py-20 lg:px-12 lg:py-28">
     <p class="eyebrow text-[#a34a17]">Pusat informasi / Panduan</p>
-    <h1 class="mt-5 text-5xl font-extrabold md:text-7xl">Panduan proses.</h1>
-    <p class="mt-7 max-w-2xl text-lg leading-8 text-[#624b39]">Pelajari tahapan dan dokumen yang perlu disiapkan sebelum memulai proses.</p>
+    <h1 class="mt-5 text-5xl font-extrabold md:text-7xl">Panduan regulasi dan proses.</h1>
+    <p class="mt-7 max-w-2xl text-lg leading-8 text-[#624b39]">Pelajari regulasi, tahapan, dan dokumen yang diperlukan dalam proses pengurusan SLO dan NIDI.</p>
     <GuideListBlock id="daftar-panduan" heading="Panduan terbaru" description="Diurutkan dari pembaruan terakhir." />
   </main>
 </BaseLayout>
