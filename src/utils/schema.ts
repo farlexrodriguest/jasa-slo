@@ -277,3 +277,36 @@ export function breadcrumbSchema(base: string, pathname: string, title?: string)
     ],
   };
 }
+
+/** HowTo dari satu blok prosedural yang benar-benar ditampilkan pada halaman. */
+export function howToSchema(opts: {
+  base: string;
+  path: string;
+  name: string;
+  description: string;
+  blockId: string;
+  blocks: unknown;
+}) {
+  if (!Array.isArray(opts.blocks)) return null;
+  const block = opts.blocks.find((item) => item?.id === opts.blockId &&
+    (item.component === 'steps' || item.component === 'process-timeline'));
+  const rawSteps = block?.component === 'steps' ? block.items : block?.steps;
+  if (!Array.isArray(rawSteps) || rawSteps.length < 2) return null;
+  const steps = rawSteps.map((step: { title?: string; text?: string; description?: string }, index: number) => ({
+    '@type': 'HowToStep',
+    position: index + 1,
+    name: step.title?.replace(/^\\d+[.)]\\s*/, '') ?? '',
+    text: step.text ?? step.description ?? '',
+  }));
+  if (steps.some((step) => !step.name || !step.text)) return null;
+  const url = `${root(opts.base)}${opts.path}`;
+  return {
+    '@type': 'HowTo',
+    '@id': `${url}#howto`,
+    name: opts.name,
+    description: opts.description,
+    inLanguage: 'id',
+    mainEntityOfPage: { '@id': `${url}#webpage` },
+    step: steps,
+  };
+}
