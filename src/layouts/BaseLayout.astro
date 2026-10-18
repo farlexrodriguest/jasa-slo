@@ -67,12 +67,17 @@ const siteNodes = [
 <title>{fullTitle}</title><meta name="description" content={description} />
 <meta name="robots" content={robots} />
 <link rel="canonical" href={canonicalUrl} />
+<meta name="theme-color" content="#2a1a0e" />
+<link rel="apple-touch-icon" href="/images/logo-jasa-slo@2x.png" />
 <meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={ogImage} />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="id_ID" />
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
 <JsonLd data={siteNodes} />
 {jsonLd && jsonLd.length > 0 && <JsonLd data={jsonLd} />}
 </head>

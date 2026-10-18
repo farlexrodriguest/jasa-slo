@@ -8,9 +8,11 @@ import RelatedServiceCta from '../../components/shared/RelatedServiceCta.astro';
 import ArticleRelatedList from '../../components/shared/ArticleRelatedList.astro';
 import BlockRenderer from '../../components/blocks/BlockRenderer.astro';
 import { ui } from '../../config/ui.ts';
+import { readingTime } from '../../utils/readingTime.ts';
 import { articleSchema, faqFromBlocks, faqPageSchema, itemListSchema, serviceSchema } from '../../utils/schema.ts';
 export async function getStaticPaths(){const articles=(await getCollection('articles')).filter((a)=>!a.data.draft);return articles.map(article=>({params:{slug:article.data.slug},props:{article}}))}
 const {article}=Astro.props;
+const estMinutes = readingTime(article.data.blocks);
 const service=await relatedService(article.data.relatedType,article.data.relatedId);
 const base = Astro.site?.href ?? Astro.url.origin;
 const root = base.replace(/\/+$/, '');
@@ -70,7 +72,7 @@ const jsonLd = [
 </section>
 <section id="isi" class="mx-auto max-w-[1440px] px-6 py-20 lg:px-12 lg:py-28">
 <div class="grid gap-14 lg:grid-cols-[.3fr_.7fr]">
-<aside class="border-t border-[#2a1a0e] pt-5 lg:sticky lg:top-24 lg:self-start"><p class="eyebrow text-[#a34a17]">Artikel / Pengetahuan</p>{article.data.updatedDate&&<p class="mt-4 text-sm text-[#624b39]">{ui.article.updatedLabel} {article.data.updatedDate.toLocaleDateString(ui.locale,{year:'numeric',month:'long',day:'numeric',timeZone:'Asia/Jakarta'})}</p>}{article.data.author&&<p class="mt-1 text-sm font-semibold text-[#2a1a0e]">{article.data.author}</p>}<div class="mt-10 hidden lg:block"><ArticleOthersList excludeSlug={article.data.slug} /></div></aside>
+<aside class="border-t border-[#2a1a0e] pt-5 lg:sticky lg:top-24 lg:self-start"><p class="eyebrow text-[#a34a17]">Artikel / Pengetahuan</p>{article.data.updatedDate&&<p class="mt-4 text-sm text-[#624b39]">{ui.article.updatedLabel} {article.data.updatedDate.toLocaleDateString(ui.locale,{year:'numeric',month:'long',day:'numeric',timeZone:'Asia/Jakarta'})}</p>}<p class="mt-1 text-sm text-[#624b39]">Estimasi baca: {estMinutes} menit</p>{article.data.author&&<p class="mt-1 text-sm font-semibold text-[#2a1a0e]">{article.data.author}</p>}<div class="mt-10 hidden lg:block"><ArticleOthersList excludeSlug={article.data.slug} /></div></aside>
 <article class="min-w-0">
 {article.data.blocks.map((block) => <BlockRenderer block={block} />)}
 <RelatedServiceCta service={service} sourceTitle={article.data.title} /><div class="mt-20 border-t border-[#dfcdb8] pt-7"><a href="/artikel/" class="font-bold text-[#a34a17]">← Semua artikel</a></div>
