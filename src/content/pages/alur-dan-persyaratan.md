@@ -13,6 +13,8 @@ eyebrow: "Panduan / Proses"
 order: 1
 image: "/images/panduan/alur-dan-persyaratan.webp"
 imageAlt: "Ilustrasi alur bertahap dari konsultasi hingga sertifikat untuk panduan alur dan persyaratan"
+howTo:
+  blockId: "alur"
 blocks:
   - component: "section"
     id: "ikhtisar"
