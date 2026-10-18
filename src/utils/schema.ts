@@ -35,11 +35,16 @@ export function organizationSchema(base: string) {
     legalName: site.legalName,
     url: `${b}/`,
     logo: abs(base, '/images/logo-jasa-slo.svg'),
+    image: abs(base, '/images/logo-jasa-slo@2x.png'),
     email: site.contact.email,
     telephone: site.contact.phone,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: site.contact.address,
+      streetAddress: site.contact.addressDetails.streetAddress,
+      addressLocality: site.contact.addressDetails.addressLocality,
+      addressRegion: site.contact.addressDetails.addressRegion,
+      postalCode: site.contact.addressDetails.postalCode,
+      addressCountry: site.contact.addressDetails.addressCountry,
     },
     sameAs: [site.social.instagram, site.social.linkedin],
   };
@@ -83,7 +88,6 @@ export function serviceSchema(opts: {
     ...(opts.serviceType ? { serviceType: opts.serviceType } : {}),
     provider: { '@id': `${b}/#organization` },
     areaServed: site.regions,
-    inLanguage: 'id',
   };
 }
 
@@ -115,7 +119,7 @@ export function articleSchema(opts: {
     image: abs(opts.base, opts.image ?? '/images/logo-jasa-slo.svg'),
     datePublished: iso(opts.pubDate),
     dateModified: iso(opts.updatedDate),
-    author: { '@type': 'Organization', name: opts.author ?? 'Redaksi' },
+    author: { '@type': 'Organization', name: opts.author ?? 'Redaksi', url: `${b}/` },
     publisher: { '@id': `${b}/#organization` },
     mainEntityOfPage: { '@id': `${url}#webpage` },
     ...(opts.articleSection ? { articleSection: opts.articleSection } : {}),

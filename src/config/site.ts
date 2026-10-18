@@ -26,7 +26,15 @@ export const site = {
     phoneDisplay: "(021) 5550-1234", // simulasi
     email: "info@jasa-slo.com", // simulasi
     address:
-      "Gedung Nusantara Energi, Jl. Kramat Raya No. 88, Senen, Jakarta Pusat, DKI Jakarta 10450", // simulasi
+      "Gedung Nusantara Energi, Jl. Kramat Raya No. 88, Senen, Jakarta Pusat, DKI Jakarta 10450", // simulasi — untuk tampilan
+    // Alamat terstruktur untuk JSON-LD (PostalAddress); urutannya = isi `address` di atas.
+    addressDetails: {
+      streetAddress: "Gedung Nusantara Energi, Jl. Kramat Raya No. 88, Senen", // simulasi
+      addressLocality: "Jakarta Pusat", // simulasi — kota/kabupaten
+      addressRegion: "DKI Jakarta", // simulasi — provinsi
+      postalCode: "10450", // simulasi
+      addressCountry: "ID", // simulasi — kode ISO 3166-1 alpha-2
+    },
     mapUrl: "https://maps.google.com/?q=Jl.+Kramat+Raya+No.+88+Jakarta+Pusat", // simulasi
   },
 
