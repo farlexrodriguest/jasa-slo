@@ -4,11 +4,14 @@ ulid: "01K7R000000000000000000014"
 type: "article"
 slug: "perbedaan-slo-nidi-iuptls"
 title: "Perbedaan SLO, NIDI, dan IUPTLS"
-pubDate: "2026-10-17T00:00:00Z"
-updatedDate: "2026-10-17T00:00:00Z"
+pubDate: "2026-10-16T09:34:12Z"
+updatedDate: "2026-10-19T06:48:33Z"
 description: "Tiga istilah yang sering dipertukarkan padahal maknanya berbeda: sertifikat kelayakan operasi, identitas instalasi, dan izin pengusahaan tenaga listrik."
 draft: false
 category: "SLO"
+image: "/images/artikel/perbedaan-slo-nidi-iuptls.webp"
+author: "Redaksi"
+imageAlt: "Ilustrasi perbandingan tiga dokumen sertifikasi SLO, NIDI, dan IUPTLS"
 tags: ['slo', 'nidi', 'iuptls', 'perbedaan']
 relatedType: "service"
 relatedId: 103

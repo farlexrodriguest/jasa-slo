@@ -4,11 +4,14 @@ ulid: "01K7R000000000000000000013"
 type: "article"
 slug: "apa-itu-lit"
 title: "Apa itu LIT?"
-pubDate: "2026-10-17T00:00:00Z"
-updatedDate: "2026-10-17T00:00:00Z"
+pubDate: "2026-10-15T07:53:41Z"
+updatedDate: "2026-10-15T11:08:27Z"
 description: "Penjelasan tentang Lembaga Inspeksi Teknik (LIT), perannya dalam proses sertifikasi instalasi tenaga listrik, dan batas kewenangannya."
 draft: false
 category: "SLO"
+image: "/images/artikel/apa-itu-lit.webp"
+author: "Redaksi"
+imageAlt: "Ilustrasi kaca pembesar memeriksa panel untuk penjelasan LIT"
 tags: ['lit', 'sertifikasi', 'dasar']
 relatedType: "service"
 relatedId: 101

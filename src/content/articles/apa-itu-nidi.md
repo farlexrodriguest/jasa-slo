@@ -4,11 +4,14 @@ ulid: "01K7R000000000000000000012"
 type: "article"
 slug: "apa-itu-nidi"
 title: "Apa itu NIDI?"
-pubDate: "2026-10-17T00:00:00Z"
-updatedDate: "2026-10-17T00:00:00Z"
+pubDate: "2026-10-13T10:42:18Z"
+updatedDate: "2026-10-18T08:37:45Z"
 description: "Penjelasan tentang Nomor Identitas Instalasi Tenaga Listrik dan perbedaannya dengan SLO."
 draft: false
 category: "NIDI"
+image: "/images/artikel/apa-itu-nidi.webp"
+author: "Redaksi"
+imageAlt: "Ilustrasi kartu identitas instalasi tenaga listrik untuk penjelasan NIDI"
 tags: ['nidi', 'dasar']
 relatedType: "service"
 relatedId: 103

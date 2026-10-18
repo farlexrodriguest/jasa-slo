@@ -4,11 +4,14 @@ ulid: "01K7R000000000000000000015"
 type: "article"
 slug: "apa-itu-puil"
 title: "Apa itu PUIL?"
-pubDate: "2026-10-17T00:00:00Z"
-updatedDate: "2026-10-17T00:00:00Z"
+pubDate: "2026-10-14T13:26:05Z"
+updatedDate: "2026-10-16T16:11:52Z"
 description: "Penjelasan tentang Persyaratan Umum Instalasi Listrik sebagai acuan keselamatan instalasi dan dasar pemeriksaan teknis."
 draft: false
 category: "Standar"
+image: "/images/artikel/apa-itu-puil.webp"
+author: "Redaksi"
+imageAlt: "Ilustrasi buku peraturan PUIL untuk penjelasan ketentuan umum instalasi"
 tags: ['puil', 'sni', 'standar', 'dasar']
 relatedType: "service"
 relatedId: 101

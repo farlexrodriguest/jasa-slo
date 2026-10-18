@@ -7,22 +7,33 @@ import ArticleOthersList from '../../components/shared/ArticleOthersList.astro';
 import RelatedServiceCta from '../../components/shared/RelatedServiceCta.astro';
 import ArticleRelatedList from '../../components/shared/ArticleRelatedList.astro';
 import BlockRenderer from '../../components/blocks/BlockRenderer.astro';
+import { ui } from '../../config/ui.ts';
 export async function getStaticPaths(){const articles=(await getCollection('articles')).filter((a)=>!a.data.draft);return articles.map(article=>({params:{slug:article.data.slug},props:{article}}))}
 const {article}=Astro.props;
 const service=await relatedService(article.data.relatedType,article.data.relatedId);
 ---
 <BaseLayout title={article.data.title} description={article.data.description} serviceTitle={service?.data.title}>
 <SiteHeader/>
-<main id="main-content" class="mx-auto max-w-[1120px] px-6 py-16 lg:py-24">
-<a href="/artikel/" class="eyebrow text-[#a34a17] hover:underline">← Kembali ke pustaka</a>
-<div class="mt-12 grid gap-12 lg:grid-cols-[240px_minmax(0,1fr)]">
-<aside class="border-t border-[#2a1a0e] pt-5"><p class="eyebrow text-[#a34a17]">Artikel / Pengetahuan</p>{article.data.pubDate&&<p class="mt-4 text-sm text-[#624b39]">{article.data.pubDate.toLocaleDateString('id-ID',{year:'numeric',month:'long',day:'numeric'})}</p>}<div class="mt-10 hidden lg:block"><ArticleOthersList excludeSlug={article.data.slug} /></div></aside>
-<article><header class="border-b border-[#dfcdb8] pb-12"><h1 class="max-w-3xl text-4xl font-extrabold leading-[1.13] md:text-6xl">{article.data.title}</h1><p class="mt-7 max-w-2xl text-xl leading-8 text-[#624b39]">{article.data.description}</p></header>
-<div class="pt-8">
-{article.data.blocks.map((block) => <BlockRenderer block={block} />)}
+<main id="main-content">
+<section id="utama" class="border-b border-[#dfcdb8] bg-[#2a1a0e] text-[#fef3e2]">
+<div class:list={["mx-auto max-w-[1440px] px-6 py-20 lg:px-12 lg:py-28", article.data.image && "grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]"]}>
+<div>
+<a href="/artikel/" class="eyebrow text-[#f4ae52] hover:underline">← Kembali ke pustaka</a>
+{article.data.category&&<p class="eyebrow mt-16 text-[#f4ae52]">Artikel / {article.data.category}</p>}
+<h1 class="mt-6 text-[clamp(2.8rem,6vw,6rem)] font-extrabold leading-[1.04]">{article.data.title}</h1>
+<p class="mt-8 max-w-2xl text-lg leading-8 text-[#e0cbb9]">{article.data.description}</p>
 </div>
+{article.data.image && <img src={article.data.image} alt={article.data.imageAlt || article.data.title} width="1200" height="760" fetchpriority="high" class="mx-auto w-full max-w-xl rounded-2xl border border-[#594332] lg:max-w-none" />}
+</div>
+</section>
+<section id="isi" class="mx-auto max-w-[1440px] px-6 py-20 lg:px-12 lg:py-28">
+<div class="grid gap-14 lg:grid-cols-[.3fr_.7fr]">
+<aside class="border-t border-[#2a1a0e] pt-5 lg:sticky lg:top-24 lg:self-start"><p class="eyebrow text-[#a34a17]">Artikel / Pengetahuan</p>{article.data.updatedDate&&<p class="mt-4 text-sm text-[#624b39]">{ui.article.updatedLabel} {article.data.updatedDate.toLocaleDateString(ui.locale,{year:'numeric',month:'long',day:'numeric',timeZone:'Asia/Jakarta'})}</p>}{article.data.author&&<p class="mt-1 text-sm font-semibold text-[#2a1a0e]">{article.data.author}</p>}<div class="mt-10 hidden lg:block"><ArticleOthersList excludeSlug={article.data.slug} /></div></aside>
+<article class="min-w-0">
+{article.data.blocks.map((block) => <BlockRenderer block={block} />)}
 <RelatedServiceCta service={service} sourceTitle={article.data.title} /><div class="mt-20 border-t border-[#dfcdb8] pt-7"><a href="/artikel/" class="font-bold text-[#a34a17]">← Semua artikel</a></div>
 {article.data.relatedArticles.length > 0 && <ArticleRelatedList articleId={article.data.id} relatedIds={article.data.relatedArticles} />}
 </article>
-</div></main>
+</div></section>
+</main>
 </BaseLayout>

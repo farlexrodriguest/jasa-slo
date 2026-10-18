@@ -10,6 +10,7 @@ export const ui = {
   },
   article: {
     readMore: 'Baca artikel',
+    updatedLabel: 'Diperbarui',
     latestEyebrow: 'Wawasan ketenagalistrikan',
     latestHeading: 'Artikel dan panduan terbaru',
     latestDescription: 'Informasi untuk memahami instalasi, dokumen, dan proses terkait.',
@@ -19,6 +20,11 @@ export const ui = {
     relatedServiceHeading: 'Layanan terkait',
     empty: 'Belum ada artikel tersedia.',
     emptyList: 'Belum ada artikel tersedia.',
+  },
+  guide: {
+    readMore: 'Baca panduan',
+    eyebrow: 'Panduan',
+    emptyList: 'Belum ada panduan tersedia.',
   },
   blocks: {
     checklistRequiredLabel: 'Diperlukan',

@@ -1,26 +1,14 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SiteHeader from '../../components/shared/SiteHeader.astro';
-
-const guides = (await getCollection('pages'))
-  .filter((page) => !page.data.draft && page.data.section === 'panduan')
-  .sort((a, b) => a.data.order - b.data.order);
+import GuideListBlock from '../../components/shared/GuideListBlock.astro';
 ---
 <BaseLayout title="Panduan" description="Panduan alur, persyaratan, dan proses pengurusan SLO dan NIDI.">
   <SiteHeader />
-  <main id="main-content" class="mx-auto max-w-[1200px] px-6 py-20 lg:py-28">
+  <main id="main-content" class="mx-auto max-w-[1440px] px-6 py-20 lg:px-12 lg:py-28">
     <p class="eyebrow text-[#a34a17]">Pusat informasi / Panduan</p>
     <h1 class="mt-5 text-5xl font-extrabold md:text-7xl">Panduan proses.</h1>
     <p class="mt-7 max-w-2xl text-lg leading-8 text-[#624b39]">Pelajari tahapan dan dokumen yang perlu disiapkan sebelum memulai proses.</p>
-    <div class="mt-16 divide-y divide-[#dfcdb8] border-t border-[#2a1a0e]">
-      {guides.map((page, index) => (
-        <a href={`/panduan/${page.data.slug}/`} class="group block py-8">
-          <span class="eyebrow text-[#a34a17]">Panduan / {String(index + 1).padStart(2, '0')}</span>
-          <h2 class="mt-4 text-3xl font-bold group-hover:text-[#d4621a]">{page.data.title} ↗</h2>
-          <p class="mt-3 leading-7 text-[#624b39]">{page.data.description}</p>
-        </a>
-      ))}
-    </div>
+    <GuideListBlock id="daftar-panduan" heading="Panduan terbaru" description="Diurutkan dari pembaruan terakhir." />
   </main>
 </BaseLayout>

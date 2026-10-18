@@ -4,11 +4,14 @@ ulid: "01K7R000000000000000000016"
 type: "article"
 slug: "standar-iec-panel-trafo"
 title: "Standar IEC untuk Panel dan Trafo"
-pubDate: "2026-10-17T00:00:00Z"
-updatedDate: "2026-10-17T00:00:00Z"
+pubDate: "2026-10-17T11:19:57Z"
+updatedDate: "2026-10-18T15:05:21Z"
 description: "Rujukan standar internasional yang dipakai dalam pengujian panel distribusi dan transformator, serta bagaimana kaitannya dengan standar nasional."
 draft: false
 category: "Standar"
+image: "/images/artikel/standar-iec-panel-trafo.webp"
+author: "Redaksi"
+imageAlt: "Ilustrasi panel dan transformator dengan simbol roda gigi standar IEC"
 tags: ['iec', 'panel', 'trafo', 'standar']
 relatedType: "service"
 relatedId: 105

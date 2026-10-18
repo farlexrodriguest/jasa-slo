@@ -4,11 +4,14 @@ ulid: "01K7R000000000000000000011"
 type: "article"
 slug: "apa-itu-slo"
 title: "Apa itu SLO?"
-pubDate: "2026-10-17T00:00:00Z"
-updatedDate: "2026-10-17T00:00:00Z"
+pubDate: "2026-10-12T09:15:30Z"
+updatedDate: "2026-10-17T14:22:10Z"
 description: "Penjelasan singkat tentang Sertifikat Laik Operasi (SLO) dan fungsinya."
 draft: false
 category: "SLO"
+image: "/images/artikel/apa-itu-slo.webp"
+author: "Redaksi"
+imageAlt: "Ilustrasi sertifikat dengan segel kelulusan untuk penjelasan SLO"
 tags: ['slo', 'dasar']
 relatedType: "service"
 relatedId: 101

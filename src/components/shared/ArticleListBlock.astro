@@ -5,7 +5,7 @@ import { ui } from '../../config/ui.ts';
 const { id, heading, description, mode = 'listing', limit = 0, offset = 0 } = Astro.props;
 const allArticles = (await getCollection('articles'))
   .filter((article) => !article.data.draft)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf() || b.data.id - a.data.id);
+  .sort((a, b) => b.data.updatedDate.valueOf() - a.data.updatedDate.valueOf() || b.data.id - a.data.id);
 const articles = allArticles.slice(Math.max(0, offset), limit > 0 ? Math.max(0, offset) + limit : undefined);
 ---
 <section id={id} class={mode === 'latest' ? 'mx-auto max-w-7xl px-5 py-16' : 'mt-10'}>

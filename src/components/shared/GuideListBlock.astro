@@ -1,0 +1,58 @@
+---
+/**
+ * GuideListBlock — daftar kartu panduan (koleksi `pages` ber-section panduan).
+ *
+ * Props:
+ * - id: string — anchor id section
+ * - heading?: string — judul daftar (opsional)
+ * - description?: string — deskripsi singkat daftar (opsional)
+ * - limit?: number — batas jumlah item; 0 = semua (default 0)
+ *
+ * Urutan: `updatedDate` DESC — panduan yang terbaru diperbarui selalu di atas.
+ *
+ * Usage:
+ * <GuideListBlock id="daftar-panduan" heading="Panduan terbaru" />
+ */
+import { getCollection } from 'astro:content';
+import { ui } from '../../config/ui.ts';
+
+interface Props {
+  id: string;
+  heading?: string;
+  description?: string;
+  limit?: number;
+}
+
+const { id, heading, description, limit = 0 } = Astro.props;
+
+const guides = (await getCollection('pages'))
+  .filter((page) => !page.data.draft && page.data.section === 'panduan')
+  .sort((a, b) => b.data.updatedDate.valueOf() - a.data.updatedDate.valueOf());
+const items = limit > 0 ? guides.slice(0, limit) : guides;
+const utcIso = (date: Date) => date.toISOString().replace(/\.\d{3}Z$/, 'Z');
+---
+<section id={id} class="mt-16 border-t border-[#2a1a0e] pt-10">
+  {(heading || description) && (
+    <div class="max-w-3xl">
+      {heading && <h2 class="text-2xl font-black tracking-tight text-[#2a1a0e]">{heading}</h2>}
+      {description && <p class="mt-3 leading-7 text-[#624b39]">{description}</p>}
+    </div>
+  )}
+  {items.length ? (
+    <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      {items.map((page) => (
+        <article class="flex h-full flex-col overflow-hidden rounded-2xl border border-[#dfcdb8] bg-white transition hover:-translate-y-1 hover:border-[#dfcdb8] hover:shadow-lg">
+          {page.data.image && <a href={`/panduan/${page.data.slug}/`} class="block overflow-hidden" tabindex="-1" aria-hidden="true"><img src={page.data.image} alt="" class="h-40 w-full object-cover" loading="lazy" decoding="async" /></a>}
+          <div class="flex flex-1 flex-col p-6">
+            <p class="text-xs font-bold uppercase tracking-wider text-[#d4621a]">{ui.guide.eyebrow}</p>
+            <h3 class="mt-3 text-lg font-bold leading-snug text-[#2a1a0e]"><a href={`/panduan/${page.data.slug}/`} class="hover:text-[#d4621a]">{page.data.title}</a></h3>
+            <p class="mt-3 flex-1 text-sm leading-6 text-[#624b39]">{page.data.description}</p>
+            <div class="mt-5 flex items-center justify-between text-xs text-[#624b39]"><time datetime={utcIso(page.data.pubDate)}>{page.data.pubDate.toLocaleDateString(ui.locale, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Jakarta' })}</time><a href={`/panduan/${page.data.slug}/`} class="font-semibold text-[#d4621a]">{ui.guide.readMore}</a></div>
+          </div>
+        </article>
+      ))}
+    </div>
+  ) : (
+    <p class="mt-10 rounded-xl border border-dashed border-[#dfcdb8] p-8 text-[#624b39]">{ui.guide.emptyList}</p>
+  )}
+</section>

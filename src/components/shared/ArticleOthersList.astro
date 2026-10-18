@@ -10,7 +10,7 @@ const { excludeSlug } = Astro.props;
 const allArticles = await getCollection('articles');
 const others = allArticles
   .filter(a => !a.data.draft && a.data.slug !== excludeSlug)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  .sort((a, b) => b.data.updatedDate.valueOf() - a.data.updatedDate.valueOf());
 ---
 
 {others.length > 0 && (
